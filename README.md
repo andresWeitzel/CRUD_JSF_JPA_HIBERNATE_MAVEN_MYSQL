@@ -547,5 +547,9 @@ larioMavenJSP/FormularioMaven (master)
 #### 5)Enviamos todos los cambios locales al repo en github
 * git push https://github.com/andresWeitzel/CRUD_JSF_JPA_HIBERNATE_MAVEN_MYSQL
 
+#### 6) En casos extremos pisamos todo el repositorio
+* git push -f --set-upstream origin master
+
+
 </br>
 
