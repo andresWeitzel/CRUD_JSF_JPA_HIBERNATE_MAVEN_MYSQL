@@ -484,7 +484,103 @@ public class JpaUtil {
 
 ```
 
+#### 2) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.
+##### (Vamos a configurar la Unidad de Persistencia, el entityManager y la Persistencia de la misma con el EntityManagerFactory. Todo esto para persistir los datos desde esta Clase).
+##### * Unidad de Persistencia = Modelo relacional de objeto que correlaciona las clases Java.
+##### * Entity Manager  = El entity manager comprueba qué entidades han sido modificadas y vuelca los cambios a la base de datos.
+##### * Entity Manager  Factory = Es la clase que se encarga de abrir la conexión a la base de datos y pone a nuestra disposición los distintos EntityManager que usemos.
 
+* --> Primeramente Configuramos el Nombre de la Unidad de Persistencia dentro de la Clase Creada JpaUtil
+
+```java
+private static final String PERSISTENCE_UNIT_NAME = "PERSISTENCE";
+
+```
+* --> Notar que el Nombre deberá ser el mismo que el creado peviamente en el persistence.xml
+
+```xml
+  <persistence-unit name="PERSISTENCE">
+    <description>Hibernate JPA</description>
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <properties>
+     
+      ...
+	    
+    </properties>
+  </persistence-unit>
+
+```
+
+* --> Ahoramos Creamos un Objeto de tipo EntityManagerFactory que será el que abra la conexión a la db creada. Importar la Clase
+
+```java
+private static EntityManagerFactory factory;
+
+```
+
+* --> Seguidamento vamos a crear 2 métodos para la conexión a la db.
+* --> El Primer Método será un getter y tendrá la Lógica de Persistir los datos de la Unidad de Persistencia con el EntityManagerFactory en caso de que no se haya persistido aún. Importar la Clase requerida.
+
+```java
+public static EntityManagerFactory getEntityManagerFactory(){
+	
+	if (factory == null){
+		
+		factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+	}
+	return factory;
+
+}
+
+
+```
+
+* --> El Segundo Método finaliza la conexión a la db si es que el EntityManagerFactory tiene un Valor, si lo tiene, significa que ha persistido el objeto en la db.
+
+```java
+public static void shutdown(){
+	if(factory != null){
+		factory.close();
+	}
+}
+
+
+```
+
+* --> El Código Completo es..
+
+
+```java
+package com.mypackages.utils;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+public class JpaUtil {
+	
+	private static final String PERSISTENCE_UNIT_NAME = "PERSISTENCE";
+	private static EntityManagerFactory factory;
+	
+	public static EntityManagerFactory getEntityManagerFactory(){
+		
+		if (factory == null){
+			
+			factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		}
+		return factory;
+
+	}
+	
+	public static void shutdown(){
+		if(factory != null){
+			factory.close();
+		}
+	}
+
+}
+
+```
 
 
 
