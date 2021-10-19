@@ -581,6 +581,7 @@ public class JpaUtil {
 }
 
 ```
+* --> ATENTI: Ahora la Pregunta es, porqué no Crear un Paquete y Clase con el Nombre EntityManagerFactory directamente para no marearnos mucho? Por qué ya es una Clase de Java, recordár las convenciones de Nombres, así que guardaremos esta fábrica de conexiones de Unidades de Persistencias dentro de Jpa Util.
 
 
 
