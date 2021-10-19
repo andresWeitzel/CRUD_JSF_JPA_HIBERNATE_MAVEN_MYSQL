@@ -19,8 +19,8 @@
 | **Dependencias Maven** | **Finalidad** |   
 | ------------- | ------------- |
 | javax.servlet-api-4.0.1|  Librerías para el uso de Servlets |
-| mysql-connector-8.0.21|  Conexion e implementación de queries a la db con mysql |
-| Hibernate-Core 5.4.27| El Core de Hibernate|
+| mysql-connector-8.0.21|  Conexión e Implementación de Queries a la db con Mysql |
+| Hibernate-Core 5.4.27| El Core de Hibernate |
 | JPA-Hibernate 2.1 |  Persistencia de datos a la db |
 | Javax Annotation API 1.3.2 | Api para la lectura de Annotation |
 | JSF API 2.2.13 | API para el Desarrollo de Interfaces | 
@@ -37,7 +37,7 @@
 
 </br>
 
-## Descarga y documentacion de las Tecnologías empleadas:
+## Descarga y Documentación de las Tecnologías empleadas:
 #### Java-JDK 12:                     https://www.oracle.com/java/technologies/javase/jdk12-archive-downloads.html
 #### XAMPP:                            https://www.apachefriends.org/download.html
 #### Maven Repositories:              https://mvnrepository.com/
@@ -102,7 +102,7 @@
 #### 1) Utilizaré Wildfly, buscar por internet, descargar, descromprimir, colocar en el directorio del proyecto u otro seguro.
 
 
-#### 2.1) Click der sobre el proyecto 
+#### 2.1) Seleccionar el Proyecto y Click der sobre el mismo.
 * --> Properties
 * --> Buscar Proyect Facets
 * --> Pestaña Runtimes(a la derecha de todo, al lado de Details)
@@ -135,15 +135,11 @@
  * --> Lo seleccionas y Finish.
 
 
-
 #### 5) Fijarse el Log en Console(todo el registro de despliegue del Server), tarda unos segundos. Si tarda en ejecutar el proyecto, parar la ejecución y ejecutar de nuevo.
 
-
-
-#### 6) Si se te abre un localhost con Hello World! todo está correcto. Si aparece un mensaje de página no encontrada, borrar el index.jsp dentro de webapp y volver a crear el index.jsp, luego actualizar proyecto, actualizar Maven y correr Nuevamente en el Server.
+#### 6) Si se abre un localhost con Hello World! todo está correcto. Si aparece un mensaje de página no encontrada, borrar el index.jsp dentro de webapp y volver a crear el index.jsp, luego actualizar proyecto, actualizar Maven y correr Nuevamente en el Server.
 
 #### 7) Si no funciona lo anterior, siempre recomiendo cerrar y volver a abrir Eclipse.
-
 
 
 </br>
@@ -282,6 +278,8 @@
 
 ## Configuraciones Opcionales en Maven.
 
+</br>
+
 ### Actualización del proyecto
 
 #### 1) Click Der sobre el proyecto y actualizar o F5
@@ -340,9 +338,8 @@
 #### (JPA-HIBERNATE nos va a ahorrar tiempo de desarrollo de las clases en java para cada entidad mapeando atributos y completando el código para persistir los datos en una db con el SGDB Mysql).
 
 #### 1) Dependencias JPA-HIBERNATE
-* --> Hasta ese punto deberías haber incluido las dependencias descritas en la sección dependencias del Proyecto.
-* --> Dependencias: Core de  Hibernate, JPA para hibernate y Javax Annotation API
-* --> Creamos el fichero persistence.xml
+* --> Hasta ese punto deberías haber incluido las dependencias descritas en la sección dependencias del Proyecto(Core de  Hibernate, JPA para hibernate y Javax Annotation API).
+* --> Seguidamente vamos a Crear el fichero persistence.xml
 
 #### 2) Archivo de Configuración XML de JPA-Hibernate (persistence.xml).
 * --> Vamos a crear el Archivo de configuración persistence.xml dentro de la carpeta WEB-INF
@@ -388,7 +385,48 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
 ```
 
+* --> ATENTI: Las propiedades de este Archivo se pueden modificar en base a lo que se requiera, por ejemplo, si se desea cambiar el nombre raíz de la URL del proyecto("jdbc:mysql://localhost:3306/test-jpa-jsf"), quitar /test-jpa-jsf y reemplazar a gusto, lo mismo para el password, nombre de usuario, etc.
+
+
+#### 4) Creación de la Clase JPA Util para la Persistencia de los datos a la db.
+##### (En esta Clase se crea el objeto que nos permite realizar la persistencia de los datos en la db).
+
+* --> Primeramento vamos a crear el paquete que alojará la Clase dentro de la ruta ya usada (src/main/java).
+* --> Sobre la misma Click Der, New, package
+* --> En Name colocamos com.mypackages.utils
+* --> Finish y F5 para Actualizar.
+* --> Dentro del Paquete Creamos la Clase JpaUtil.
+* --> Click Der sobre el paquete, New, Class
+* --> Asegurarse estar en la ruta estipulada y en Name colocamos JpaUtil
+* --> Finish y F5 para actualizar
+* --> Te debería haber quedado..
+
+```java
+
+package com.mypackages.utils;
+
+public class JpaUtil {
+
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </br>
+
 
 ## CRUD.
 
