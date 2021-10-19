@@ -388,47 +388,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 * --> ATENTI: Las propiedades de este Archivo se pueden modificar en base a lo que se requiera, por ejemplo, si se desea cambiar el nombre raíz de la URL del proyecto("jdbc:mysql://localhost:3306/test-jpa-jsf"), quitar /test-jpa-jsf y reemplazar a gusto, lo mismo para el password, nombre de usuario, etc.
 
 
-#### 4) Creación de la Clase JPA Util para la Persistencia de los datos a la db.
-##### (En esta Clase se crea el objeto que nos permite realizar la persistencia de los datos en la db).
-
-* --> Primeramento vamos a crear el paquete que alojará la Clase dentro de la ruta ya usada (src/main/java).
-* --> Sobre la misma Click Der, New, package
-* --> En Name colocamos com.mypackages.utils
-* --> Finish y F5 para Actualizar.
-* --> Dentro del Paquete Creamos la Clase JpaUtil.
-* --> Click Der sobre el paquete, New, Class
-* --> Asegurarse estar en la ruta estipulada y en Name colocamos JpaUtil
-* --> Finish y F5 para actualizar
-* --> Te debería haber quedado..
-
-```java
-
-package com.mypackages.utils;
-
-public class JpaUtil {
-
-}
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </br>
 
 
-## CRUD.
+## CRUD (Create, Read, Update, Delete).
 
 #### 1) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.
 * --> Dentro de src/main/java vamos a crear nuestro paquete para la Clase Modelo-Entidad Cliente.
@@ -492,22 +457,32 @@ public class Cliente {
 	}
 }
 
-
-
 ```
 
+</br>
 
+#### 2) Creación de la Clase JPA Util para la Persistencia de los datos a la db.
+##### (En esta Clase se crea el objeto que nos permite realizar la persistencia de los datos en la db).
 
+* --> Primeramento vamos a crear el paquete que alojará la Clase dentro de la ruta ya usada (src/main/java).
+* --> Sobre la misma Click Der, New, package
+* --> En Name colocamos com.mypackages.utils
+* --> Finish y F5 para Actualizar.
+* --> Dentro del Paquete Creamos la Clase JpaUtil.
+* --> Click Der sobre el paquete, New, Class
+* --> Asegurarse estar en la ruta estipulada y en Name colocamos JpaUtil
+* --> Finish y F5 para actualizar
+* --> Te debería haber quedado..
 
+```java
 
+package com.mypackages.utils;
 
+public class JpaUtil {
 
+}
 
-
-
-
-
-
+```
 
 
 
