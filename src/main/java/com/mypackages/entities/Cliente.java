@@ -1,4 +1,4 @@
-package com.mypackages.models;
+package com.mypackages.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +17,9 @@ public class Cliente {
 
 	@Column
 	private String nombre;
+	
+	
+	
 	
 	
 	public int getId() {
