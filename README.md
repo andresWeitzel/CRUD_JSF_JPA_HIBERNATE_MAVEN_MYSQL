@@ -399,9 +399,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 * --> Dentro de src/main/java vamos a crear nuestro paquete para la Clase Modelo-Entidad Cliente.
 * --> Click Der sobre src/main/java
 * --> New Package
-* --> En Name escribimos com.mypackages.models (en mi caso)
+* --> En Name escribimos com.mypackages.entities (en mi caso)
 * --> Creamos la Clase Cliente
-* --> Click Der sobre com.mypackages.models
+* --> Click Der sobre com.mypackages.entities
 * --> En Name escribimos Cliente
 * --> Los atributos de la clase deberán ser los mismos que los campos creados en la db.
 * --> Luego de crear los atributos creamos los getters y setters.
@@ -416,7 +416,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
 ```java
 
-package com.mypackages.models;
+package com.mypackages.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -461,7 +461,7 @@ public class Cliente {
 
 </br>
 
-#### 2) Creación de la Clase JPA Util para la Persistencia de los datos a la db.
+#### 2.0) Creación de la Clase JPA Util para la Persistencia de los datos a la db.
 ##### (En esta Clase se crea el objeto que nos permite realizar la persistencia de los datos en la db).
 
 * --> Primeramento vamos a crear el paquete que alojará la Clase dentro de la ruta ya usada (src/main/java).
@@ -484,7 +484,7 @@ public class JpaUtil {
 
 ```
 
-#### 2) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.
+#### 2.1) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.
 ##### (Vamos a configurar la Unidad de Persistencia, el entityManager y la Persistencia de la misma con el EntityManagerFactory. Todo esto para persistir los datos desde esta Clase).
 ##### * Unidad de Persistencia = Modelo relacional de objeto que correlaciona las clases Java.
 ##### * Entity Manager  = El entity manager comprueba qué entidades han sido modificadas y vuelca los cambios a la base de datos.
@@ -582,6 +582,325 @@ public class JpaUtil {
 
 ```
 * --> ATENTI: Ahora la Pregunta es, porqué no Crear un Paquete y Clase con el Nombre EntityManagerFactory directamente para no marearnos mucho? Por qué ya es una Clase de Java, recordár las convenciones de Nombres, así que guardaremos esta fábrica de conexiones de Unidades de Persistencias dentro de Jpa Util.
+
+</br>
+
+#### 3.0) Creación de la Interfaz y Clase Repository para la persistencia de los datos con JPA (Aquitetura Dao) .
+##### (Vamos a Crear una Interfaz que nos provea de los métodos a implementar para usarlos dentro de la Clase Repository con JPA).
+
+</br>
+
+##### 3.1)Creación de la Interfaz I_ClienteRepository
+* --> Creamos un Nuevo paquete para las Interfaces.
+* --> Sobre la ruta src/main/java Click Der, New, package
+* --> En Name colocamos com.mypackages.repositories.interfaces
+* --> Finish y F5 para Actualizar.
+* --> Dentro del Paquete Creamos la Interfaz I_ClienteRepository.
+* --> Click Der sobre el paquete, New, Interface
+* --> Asegurarse estar en la ruta estipulada y en Name colocamos I_ClienteRepository
+* --> Finish y F5 para actualizar
+* --> Te debería haber quedado..
+
+```java
+
+package com.mypackages.repositories.interfaces;
+
+public interface I_ClienteRepository {
+
+}
+
+
+```
+
+
+</br>
+
+##### 3.2)Configuración de la Interfaz I_ClienteRepository
+* --> Creamos los métodos para ser implementados y configurados en la clase ClienteRepository
+* --> save, remove, update,getAll, getById, etc. El  Método getAll será una Lista de Tipo Cliente y los Métodos tipo getBy, getLike, demás son Streams y defaults(les definiremos cuerpo en la Interfaz misma). Recordar que los Streams son colecciones de datos y su manipulación es muy sencilla y limpia.
+* --> Vamos de a parte, métodos conocidos.. save remove, etc
+
+
+```java
+
+package com.mypackages.repositories.interfaces;
+
+import com.mypackages.entities.Cliente;
+
+public interface I_ClienteRepository {
+	
+	void save(Cliente cliente);
+	
+	void remove(Cliente cliente);
+	
+	void update(Cliente cliente);
+}
+
+
+```
+
+* --> Método getAll tipo Lista..
+
+```java
+
+package com.mypackages.repositories.interfaces;
+
+import java.util.List;
+
+import com.mypackages.entities.Cliente;
+
+public interface I_ClienteRepository {
+	
+	void save(Cliente cliente);
+	void remove(Cliente cliente);
+	void update(Cliente cliente);
+	List<Cliente> getAll();
+
+}
+
+
+```
+* --> Métodos defaults(Los Definimos en la Interfaz, le damos el cuerpo al Método).
+* --> Creamos el Método getStream que nos devuelve un stream de la Lista de Clientes
+ 
+
+```java
+
+package com.mypackages.repositories.interfaces;
+
+import java.util.List;
+import java.util.stream.Stream;
+
+
+
+public interface I_ClienteRepository {
+	
+	void save(Cliente cliente);
+	
+	void remove(Cliente cliente);
+	
+	void update(Cliente cliente);
+	
+	List<Cliente> getAll();
+	
+	
+	
+	default Stream<Cliente> getStream(){
+		
+		return getAll().stream();
+	}
+	
+	
+
+}
+
+
+```
+
+* --> El Método getStream por defecto es una Lista de los Clientes, pero los Métodos getBy, getLike, etc son Modificaciones del getStream.
+* --> Para el Método getById usamos el filter para el id del cliente, findAny para que sea solamente uno y si  no lo encuentra crea un objeto Cliente Vacio.
+ 
+```java
+
+package com.mypackages.repositories.interfaces;
+
+import java.util.List;
+import java.util.stream.Stream;
+
+import com.mypackages.entities.Cliente;
+
+public interface I_ClienteRepository {
+	
+	void save(Cliente cliente);
+	
+	void remove(Cliente cliente);
+	
+	void update(Cliente cliente);
+	
+	List<Cliente> getAll();
+	
+	
+	
+	default Stream<Cliente> getStream(){
+		
+		return getAll().stream();
+	}
+	
+	
+	default Cliente getById(int id){
+		
+		return getStream()
+			.filter(objetoCliente -> objetoCliente.getId() == id)
+			.findAny()
+			.orElse(new Cliente());
+	}
+
+}
+
+
+```
+
+
+##### 3.3)Creación de la Clase ClienteRepository
+* --> Creamos un Nuevo paquete para los Repositories JPA.
+* --> Sobre la ruta src/main/java Click Der, New, package
+* --> En Name colocamos com.mypackages.repositories.jpa
+* --> Finish y F5 para Actualizar.
+* --> Dentro del Paquete Creamos la Clase dao ClienteRepository.
+* --> Click Der sobre el paquete, New, Class
+* --> Asegurarse estar en la ruta estipulada y en Name colocamos ClienteRepository
+* --> Finish y F5 para actualizar
+* --> Te debería haber quedado..
+
+```java
+
+package com.mypackages.repositories.jpa;
+
+public class ClienteRepository {
+
+}
+
+```
+
+</br>
+
+##### 3.4)Configuración de la Clase ClienteRepository
+
+* --> Vamos a implementar la Interfaz Creada para trabajar con los métodos de la misma.
+
+```java
+
+package com.mypackages.repositories.jpa;
+
+import java.util.List;
+import com.mypackages.entities.Cliente;
+import com.mypackages.repositories.interfaces.I_ClienteRepository;
+
+
+public class ClienteRepository implements I_ClienteRepository{
+
+	@Override
+	public void save(Cliente cliente) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remove(Cliente cliente) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Cliente cliente) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Cliente> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
+
+```
+
+* --> Creamos el Objeto EntityManager y usamos la Clase Creada JpaUtil que tiene el pull de conexiones. El objeto instanciado nos va a permitir usar los métodos de la Interfaz creada.
+
+```java
+
+EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
+```
+
+* --> Ahora comenzaremos a desarrollar cada uno de los Métodos.
+* --> Con JPA-Hibernate se trabaja con Transacciones(los objetos creados tienen un tiempo de vida y hay que indicar cada proceso del mismo).
+* --> MÉTODO SAVE()
+* --> Comenzaremos una transacción
+```java
+
+	@Override
+	public void save(Cliente cliente) {
+		entity.getTransaction().begin();
+		
+	}
+
+```
+* --> Persistimos el Objeto Cliente en la Tabla de la Base de Datos
+
+```java
+
+	@Override
+	public void save(Cliente cliente) {
+		entity.getTransaction().begin();
+		entity.persist(cliente);
+		
+	}
+
+```
+
+* --> Cerramos la Transacción y Guardamos la Persistencia del Objeto Cliente en la Tabla de la Base de Datos
+
+```java
+
+@Override
+	public void save(Cliente cliente) {
+		entity.getTransaction().begin();
+		entity.persist(cliente);
+		entity.getTransaction().commit();		
+	}
+
+```
+
+* --> Cerramos la Conexión a la Base de Datos implementando el metodo creado shutdown de la Clase JpaUtil
+
+```java
+
+	@Override
+	public void save(Cliente cliente) {
+		entity.getTransaction().begin();
+		entity.persist(cliente);
+		entity.getTransaction().commit();	
+		JpaUtil.shutdown();
+	}
+
+```
+
+* --> MÉTODO UPDATE()
+* --> Comenzaremos una transacción
+```java
+
+	@Override
+	public void update(Cliente cliente) {
+		entity.getTransaction().begin();
+		
+	}
+```
+* --> Actualizamos cualquier modificación del Objeto Cliente
+```java
+
+	@Override
+	public void update(Cliente cliente) {
+		entity.getTransaction().begin();
+		entity.merge(cliente);
+		
+	}
+```
+
+* --> Cerramos la Transacción, Guardamos la Persistencia del Objeto Cliente en la Tabla de la Base de Datos y Cerramos la Conexión del EntityManager.
+```java
+	@Override
+	public void update(Cliente cliente) {
+		entity.getTransaction().begin();
+		entity.merge(cliente);
+		entity.getTransaction().commit();	
+		JpaUtil.shutdown();
+		
+	}
+```
+
+
+
 
 
 
