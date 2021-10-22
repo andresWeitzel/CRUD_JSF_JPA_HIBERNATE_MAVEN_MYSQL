@@ -617,8 +617,8 @@ public interface I_ClienteRepository {
 
 ##### 3.2)Configuración de la Interfaz I_ClienteRepository
 * --> Creamos los métodos para ser implementados y configurados en la clase ClienteRepository CON JPA
-* --> save, remove, update,getAll, getById, etc. El  Método getAll será una Lista de Tipo Cliente y los Métodos tipo getBy, getLike, demás son Streams y defaults(les definiremos cuerpo en la Interfaz misma). Recordar que los Streams son colecciones de datos y su manipulación es muy sencilla y limpia.
-* --> Vamos de a parte, métodos conocidos.. save remove, etc
+* --> save, remove, update,getAll, getById, etc. El  Método getAll será una Lista de Tipo Cliente.
+* --> Vamos de a partes, métodos conocidos.. save remove, etc
 
 
 ```java
@@ -654,61 +654,26 @@ public interface I_ClienteRepository {
 	
 	//MÉTODOS CRUD JPA
 	void save(Cliente cliente);
-	void remove(Cliente cliente);
-	void update(Cliente cliente);
-	List<Cliente> getAll();
-
-}
-
-
-```
-* --> Métodos defaults(Los Definimos en la Interfaz, le damos el cuerpo al Método).
-* --> Creamos el Método getStream que nos devuelve un stream de la Lista de Clientes
- 
-
-```java
-
-package com.mypackages.repositories.interfaces;
-
-import java.util.List;
-import java.util.stream.Stream;
-
-
-
-public interface I_ClienteRepository {
-	
-	//MÉTODOS CRUD JPA
-	void save(Cliente cliente);
 	
 	void remove(Cliente cliente);
 	
 	void update(Cliente cliente);
 	
 	List<Cliente> getAll();
-	
-	
-	//METODOS DEFAULTS STREAMS
-	default Stream<Cliente> getStream(){
-		
-		return getAll().stream();
-	}
-	
-	
 
 }
 
 
 ```
 
-* --> El Método getStream por defecto es una Lista de los Clientes, pero los Métodos getBy, getLike, etc son Modificaciones del getStream.
-* --> Para el Método getById usamos el filter para el id del cliente, findAny para que sea solamente uno y si  no lo encuentra crea un objeto Cliente Vacio.
- 
+
+* --> Método getById
+
 ```java
 
 package com.mypackages.repositories.interfaces;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 import com.mypackages.entities.Cliente;
 
@@ -723,26 +688,16 @@ public interface I_ClienteRepository {
 	
 	List<Cliente> getAll();
 	
-	
-	//METODOS DEFAULTS STREAMS
-	default Stream<Cliente> getStream(){
-		
-		return getAll().stream();
-	}
-	
-	
-	default Cliente getById(int id){
-		
-		return getStream()
-			.filter(objetoCliente -> objetoCliente.getId() == id)
-			.findAny()
-			.orElse(new Cliente());
-	}
+	public Cliente getById(int id);
 
 }
 
 
 ```
+
+
+
+
 
 
 ##### 3.3)Creación de la Clase ClienteRepository
@@ -1059,8 +1014,6 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 
 * --> Indicamos que el Método devuelve la Lista de Clientes.
 
-
-
 ```java
 
 	@Override
@@ -1083,6 +1036,123 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 	}
 ```
 
+* --> MÉTODO GETBYID()
+* --> Comenzaremos una transacción
+```java
+
+	@Override
+	public Cliente getById(int id) {
+		
+		entityManager.getTransaction().begin();
+		
+		
+		return null;
+	}
+
+```
+* --> Creamos un Objeto de Tipo Cliente
+```java
+
+	@Override
+	public Cliente getById(int id) {
+		
+		entityManager.getTransaction().begin();
+		
+		Cliente cliente = new Cliente();
+		
+		
+		return null;
+	}
+
+```
+
+* --> Guardamos el Objeto encontrado a traves del metodo find del entityManager, si no lo encuentra lo guarda nulo.
+
+```java
+
+	@Override
+	public Cliente getById(int id) {
+		
+		entityManager.getTransaction().begin();
+		
+		Cliente cliente = new Cliente();
+		
+		cliente = entityManager.find(Cliente.class , id);
+		
+		
+		return null;
+	}
+
+```
+
+* --> Cerramos la Transacción y Guardamos los cambios del Objeto Cliente en la Tabla de la Base de Datos.
+
+```java
+
+	@Override
+	public Cliente getById(int id) {
+		
+		entityManager.getTransaction().begin();
+		
+		Cliente cliente = new Cliente();
+		
+		cliente = entityManager.find(Cliente.class , id);
+		
+		entityManager.getTransaction().commit();
+		
+		
+		return null;
+	}
+
+```
+
+* --> Cerramos la Conexión a la Base de Datos implementando el metodo creado shutdown de la Clase JpaUtil
+
+
+```java
+
+	@Override
+	public Cliente getById(int id) {
+		
+		entityManager.getTransaction().begin();
+		
+		Cliente cliente = new Cliente();
+		
+		cliente = entityManager.find(Cliente.class , id);
+		
+		entityManager.getTransaction().commit();
+		
+		JpaUtil.shutdown();
+		
+		
+		return null;
+	}
+
+```
+
+* --> Indicamos que el Método devuelva el Objeto Clientes con el Id pedido.
+```java
+	@Override
+	public Cliente getById(int id) {
+		
+		entityManager.getTransaction().begin();
+		
+		Cliente cliente = new Cliente();
+		
+		cliente = entityManager.find(Cliente.class , id);
+		
+		entityManager.getTransaction().commit();
+		
+		JpaUtil.shutdown();
+		
+		
+		return cliente;
+	}
+
+```
+
+
+</br>
 </br>
 
 * --> Código Completo de la Clase ClienteRepository
@@ -1143,7 +1213,7 @@ public class ClienteRepository implements I_ClienteRepository{
 		List<Cliente> listaClientes = new ArrayList<Cliente>();
 		
 		listaClientes = (List<Cliente>)entityManager.createNamedQuery("Cliente.findAll").getResultList();
-	
+	 
 		entityManager.getTransaction().commit();
 		
 		JpaUtil.shutdown();
@@ -1153,7 +1223,26 @@ public class ClienteRepository implements I_ClienteRepository{
 		return listaClientes;
 	}
 
+	@Override
+	public Cliente getById(int id) {
+		
+		entityManager.getTransaction().begin();
+		
+		Cliente cliente = new Cliente();
+		
+		cliente = entityManager.find(Cliente.class , id);
+		
+		entityManager.getTransaction().commit();
+		
+		JpaUtil.shutdown();
+		
+		
+		return cliente;
+	}
+
 }
+
+
 
 
 ```
