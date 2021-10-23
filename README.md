@@ -1,5 +1,7 @@
 # CRUD_JSF_JPA_HIBERNATE_MAVEN_MYSQL
 
+
+
 </br>
 
 | **Tecnologías** | **Versión** | **Finalidad** |               
@@ -54,6 +56,9 @@
 
 ## `Documentación y Guía del Proyecto `
 #### (Esta Documentación que Desarrollé es para la Creación, Configuración, Posibles Errores, Manejo de Maven, JSF, Jpa, Mysql, dependencias con Maven, servidor de despliegue y otros usos de este Proyecto. Recomiendo Leerla y Realizar todo paso a paso como se indica en la misma).
+
+<hr>
+
 
 ## Indice
 - [Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
@@ -393,15 +398,17 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 </br>
 
 
-## CRUD (Create, Read, Update, Delete).
+## CRUD MVC.
+#### CRUD = Create, Read, Update, Delete
+#### MVC = Modelo-Vista-Controlador
 
 #### 1) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.
 * --> Dentro de src/main/java vamos a crear nuestro paquete para la Clase Modelo-Entidad Cliente.
 * --> Click Der sobre src/main/java
 * --> New Package
-* --> En Name escribimos com.mypackages.entities (en mi caso)
+* --> En Name escribimos com.mypackages.models (en mi caso)
 * --> Creamos la Clase Cliente
-* --> Click Der sobre com.mypackages.entities
+* --> Click Der sobre com.mypackages.models
 * --> En Name escribimos Cliente
 * --> Los atributos de la clase deberán ser los mismos que los campos creados en la db.
 * --> Luego de crear los atributos creamos los getters y setters.
@@ -416,7 +423,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
 ```java
 
-package com.mypackages.entities;
+package com.mypackages.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -585,7 +592,7 @@ public class JpaUtil {
 
 </br>
 
-#### 3.0) Creación de la Interfaz y Clase Repository para la persistencia de los datos con JPA (Aquitetura Dao) .
+#### 3.0) Creación de la Interfaz y Clase Repository para la persistencia de los datos con JPA (Aquitetura Dao). La Arquitectura Dao  suministra las interfaces  para poder usar los metodos CRUD sin necesidad de duplicar codigo.
 ##### (Vamos a Crear una Interfaz que nos provea de los métodos a implementar para usarlos dentro de la Clase Repository con JPA).
 
 </br>
@@ -625,7 +632,7 @@ public interface I_ClienteRepository {
 
 package com.mypackages.repositories.interfaces;
 
-import com.mypackages.entities.Cliente;
+import com.mypackages.models.Cliente;
 
 public interface I_ClienteRepository {
 	
@@ -648,7 +655,7 @@ package com.mypackages.repositories.interfaces;
 
 import java.util.List;
 
-import com.mypackages.entities.Cliente;
+import com.mypackages.models.Cliente;
 
 public interface I_ClienteRepository {
 	
@@ -675,7 +682,7 @@ package com.mypackages.repositories.interfaces;
 
 import java.util.List;
 
-import com.mypackages.entities.Cliente;
+import com.mypackages.models.Cliente;
 
 public interface I_ClienteRepository {
 	
@@ -732,7 +739,7 @@ public class ClienteRepository {
 package com.mypackages.repositories.jpa;
 
 import java.util.List;
-import com.mypackages.entities.Cliente;
+import com.mypackages.models.Cliente;
 import com.mypackages.repositories.interfaces.I_ClienteRepository;
 
 
@@ -1167,7 +1174,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import com.mypackages.entities.Cliente;
+import com.mypackages.models.Cliente;
 import com.mypackages.repositories.interfaces.I_ClienteRepository;
 import com.mypackages.utils.JpaUtil;
 
@@ -1243,9 +1250,116 @@ public class ClienteRepository implements I_ClienteRepository{
 }
 
 
+```
+
+</br>
+
+#### 4.0) Creación de la Clase Controller  
+##### (La Clase Controller es para que la misma realice la interacción(eventos) que hace el usuario en la Interfaz y realiza las peticiones al modelo para pasar estos a la vista (MVC). La Clase la vamos a llamar ClienteBean. Recordar que un bean es una clase con requisitos de negocio concretos).
+* --> Creamos un Nuevo paquete para las Clases Controladoras.
+* --> Sobre la ruta src/main/java Click Der, New, package
+* --> En Name colocamos com.mypackages.controllers
+* --> Finish y F5 para Actualizar.
+* --> Dentro del Paquete Creamos la Clase Controller llmada ClienteBean.
+* --> Click Der sobre el paquete, New, Class
+* --> Asegurarse estar en la ruta estipulada y en Name colocamos ClienteBean
+* --> Finish y F5 para actualizar
+* --> Te debería haber quedado..
+
+```java
+
+package com.mypackage.controllers;
+
+public class ClienteBean {
+
+}
 
 
 ```
+
+
+</br>
+
+
+#### 4.0) Configuración de la Clase Controller .
+* --> Vamos a hacer uso de Anotaciones para trabajar con JSF.
+* --> Hacemos uso de la anotacion @ManagedBean y @RequestScoped.
+* --> La primera es para que JSF reconozca la clase como un componente Managed Bean(Componente JSF) y la Segunda para indicarle el Alcance de esta Clase. Le indicamos que siempre que se realice la peticion hacia el servidor se mantenga el Bean.
+
+```java
+package com.mypackage.controllers;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+@ManagedBean
+@RequestScoped
+public class ClienteBean {
+
+}
+
+```
+
+* --> Seguidamente creamos un metodo que nos muestre todos los Clientes de la base de datos implementando los metodos del repositorio creado.
+
+```java
+	public List<Cliente> getAll(){
+		
+		ClienteRepository listaClientes = new ClienteRepository();
+		
+		return listaClientes.getAll();
+	}
+
+```
+* --> Código Completo
+
+```java
+package com.mypackage.controllers;
+
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+import com.mypackages.models.Cliente;
+import com.mypackages.repositories.jpa.ClienteRepository;
+
+@ManagedBean
+@RequestScoped
+public class ClienteBean {
+	
+	
+	public List<Cliente> getAll(){
+		
+		ClienteRepository listaClientes = new ClienteRepository();
+		
+		return listaClientes.getAll();
+	}
+
+}
+
+```
+
+
+
+
+#### 5.0) Configuración de la Vista con JSF.
+##### (Si Trabajamos con JSF no es válido el index.html, osea html puro, ya que el mismo no nos permite trabajar con componentes JSF, vamos a usar xhtml).
+* --> XHTML = Es HTML expresado como XML válido.
+* --> Vamos a Crear un Archivo xhtml
+* --> Dentro de WEB-INF (src/main/java/webapp/WEB-INF) creamos el index.xhtml
+* --> Click Der , New File y en Name colocamos index.xhtml
+
+
+
+
+
+
+
+
+
+
+
 
 
 
