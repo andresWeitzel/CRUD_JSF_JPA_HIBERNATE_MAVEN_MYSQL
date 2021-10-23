@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import com.mypackages.entities.Cliente;
+import com.mypackages.models.Cliente;
 import com.mypackages.repositories.interfaces.I_ClienteRepository;
 import com.mypackages.utils.JpaUtil;
 

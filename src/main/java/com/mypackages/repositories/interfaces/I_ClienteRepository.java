@@ -3,7 +3,7 @@ package com.mypackages.repositories.interfaces;
 import java.util.List;
 import java.util.stream.Stream;
 
-import com.mypackages.entities.Cliente;
+import com.mypackages.models.Cliente;
 
 public interface I_ClienteRepository {
 	
