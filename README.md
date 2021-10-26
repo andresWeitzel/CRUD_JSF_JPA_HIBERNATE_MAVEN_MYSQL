@@ -26,7 +26,7 @@
 | JPA-Hibernate 2.1 |  Persistencia de datos a la db |
 | Javax Annotation API 1.3.2 | Api para la lectura de Annotation |
 | JSF API 2.2.13 | API para el Desarrollo de Interfaces | 
-| JSF Impl 2.2.20 | Especificaciones para la Implementación de JSF | 
+| JSF Impl 2.2.13 | Especificaciones para la Implementación de JSF | 
 
 
 * Repostorio dependencia servlet: https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
@@ -35,7 +35,7 @@
 * Repositorio dependencia JPA-Hibernate: https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/1.0.2.Final
 * Repositorio dependencia Javax Annotation API: https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2
 * Repositorio dependencia API JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-api/2.2.13
-* Repositorio dependencia Implementación JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.20
+* Repositorio dependencia Implementación JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.13
 
 </br>
 
@@ -61,6 +61,7 @@
 
 
 ## Indice
+
 - [Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
 - [Configuración del Servidor de Despliegue (Wildfly).](#configuración-del-servidor-de-despliegue-wildfly)
 - [Dependencias del Proyecto.](#dependencias-del-proyecto)
@@ -255,7 +256,7 @@
 ```
 
 * --> La Segunda será para la Implementación de JSF.
-* --> Buscamos la dependencia (https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.20)
+* --> Buscamos la dependencia https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.13
 * --> Copias la dependencia y la incluis en el pom del proyecto
 
 ```xml
@@ -263,8 +264,9 @@
 <dependency>
     <groupId>com.sun.faces</groupId>
     <artifactId>jsf-impl</artifactId>
-    <version>2.2.20</version>
+    <version>2.2.13</version>
 </dependency>
+
 ```
 
 
@@ -274,8 +276,51 @@
 * --> Maven y update Maven o Alt + F5
 * --> Fijarse dentro de Maven Dependencies si Maven descargo la misma
 
+</br>
 
+### Configuraciones del Descriptor de Despliegue (web.xml) | Paso Importante | 
+#### (Este Archivos nos proporciona información de configuración y despliegue para los componentes web de Nuestra Aplicación usando Servlets).
+* --> Se Puede buscar por Internet alguna Plantilla simiilar, ya que son las configuraciones estandars, asegurarse de cambiar la versión a 3.1, por defecto viene 2.3
+* --> Copiar y Pegar los siguientes namespaces dentro de web.xml (src/main/java/webapp/WEB-INF/web.xml)
+```xml
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
 
+	<display-name>Archetype Created Web Application</display-name>
+
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	
+	<welcome-file-list>
+		<welcome-file>faces/index.xhtml</welcome-file>
+	</welcome-file-list>
+</web-app>
+```
+
+* --> Actualizamos el Proyecto (F5) y Compilamos con Maven (Alt+F5)
+* --> 
 
 
 
@@ -1281,7 +1326,7 @@ public class ClienteBean {
 </br>
 
 
-#### 4.0) Configuración de la Clase Controller .
+#### 4.1) Configuración de la Clase Controller .
 * --> Vamos a hacer uso de Anotaciones para trabajar con JSF.
 * --> Hacemos uso de la anotacion @ManagedBean y @RequestScoped.
 * --> La primera es para que JSF reconozca la clase como un componente Managed Bean(Componente JSF) y la Segunda para indicarle el Alcance de esta Clase. Le indicamos que siempre que se realice la peticion hacia el servidor se mantenga el Bean.
@@ -1343,13 +1388,47 @@ public class ClienteBean {
 
 
 
-#### 5.0) Configuración de la Vista con JSF.
+#### 5.0) Creación de la Vista XHTML con JSF.
 ##### (Si Trabajamos con JSF no es válido el index.html, osea html puro, ya que el mismo no nos permite trabajar con componentes JSF, vamos a usar xhtml).
 * --> XHTML = Es HTML expresado como XML válido.
+* --> Por defecto Eclipse no trae instalado los paquetes para el uso de xhtml, tendremos que instalarlos desde Eclipse.
+* --> Vamos a Help, Eclipse Marketplace y en Search colocamos JBoss Tools.
+* --> Instalar JBoss Tools 4.21.0.Final, Aaegurarse que esté instalado y reiniciar el IDE.
 * --> Vamos a Crear un Archivo xhtml
-* --> Dentro de WEB-INF (src/main/java/webapp/WEB-INF) creamos el index.xhtml
-* --> Click Der , New File y en Name colocamos index.xhtml
+* --> Dentro de webapp (src/main/java/webapp) creamos el index.xhtml
+* --> Click Der , New, XHTML Page,. Si no aparece en Other y Filtras.
+* --> En el File name colocamos index.xhtml y Finish
 
+</br>
+
+
+#### 5.1) Configuración de la Vista XHTML con JSF.
+##### (Las Etiquetas en html son como los componentes en jsf).
+* --> Vamos a darle el cuerpo al Archivo, buscar una plantilla base a gusto, te recomiendo https://www.adictosaltrabajo.com/2010/04/20/jsf-2-facelets-templates-and-composite-components/ o copiar la siguiente
+
+
+```html
+
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Plantilla Básica JSF</title>
+</h:head>
+<h:body>
+	
+</h:body>
+</html>
+
+```
+* --> Todos los componentes en JSF comienzan con el prefijo h dentro de las etiquetas
+* 
+
+</br>
 
 
 
