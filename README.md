@@ -1281,7 +1281,7 @@ public class ClienteBean {
 </br>
 
 
-#### 4.0) Configuración de la Clase Controller .
+#### 4.1) Configuración de la Clase Controller .
 * --> Vamos a hacer uso de Anotaciones para trabajar con JSF.
 * --> Hacemos uso de la anotacion @ManagedBean y @RequestScoped.
 * --> La primera es para que JSF reconozca la clase como un componente Managed Bean(Componente JSF) y la Segunda para indicarle el Alcance de esta Clase. Le indicamos que siempre que se realice la peticion hacia el servidor se mantenga el Bean.
@@ -1343,13 +1343,47 @@ public class ClienteBean {
 
 
 
-#### 5.0) Configuración de la Vista con JSF.
+#### 5.0) Creación de la Vista XHTML con JSF.
 ##### (Si Trabajamos con JSF no es válido el index.html, osea html puro, ya que el mismo no nos permite trabajar con componentes JSF, vamos a usar xhtml).
 * --> XHTML = Es HTML expresado como XML válido.
+* --> Por defecto Eclipse no trae instalado los paquetes para el uso de xhtml, tendremos que instalarlos desde Eclipse.
+* --> Vamos a Help, Eclipse Marketplace y en Search colocamos JBoss Tools.
+* --> Instalar JBoss Tools 4.21.0.Final, Aaegurarse que esté instalado y reiniciar el IDE.
 * --> Vamos a Crear un Archivo xhtml
-* --> Dentro de WEB-INF (src/main/java/webapp/WEB-INF) creamos el index.xhtml
-* --> Click Der , New File y en Name colocamos index.xhtml
+* --> Dentro de webapp (src/main/java/webapp) creamos el index.xhtml
+* --> Click Der , New, XHTML Page,. Si no aparece en Other y Filtras.
+* --> En el File name colocamos index.xhtml y Finish
 
+</br>
+
+
+#### 5.1) Configuración de la Vista XHTML con JSF.
+##### (Las Etiquetas en html son como los componentes en jsf).
+* --> Vamos a darle el cuerpo al Archivo, buscar una plantilla base a gusto, te recomiendo https://www.adictosaltrabajo.com/2010/04/20/jsf-2-facelets-templates-and-composite-components/ o copiar la siguiente
+
+
+```html
+
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Plantilla Básica JSF</title>
+</h:head>
+<h:body>
+	
+</h:body>
+</html>
+
+```
+* --> Todos los componentes en JSF comienzan con el prefijo h dentro de las etiquetas
+* 
+
+</br>
 
 
 
