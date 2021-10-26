@@ -26,7 +26,7 @@
 | JPA-Hibernate 2.1 |  Persistencia de datos a la db |
 | Javax Annotation API 1.3.2 | Api para la lectura de Annotation |
 | JSF API 2.2.13 | API para el Desarrollo de Interfaces | 
-| JSF Impl 2.2.20 | Especificaciones para la Implementación de JSF | 
+| JSF Impl 2.2.13 | Especificaciones para la Implementación de JSF | 
 
 
 * Repostorio dependencia servlet: https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
@@ -35,7 +35,7 @@
 * Repositorio dependencia JPA-Hibernate: https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/1.0.2.Final
 * Repositorio dependencia Javax Annotation API: https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2
 * Repositorio dependencia API JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-api/2.2.13
-* Repositorio dependencia Implementación JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.20
+* Repositorio dependencia Implementación JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.13
 
 </br>
 
@@ -255,7 +255,7 @@
 ```
 
 * --> La Segunda será para la Implementación de JSF.
-* --> Buscamos la dependencia (https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.20)
+* --> Buscamos la dependencia https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.13
 * --> Copias la dependencia y la incluis en el pom del proyecto
 
 ```xml
@@ -263,8 +263,9 @@
 <dependency>
     <groupId>com.sun.faces</groupId>
     <artifactId>jsf-impl</artifactId>
-    <version>2.2.20</version>
+    <version>2.2.13</version>
 </dependency>
+
 ```
 
 
