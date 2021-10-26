@@ -61,9 +61,10 @@
 
 
 ## Indice
-
-- [Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
-- [Configuración del Servidor de Despliegue (Wildfly).](#configuración-del-servidor-de-despliegue-wildfly)
+  #### Sección 1) Creación del Proyecto y Configuraciones 
+  
+- [Paso 1) Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
+- [Paso 2) Configuración del Servidor de Despliegue (Wildfly).](#configuración-del-servidor-de-despliegue-wildfly)
 - [Dependencias del Proyecto.](#dependencias-del-proyecto)
 - [Configuraciones Opcionales en Maven.](#configuraciones-opcionales-en-maven)
 - [Configuración del SGDB Mysql.](#configuraciones-del-sgdb-mysql)
