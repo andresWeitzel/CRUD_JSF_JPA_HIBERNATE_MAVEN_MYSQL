@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-            
+                
+    
     
     <wb-module deploy-name="CRUD_JSF_JPA_MAVEN">
-                        
+                                
+        
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-                        
+                                
+        
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                        
+                                
+        
         
         <property name="java-output-path" value="/CRUD_JSF_JPA_MAVEN_MYSQL/target/classes"/>
-                
+                        
+        
         <property name="context-root" value="CRUD_JSF_JPA_MAVEN"/>
-                    
+                            
+    
     
     </wb-module>
-        
+            
+
 
 </project-modules>
