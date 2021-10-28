@@ -75,7 +75,8 @@
    - [Paso 7) Configuración de JPA-HIBERNATE para la Persistencia de datos.](#paso-7-configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
    
  #### Sección 4) Creación, Configuración y Manejo de Clases, Interfaces y Paquetes para el CRUD MVC
-   - [Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.](#paso-8-creacion-de-nuestra-clase-entidad-modelo-cleinte-para-la-persistencia-de-datos)
+   - [Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.](#paso-8-creacion-de-nuestra-clase-entidad-modelo-cliente-para-la-persistencia-de-datos)
+   - [Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-9-creacion-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
 
 
  #### Sección 5) Herramientas del Proyecto
@@ -497,25 +498,25 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 </br>
 
 
-### Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.
+### Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos
 #### (CRUD = Create, Read, Update, Delete | MVC = Modelo-Vista-Controlador)
 
-* --> Dentro de src/main/java vamos a crear nuestro paquete para la Clase Modelo-Entidad Cliente.
-* --> Click Der sobre src/main/java
-* --> New Package
-* --> En Name escribimos com.mypackages.models (en mi caso)
-* --> Creamos la Clase Cliente
-* --> Click Der sobre com.mypackages.models
-* --> En Name escribimos Cliente
-* --> Los atributos de la clase deberán ser los mismos que los campos creados en la db.
-* --> Luego de crear los atributos creamos los getters y setters.
-* --> Seleccionas los atributos y en Source generate getters and setters (acomodarlos a preferencia).
-* --> También toString de la misma forma.
-* --> Implementamos el uso de anotaciones para que hibernate reconozca el modelo de persistencia
-* --> @Entity (Definimos a Hibernate la entidad)
-* --> @Table(name="clientes") (Definimos a Hibernate el nombre Tabla de la db, siempre el name igual que la tabla de la db)
-* --> Se deberan generan las anotaciones para cada atributo, recordar que el id deberá ser auto incrementable, entonces @GeneratedValue(strategy=GenerationType.IDENTITY)
-* --> Para los atributos de tipo String la anotation será @Column
+* Creación de nuestro paquete para la Clase Modelo-Entidad Cliente.
+	* --> Click Der sobre src/main/java
+	* --> New Package
+	* --> En Name escribimos com.mypackages.models (en mi caso)
+	* --> Creamos la Clase Cliente
+	* --> Click Der sobre com.mypackages.models
+	* --> En Name escribimos Cliente
+	* --> Los atributos de la clase deberán ser los mismos que los campos creados en la db.
+	* --> Luego de crear los atributos creamos los getters y setters.
+	* --> Seleccionas los atributos y en Source generate getters and setters (acomodarlos a preferencia).
+	* --> También toString de la misma forma.
+	* --> Implementamos el uso de anotaciones para que hibernate reconozca el modelo de persistencia
+	* --> @Entity (Definimos a Hibernate la entidad)
+	* --> @Table(name="clientes") (Definimos a Hibernate el nombre Tabla de la db, siempre el name igual que la tabla de la db)
+	* --> Se deberan generan las anotaciones para cada atributo, recordar que el id deberá ser auto incrementable, entonces @GeneratedValue(strategy=GenerationType.IDENTITY)
+	* --> Para los atributos de tipo String la anotation será @Column
 
 
 ```java
@@ -565,7 +566,8 @@ public class Cliente {
 
 </br>
 
-#### 2.0) Creación de la Clase JPA Util para la Persistencia de los datos a la db.
+
+### Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db
 ##### (En esta Clase se crea el objeto que nos permite realizar la persistencia de los datos en la db).
 
 * --> Primeramento vamos a crear el paquete que alojará la Clase dentro de la ruta ya usada (src/main/java).
