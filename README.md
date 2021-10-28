@@ -84,6 +84,8 @@
 ### Paso 1) Creación de un Proyecto Web con Maven en Eclipse y Configuraciónes Iniciales.
 #### (Primeramente deberás configurar tu espacio de trabajo, en donde se alojará la aplicación. Cada vez que muevas el Proyecto de Directorio, recomiendo crear o setear nuevamente el Espacio de Trabajo junto con el Servidor).
 
+</br>
+
 * Seleccionar la Pestaña File 
 	* --> New 
 	* --> Proyect Maven(Si no aparece buscar en Other)
@@ -114,36 +116,38 @@
 
 
 ## Paso 2) Otras Configuraciones del Proyecto.
+#### (Para este paso se anexan configuraciones que para el Proyecto son relevantes, capaz creando el Proyecto desde otro IDE se autoconfiguran dichas configuraciones).
 
 </br>
 
 ### 2.1) Actualización de Java-1.7 a 1.8
 
-#### 2.1.1) Vamos al pom.xml (el archivo al final de todo)
+* Vamos al pom.xml (el archivo al final de todo)
 
-#### 2.1.2) Dentro de el tag properties donde dice UTF-8 cambiar la version del compiler a 1.8, ctrl+s para guardar
+* Dentro de el tag properties donde dice UTF-8 cambiar la version del compiler a 1.8, ctrl+s para guardar
 
-#### 2.1.3) Click Der sobre el Proyecto
-* --> Maven
-* --> Update Proyect
-* --> Fijate que el Proyecto este seleccionado y Boton ok
+* Click Der sobre el Proyecto
+	* --> Maven
+	* --> Update Proyect
+	* --> Fijate que el Proyecto este seleccionado y Boton ok
 
-#### 2.1.4) Si cambio JavaSE-1.7 a JavaSE-1.8 se efectuo el cambio
+* Si cambio JavaSE-1.7 a JavaSE-1.8 se efectuo el cambio
 
 </br>
 
 ### 2.2) Paquetes Maven (Java Resources).
 
-#### 2.2.1) Por Defecto Viene deshabilitada la opción de paquetes Maven, en donde vamos a guardar nuestros paquetes y clases
-* --> Para habilitar las mismas, click Der sobre el Proyecto.
-* --> Properties.
-* --> Buscamos la sección Java Build Path
-* --> Seleccionamos la casilla Maven Dependencies.
-* --> Apply and Close.
-* --> F5 y deberían aparecer (src/main/java y src/test/java)
+* Por Defecto Viene deshabilitada la opción de paquetes Maven, en donde vamos a guardar nuestros paquetes y clases
+	* --> Para habilitar las mismas, click Der sobre el Proyecto.
+	* --> Properties.
+	* --> Buscamos la sección Java Build Path
+	* --> Seleccionamos la casilla Maven Dependencies.
+	* --> Apply and Close.
+	* --> F5 y deberían aparecer (src/main/java y src/test/java)
 
 
 </br>
+
 
 ## Sección 2) Configuración del Servidor y Dependencias del Proyecto
 
