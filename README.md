@@ -65,9 +65,11 @@
   #### Sección 1) Creación del Proyecto y Configuraciones   
 - [Paso 1) Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#paso-1-creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
 - [Paso 2) Otras Configuraciones del Proyecto.](#paso-2-otras-configuraciones-del-proyecto)
-- [Paso 3) Configuración del Servidor de Despliegue (Wildfly).](#configuración-del-servidor-de-despliegue-wildfly)
 
-- [Dependencias del Proyecto.](#dependencias-del-proyecto)
+  #### Sección 2) Configuracion del Servidor y Dependencias del Proyecto
+- [Paso 3) Configuración del Servidor de Despliegue (Wildfly).](#paso-3-configuración-del-servidor-de-despliegue-wildfly)
+- [Paso 4) Dependencias del Proyecto.](#paso-4-dependencias-del-proyecto)
+
 - [Configuración del SGDB Mysql.](#configuraciones-del-sgdb-mysql)
 - [Configuración de JPA-HIBERNATE para la Persistencia de datos.](#configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
 - [Herramienta Cygwin para el uso de Git.](#uso-de-cygwin)
@@ -75,28 +77,32 @@
 
 </br>
 
-## Paso 1) Creación de un Proyecto Web con Maven en Eclipse y Configuraciónes Iniciales.
+## Sección 1) Creación del Proyecto y Configuraciones 
+
+</br>
+
+### Paso 1) Creación de un Proyecto Web con Maven en Eclipse y Configuraciónes Iniciales.
 #### (Primeramente deberás configurar tu espacio de trabajo, en donde se alojará la aplicación. Cada vez que muevas el Proyecto de Directorio, recomiendo crear o setear nuevamente el Espacio de Trabajo junto con el Servidor).
 
 
-#### 1) File 
+#### 1.1) File 
 * --> New 
 * --> Proyect Maven(Si no aparece buscar en Other)
 
-#### 2) Por defecto dejar marcado Use default Workspace location 
+#### 1.2) Por defecto dejar marcado Use default Workspace location 
 * --> Next
 
-#### 3) Esperar a que carguen los Group id y en Filter escribir org.apache.maven.archetypes
+#### 1.3) Esperar a que carguen los Group id y en Filter escribir org.apache.maven.archetypes
 * --> Seleccionar el ultimo(maven-archetype-webapp), este pertenece al Group id org.apache.maven.archetypes.
 * --> Next
 
-#### 4) Configurar el Group Id (PAQUETE DEL PROYECTO) a gusto, en mi caso com.crud_jsf_jpa_maven
+#### 1.4) Configurar el Group Id (PAQUETE DEL PROYECTO) a gusto, en mi caso com.crud_jsf_jpa_maven
 
-#### 5) En Artifact Id (NOMBRE DEL PROYECTO) a gusto, en mi caso CRUD_JSF_JPA_HIBERNATE_MAVEN_MYSQL
+#### 1.5) En Artifact Id (NOMBRE DEL PROYECTO) a gusto, en mi caso CRUD_JSF_JPA_HIBERNATE_MAVEN_MYSQL
 
-#### 6) Seguidamente Finish.
+#### 1.6) Seguidamente Finish.
 
-#### 7) Si cerraste alguna ventana/utilidad de Eclipse.
+#### 1.7) Si cerraste alguna ventana/utilidad de Eclipse.
 * --> Window
 * --> Perspective
 * --> Reset perspective
