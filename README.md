@@ -68,12 +68,23 @@
  #### Sección 2) Configuracion del Servidor, Dependencias del Proyecto y Configuración del Descriptor de Despliegue
    - [Paso 3) Configuración del Servidor de Despliegue (Wildfly).](#paso-3-configuración-del-servidor-de-despliegue-wildfly)
    - [Paso 4) Dependencias del Proyecto.](#paso-4-dependencias-del-proyecto)
-   - [Paso 5) Configuraciones del Descriptor de Despliegue (web.xml)](#paso-5-configuraciones-del-descriptor-de-despliegue) 
+   - [Paso 5) Configuraciones del Descriptor de Despliegue (web.xml)](#paso-5-configuraciones-del-descriptor-de-despliegue-web.xml) 
 
  #### Sección 3) Configuración del SGDB Mysql y JPA-Hibernate para la Persistencia de Datos
    - [Paso 6) Configuración del SGDB Mysql.](#paso-6-configuraciones-del-sgdb-mysql)
    - [Paso 7) Configuración de JPA-HIBERNATE para la Persistencia de datos.](#paso-7-configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
+   
+ #### Sección 4) Creación, Configuración y Manejo de Clases, Interfaces y Paquetes para el CRUD MVC
+   - [Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.](#paso-8-creacion-de-nuestra-clase-entidad-modelo-cleinte-para-la-persistencia-de-datos)
+
+
+ #### Sección 5) Herramientas del Proyecto
    - [Herramienta Cygwin para el uso de Git.](#uso-de-cygwin)
+
+
+
+
+
 
 
 </br>
@@ -145,6 +156,11 @@
 	* --> Seleccionamos la casilla Maven Dependencies.
 	* --> Apply and Close.
 	* --> F5 y deberían aparecer (src/main/java y src/test/java)
+
+
+
+
+
 
 
 </br>
@@ -328,10 +344,6 @@
 </br>
 
 
-
-
-
-
 ## Paso 5) Configuraciones del Descriptor de Despliegue (web.xml) 
 #### (Este Archivos nos proporciona información de configuración y despliegue para los componentes web de Nuestra Aplicación usando Servlets).
 
@@ -377,6 +389,18 @@
 ```
 
 * --> Actualizamos el Proyecto (F5) y Compilamos con Maven (Alt+F5)
+
+
+
+
+
+
+
+
+
+</br>
+
+## Sección 3) Configuración del SGDB Mysql y JPA-Hibernate para la Persistencia de Datos
 
 </br>
 
@@ -457,13 +481,25 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 * --> ATENTI: Las propiedades de este Archivo se pueden modificar en base a lo que se requiera, por ejemplo, si se desea cambiar el nombre raíz de la URL del proyecto("jdbc:mysql://localhost:3306/test-jpa-jsf"), quitar /test-jpa-jsf y reemplazar a gusto, lo mismo para el password, nombre de usuario, etc.
 
 
+
+
+
+
+
+
+
+
+
+</br>
+
+##  Sección 4) Creación, Configuración y Manejo de Clases, Interfaces y Paquetes para el CRUD MVC
+
 </br>
 
 
-## Paso 8) CRUD MVC.
-#### CRUD = Create, Read, Update, Delete | MVC = Modelo-Vista-Controlador
+### Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.
+#### (CRUD = Create, Read, Update, Delete | MVC = Modelo-Vista-Controlador)
 
-#### 1) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.
 * --> Dentro de src/main/java vamos a crear nuestro paquete para la Clase Modelo-Entidad Cliente.
 * --> Click Der sobre src/main/java
 * --> New Package
