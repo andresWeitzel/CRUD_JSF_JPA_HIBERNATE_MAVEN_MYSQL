@@ -62,13 +62,13 @@
 
 ## Indice
 
-  #### Sección 1) Creación del Proyecto y Configuraciones   
-- [Paso 1) Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#paso-1-creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
-- [Paso 2) Otras Configuraciones del Proyecto.](#paso-2-otras-configuraciones-del-proyecto)
+ #### Sección 1) Creación del Proyecto y Configuraciones   
+   - [Paso 1) Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#paso-1-creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
+   - [Paso 2) Otras Configuraciones del Proyecto.](#paso-2-otras-configuraciones-del-proyecto)
 
-  #### Sección 2) Configuracion del Servidor y Dependencias del Proyecto
-- [Paso 3) Configuración del Servidor de Despliegue (Wildfly).](#paso-3-configuración-del-servidor-de-despliegue-wildfly)
-- [Paso 4) Dependencias del Proyecto.](#paso-4-dependencias-del-proyecto)
+ #### Sección 2) Configuracion del Servidor y Dependencias del Proyecto
+   - [Paso 3) Configuración del Servidor de Despliegue (Wildfly).](#paso-3-configuración-del-servidor-de-despliegue-wildfly)
+   - [Paso 4) Dependencias del Proyecto.](#paso-4-dependencias-del-proyecto)
 
 - [Configuración del SGDB Mysql.](#configuraciones-del-sgdb-mysql)
 - [Configuración de JPA-HIBERNATE para la Persistencia de datos.](#configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
@@ -83,7 +83,6 @@
 
 ### Paso 1) Creación de un Proyecto Web con Maven en Eclipse y Configuraciónes Iniciales.
 #### (Primeramente deberás configurar tu espacio de trabajo, en donde se alojará la aplicación. Cada vez que muevas el Proyecto de Directorio, recomiendo crear o setear nuevamente el Espacio de Trabajo junto con el Servidor).
-
 
 #### 1.1) File 
 * --> New 
@@ -115,30 +114,27 @@
 
 </br>
 
-### Actualización del proyecto
+### 2.1) Actualización del proyecto
+* --> Click Der sobre el proyecto y actualizar o F5
 
-#### 1) Click Der sobre el proyecto y actualizar o F5
+### 2.1.1) Actualización de Java-1.7 a 1.8
 
-</br>
+#### 2.1.2) Vamos al pom.xml (el archivo al final de todo)
 
-### Actualización de Java-1.7 a 1.8
+#### 2.1.3) Dentro de el tag properties donde dice UTF-8 cambiar la version del compiler a 1.8, ctrl+s para guardar
 
-#### 1) Vamos al pom.xml, el archivo al final de todo
-
-#### 2) Dentro de el tag properties donde dice UTF-8 cambiar la version del compiler a 1.8, ctrl+s para guardar
-
-#### 3) Click Der sobre el Proyecto
+#### 2.1.4) Click Der sobre el Proyecto
 * --> Maven
 * --> Update Proyect
 * --> Fijate que el Proyecto este seleccionado y Boton ok
 
-#### 4) Si cambio JavaSE-1.7 a JavaSE-1.8 se efectuo el cambio
+#### 2.1.5) Si cambio JavaSE-1.7 a JavaSE-1.8 se efectuo el cambio
 
 </br>
 
-### Paquetes Maven (Java Resources).
+### 2.2) Paquetes Maven (Java Resources).
 
-#### 1) Por Defecto Viene deshabilitada la opción de paquetes Maven, en donde vamos a guardar nuestros paquetes y clases
+#### 2.2.1) Por Defecto Viene deshabilitada la opción de paquetes Maven, en donde vamos a guardar nuestros paquetes y clases
 * --> Para habilitar las mismas, click Der sobre el Proyecto.
 * --> Properties.
 * --> Buscamos la sección Java Build Path
@@ -146,6 +142,10 @@
 * --> Apply and Close.
 * --> F5 y deberían aparecer (src/main/java y src/test/java)
 
+
+</br>
+
+## Sección 2) Configuración del Servidor y Dependencias del Proyecto
 
 </br>
 
