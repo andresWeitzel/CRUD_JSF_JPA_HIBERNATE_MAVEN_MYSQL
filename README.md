@@ -61,12 +61,13 @@
 
 
 ## Indice
-  #### Sección 1) Creación del Proyecto y Configuraciones 
-  
-- [Paso 1) Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
-- [Paso 2) Configuración del Servidor de Despliegue (Wildfly).](#configuración-del-servidor-de-despliegue-wildfly)
+
+  #### Sección 1) Creación del Proyecto y Configuraciones   
+- [Paso 1) Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#paso-1-creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
+- [Paso 2) Otras Configuraciones del Proyecto.](#paso-2-otras-configuraciones-del-proyecto)
+- [Paso 3) Configuración del Servidor de Despliegue (Wildfly).](#configuración-del-servidor-de-despliegue-wildfly)
+
 - [Dependencias del Proyecto.](#dependencias-del-proyecto)
-- [Configuraciones Opcionales en Maven.](#configuraciones-opcionales-en-maven)
 - [Configuración del SGDB Mysql.](#configuraciones-del-sgdb-mysql)
 - [Configuración de JPA-HIBERNATE para la Persistencia de datos.](#configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
 - [Herramienta Cygwin para el uso de Git.](#uso-de-cygwin)
@@ -74,7 +75,7 @@
 
 </br>
 
-## Creación de un Proyecto Web con Maven en Eclipse y Configuraciónes Iniciales.
+## Paso 1) Creación de un Proyecto Web con Maven en Eclipse y Configuraciónes Iniciales.
 #### (Primeramente deberás configurar tu espacio de trabajo, en donde se alojará la aplicación. Cada vez que muevas el Proyecto de Directorio, recomiendo crear o setear nuevamente el Espacio de Trabajo junto con el Servidor).
 
 
@@ -99,6 +100,46 @@
 * --> Window
 * --> Perspective
 * --> Reset perspective
+
+</br>
+
+
+
+## Paso 2) Otras Configuraciones del Proyecto.
+
+</br>
+
+### Actualización del proyecto
+
+#### 1) Click Der sobre el proyecto y actualizar o F5
+
+</br>
+
+### Actualización de Java-1.7 a 1.8
+
+#### 1) Vamos al pom.xml, el archivo al final de todo
+
+#### 2) Dentro de el tag properties donde dice UTF-8 cambiar la version del compiler a 1.8, ctrl+s para guardar
+
+#### 3) Click Der sobre el Proyecto
+* --> Maven
+* --> Update Proyect
+* --> Fijate que el Proyecto este seleccionado y Boton ok
+
+#### 4) Si cambio JavaSE-1.7 a JavaSE-1.8 se efectuo el cambio
+
+</br>
+
+### Paquetes Maven (Java Resources).
+
+#### 1) Por Defecto Viene deshabilitada la opción de paquetes Maven, en donde vamos a guardar nuestros paquetes y clases
+* --> Para habilitar las mismas, click Der sobre el Proyecto.
+* --> Properties.
+* --> Buscamos la sección Java Build Path
+* --> Seleccionamos la casilla Maven Dependencies.
+* --> Apply and Close.
+* --> F5 y deberían aparecer (src/main/java y src/test/java)
+
 
 </br>
 
@@ -150,6 +191,7 @@
 
 
 </br>
+
 
 ## Dependencias del Proyecto
 #### (Las siguientes dependencias del Proyecto se deberán agregar al pom.xml para el correcto funcionamiento del Proyecto).
@@ -327,43 +369,6 @@
 
 </br>
 
-## Configuraciones Opcionales en Maven.
-
-</br>
-
-### Actualización del proyecto
-
-#### 1) Click Der sobre el proyecto y actualizar o F5
-
-</br>
-
-### Actualización de Java-1.7 a 1.8
-
-#### 1) Vamos al pom.xml, el archivo al final de todo
-
-#### 2) Dentro de el tag properties donde dice UTF-8 cambiar la version del compiler a 1.8, ctrl+s para guardar
-
-#### 3) Click Der sobre el Proyecto
-* --> Maven
-* --> Update Proyect
-* --> Fijate que el Proyecto este seleccionado y Boton ok
-
-#### 4) Si cambio JavaSE-1.7 a JavaSE-1.8 se efectuo el cambio
-
-</br>
-
-### Paquetes Maven (Java Resources).
-
-#### 1) Por Defecto Viene deshabilitada la opción de paquetes Maven, en donde vamos a guardar nuestros paquetes y clases
-* --> Para habilitar las mismas, click Der sobre el Proyecto.
-* --> Properties.
-* --> Buscamos la sección Java Build Path
-* --> Seleccionamos la casilla Maven Dependencies.
-* --> Apply and Close.
-* --> F5 y deberían aparecer (src/main/java y src/test/java)
-
-
-</br>
 
 ## Configuraciones del SGDB Mysql.
 
