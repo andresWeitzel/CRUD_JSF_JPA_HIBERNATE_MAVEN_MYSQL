@@ -84,7 +84,7 @@
 ### Paso 1) Creación de un Proyecto Web con Maven en Eclipse y Configuraciónes Iniciales.
 #### (Primeramente deberás configurar tu espacio de trabajo, en donde se alojará la aplicación. Cada vez que muevas el Proyecto de Directorio, recomiendo crear o setear nuevamente el Espacio de Trabajo junto con el Servidor).
 
-* File 
+** File 
 * --> New 
 * --> Proyect Maven(Si no aparece buscar en Other)
 
