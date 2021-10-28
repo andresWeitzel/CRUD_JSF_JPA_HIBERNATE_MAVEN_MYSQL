@@ -65,13 +65,15 @@
    - [Paso 1) Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#paso-1-creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
    - [Paso 2) Otras Configuraciones del Proyecto.](#paso-2-otras-configuraciones-del-proyecto)
 
- #### Sección 2) Configuracion del Servidor y Dependencias del Proyecto
+ #### Sección 2) Configuracion del Servidor, Dependencias del Proyecto y Configuración del Descriptor de Despliegue
    - [Paso 3) Configuración del Servidor de Despliegue (Wildfly).](#paso-3-configuración-del-servidor-de-despliegue-wildfly)
    - [Paso 4) Dependencias del Proyecto.](#paso-4-dependencias-del-proyecto)
+   - [Paso 5) Configuraciones del Descriptor de Despliegue (web.xml)](#paso-5-configuraciones-del-descriptor-de-despliegue-(web.xml)) 
 
-- [Configuración del SGDB Mysql.](#configuraciones-del-sgdb-mysql)
-- [Configuración de JPA-HIBERNATE para la Persistencia de datos.](#configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
-- [Herramienta Cygwin para el uso de Git.](#uso-de-cygwin)
+ #### Sección 3) Configuración del SGDB Mysql y JPA-Hibernate para la Persistencia de Datos
+   - [Paso 6) Configuración del SGDB Mysql.](#paso-5-configuraciones-del-sgdb-mysql)
+   - [Paso 7) Configuración de JPA-HIBERNATE para la Persistencia de datos.](#paso-6-configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
+   - [Herramienta Cygwin para el uso de Git.](#uso-de-cygwin)
 
 
 </br>
@@ -326,10 +328,17 @@
 </br>
 
 
-### Configuraciones del Descriptor de Despliegue (web.xml) | Paso Importante | 
+
+
+
+
+## Paso 5) Configuraciones del Descriptor de Despliegue (web.xml) 
 #### (Este Archivos nos proporciona información de configuración y despliegue para los componentes web de Nuestra Aplicación usando Servlets).
-* --> Se Puede buscar por Internet alguna Plantilla simiilar, ya que son las configuraciones estandars, asegurarse de cambiar la versión a 3.1, por defecto viene 2.3
+
+* --> Se Puede buscar por Internet alguna Plantilla similar, ya que son las configuraciones estandars, asegurarse de cambiar la versión a 3.1, por defecto viene 2.3
+
 * --> Copiar y Pegar los siguientes namespaces dentro de web.xml (src/main/java/webapp/WEB-INF/web.xml)
+
 ```xml
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -368,57 +377,56 @@
 ```
 
 * --> Actualizamos el Proyecto (F5) y Compilamos con Maven (Alt+F5)
-* --> 
 
+</br>
+
+
+## Paso 6) Configuraciones del SGDB Mysql.
+
+* Hasta acá deberías tener incluido el conector para Mysql en el pom para que se descargue la dependencia (Fijasrse parte dependencias).
+
+* Abrimos la Herramienta XAMPP ( Buscate un microtutorial para usarla ), o la que se tenga, levantamos los Servicios de Mysql y Creamos una Nueva Base de Datos.
+	* --> Depende que S.O tengas podrás o no tener esta herramienta, no hace falta tenerla, también es posible levantar un servicio mysql desde la bash en Linux
+	* --> Una vez abierto, en el control panel inicializas los servicios de Mysql y Apache para ver las dbs desde el localhost en el Navegador
+	* --> Colocas localhost... en el navegador y accedes a PHPMYADMIN o clickeas Admin desde xampp en la parte de Apache.
+	* --> Vamos a crear una db de prueba, para eso en la esquina izquierda superior tocás en Nueva.
+	* --> Colocas el Nombre a la derecha (en mi caso db_test_jpa_jsf) y luego en Crear
+	* --> Vamos a Crear una sola tabla con solo 2 campos para persistir posteriormente los datos con Hibernate.
+	* --> Selecciona la db creada y a la derecha te va a aparecer crear tabla, colocamos clientes, numero de columnas 2 y continuar.
+	* --> Ahora creamos los campos(columnas), el primero sera id y el segundo nombre, dejamos todo por defecto.
+	* --> Guardar.
+	* --> A la izquierda, debajo de la db_test_jpa_jsf, se te deberia desplegar la nueva tabla y si la seleccionas los nuevos campos, id y nombre.
+	* --> Solamente creamos la db, la tabla y los 2 campos, la config de usuarios, atributos de los campos , etc, lo dejamos todo por defecto para realizar la conexion con el connector de mysql posteriormente.
+	* --> Fijate de Visualizar la db creada, la tabla y los campos, continuamos..
 
 
 </br>
 
 
-## Configuraciones del SGDB Mysql.
-
-#### 1) Hasta acá deberías tener incluido el conector para Mysql en el pom para que se descargue la dependencia (Fijasrse parte dependencias).
-
-#### 2) Abrimos la Herramienta XAMPP ( Buscate un microtutorial para usarla ), o la que se tenga, levantamos los Servicios de Mysql y Creamos una Nueva Base de Datos.
-* --> Depende que S.O tengas podrás o no tener esta herramienta, no hace falta tenerla, también es posible levantar un servicio mysql desde la bash en Linux
-* --> Una vez abierto, en el control panel inicializas los servicios de Mysql y Apache para ver las dbs desde el localhost en el Navegador
-* --> Colocas localhost... en el navegador y accedes a PHPMYADMIN o clickeas Admin desde xampp en la parte de Apache.
-* --> Vamos a crear una db de prueba, para eso en la esquina izquierda superior tocás en Nueva.
-* --> Colocas el Nombre a la derecha (en mi caso db_test_jpa_jsf) y luego en Crear
-* --> Vamos a Crear una sola tabla con solo 2 campos para persistir posteriormente los datos con Hibernate.
-* --> Selecciona la db creada y a la derecha te va a aparecer crear tabla, colocamos clientes, numero de columnas 2 y continuar.
-* --> Ahora creamos los campos(columnas), el primero sera id y el segundo nombre, dejamos todo por defecto.
-* --> Guardar.
-* --> A la izquierda, debajo de la db_test_jpa_jsf, se te deberia desplegar la nueva tabla y si la seleccionas los nuevos campos, id y nombre.
-* --> Solamente creamos la db, la tabla y los 2 campos, la config de usuarios, atributos de los campos , etc, lo dejamos todo por defecto para realizar la conexion con el connector de mysql posteriormente.
-* --> Fijate de Visualizar la db creada, la tabla y los campos, continuamos..
-
-</br>
-
-## Configuración de JPA-HIBERNATE para la Persistencia de datos.
+## Paso 7) Configuración de JPA-HIBERNATE para la Persistencia de datos.
 #### (JPA-HIBERNATE nos va a ahorrar tiempo de desarrollo de las clases en java para cada entidad mapeando atributos y completando el código para persistir los datos en una db con el SGDB Mysql).
 
-#### 1) Dependencias JPA-HIBERNATE
-* --> Hasta ese punto deberías haber incluido las dependencias descritas en la sección dependencias del Proyecto(Core de  Hibernate, JPA para hibernate y Javax Annotation API).
-* --> Seguidamente vamos a Crear el fichero persistence.xml
+* Dependencias JPA-HIBERNATE
+	* --> Hasta ese punto deberías haber incluido las dependencias descritas en la sección dependencias del Proyecto(Core de  Hibernate, JPA para hibernate y Javax Annotation API).
+	* --> Seguidamente vamos a Crear el fichero persistence.xml
 
-#### 2) Archivo de Configuración XML de JPA-Hibernate (persistence.xml).
-* --> Vamos a crear el Archivo de configuración persistence.xml dentro de la carpeta WEB-INF
-* --> La Ruta al mismo es src/main/webapp/WEB-INF.
-* --> Sobre la carpeta WEB-INF Click Der
-* --> New
-* --> Other
-* --> Filtramos escribiendo xml, seleccinamos xml file
-* --> Asegurarse que la ruta sea la indicada anteriormente, FormularioMaven/src/main/webapp/WEB-INF
-* --> En el file Name escribimos persistence.xml
-* --> Next, Next
-* --> Todo por defecto y Finish
-* --> En eclipse tenes varias vistas para ciertos tipos de archivos, fijate debajo de este que tenes Design y Source, toca en Source
-* --> Tendriamos solamente una linea de codigo ( <?xml version="1.0" encoding="UTF-8"?> )
+* Archivo de Configuración XML de JPA-Hibernate (persistence.xml).
+	* --> Vamos a crear el Archivo de configuración persistence.xml dentro de la carpeta WEB-INF
+	* --> La Ruta al mismo es src/main/webapp/WEB-INF.
+	* --> Sobre la carpeta WEB-INF Click Der
+	* --> New
+	* --> Other
+	* --> Filtramos escribiendo xml, seleccinamos xml file
+	* --> Asegurarse que la ruta sea la indicada anteriormente, FormularioMaven/src/main/webapp/WEB-INF
+	* --> En el file Name escribimos persistence.xml
+	* --> Next, Next
+	* --> Todo por defecto y Finish
+	* --> En eclipse tenes varias vistas para ciertos tipos de archivos, fijate debajo de este que tenes Design y Source, toca en Source
+	* --> Tendriamos solamente una linea de codigo ( <?xml version="1.0" encoding="UTF-8"?> )
 
-#### 3) Configurando el Archivo persistence.xml para JPA-Hibernate
-* --> Dentro del archivo persistence.xml vamos a configurar la conexión con mysql y Nuestro Mapeo ORM de JPA-Hibernate.
-* --> Copiar el siguiente código y pegarlo dentro del persistence.xml
+* Configurando el Archivo persistence.xml para JPA-Hibernate
+	* --> Dentro del archivo persistence.xml vamos a configurar la conexión con mysql y Nuestro Mapeo ORM de JPA-Hibernate.
+	* --> Copiar el siguiente código y pegarlo dentro del persistence.xml
 
 ```xml
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
@@ -449,14 +457,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 * --> ATENTI: Las propiedades de este Archivo se pueden modificar en base a lo que se requiera, por ejemplo, si se desea cambiar el nombre raíz de la URL del proyecto("jdbc:mysql://localhost:3306/test-jpa-jsf"), quitar /test-jpa-jsf y reemplazar a gusto, lo mismo para el password, nombre de usuario, etc.
 
 
-
-
 </br>
 
 
-## CRUD MVC.
-#### CRUD = Create, Read, Update, Delete
-#### MVC = Modelo-Vista-Controlador
+## Paso 8) CRUD MVC.
+#### CRUD = Create, Read, Update, Delete | MVC = Modelo-Vista-Controlador
 
 #### 1) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.
 * --> Dentro de src/main/java vamos a crear nuestro paquete para la Clase Modelo-Entidad Cliente.
