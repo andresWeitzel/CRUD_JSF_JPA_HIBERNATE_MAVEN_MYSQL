@@ -84,14 +84,14 @@
 ### Paso 1) Creación de un Proyecto Web con Maven en Eclipse y Configuraciónes Iniciales.
 #### (Primeramente deberás configurar tu espacio de trabajo, en donde se alojará la aplicación. Cada vez que muevas el Proyecto de Directorio, recomiendo crear o setear nuevamente el Espacio de Trabajo junto con el Servidor).
 
-#### * File 
+* File 
 * --> New 
 * --> Proyect Maven(Si no aparece buscar en Other)
 
-#### * Por defecto dejar marcado Use default Workspace location 
+* Por defecto dejar marcado Use default Workspace location 
 * --> Next
 
-#### 1.3) Esperar a que carguen los Group id y en Filter escribir org.apache.maven.archetypes
+* Esperar a que carguen los Group id y en Filter escribir org.apache.maven.archetypes
 * --> Seleccionar el ultimo(maven-archetype-webapp), este pertenece al Group id org.apache.maven.archetypes.
 * --> Next
 
