@@ -77,7 +77,7 @@
 
 </br>
 
-### Sección 1) Creación del Proyecto y Configuraciones 
+### `Sección 1) Creación del Proyecto y Configuraciones`
 
 </br>
 
@@ -115,7 +115,7 @@
 
 
 
-## Paso 2) Otras Configuraciones del Proyecto.
+### Paso 2) Otras Configuraciones del Proyecto.
 #### (Para este paso se anexan configuraciones que para el Proyecto son relevantes, capaz creando el Proyecto desde otro IDE se autoconfiguran dichas configuraciones).
 
 </br>
