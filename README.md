@@ -77,7 +77,8 @@
  #### Sección 4) Creación, Configuración y Manejo de Clases, Interfaces y Paquetes para el CRUD MVC
    - [Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.](#paso-8-creacion-de-nuestra-clase-entidad-modelo-cliente-para-la-persistencia-de-datos)
    - [Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-9-creacion-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
-
+   - [Paso 10) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-10-configuracion-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
+   - [Paso 11) Creación de la Interfaz y Clase Repository para la persistencia de los datos con JPA (Aquitetura Dao).](#creacion-de-la-interfaz-y-clase-repository-para-la-persistencia-de-los-datos-con-jpa-arquitectura-dao)
 
  #### Sección 5) Herramientas del Proyecto
    - [Herramienta Cygwin para el uso de Git.](#uso-de-cygwin)
@@ -345,7 +346,7 @@
 </br>
 
 
-## Paso 5) Configuraciones del Descriptor de Despliegue (web.xml) 
+### Paso 5) Configuraciones del Descriptor de Despliegue (web.xml) 
 #### (Este Archivos nos proporciona información de configuración y despliegue para los componentes web de Nuestra Aplicación usando Servlets).
 
 * --> Se Puede buscar por Internet alguna Plantilla similar, ya que son las configuraciones estandars, asegurarse de cambiar la versión a 3.1, por defecto viene 2.3
@@ -406,7 +407,7 @@
 </br>
 
 
-## Paso 6) Configuraciones del SGDB Mysql.
+### Paso 6) Configuraciones del SGDB Mysql.
 
 * Hasta acá deberías tener incluido el conector para Mysql en el pom para que se descargue la dependencia (Fijasrse parte dependencias).
 
@@ -428,7 +429,7 @@
 </br>
 
 
-## Paso 7) Configuración de JPA-HIBERNATE para la Persistencia de datos.
+### Paso 7) Configuración de JPA-HIBERNATE para la Persistencia de datos.
 #### (JPA-HIBERNATE nos va a ahorrar tiempo de desarrollo de las clases en java para cada entidad mapeando atributos y completando el código para persistir los datos en una db con el SGDB Mysql).
 
 * Dependencias JPA-HIBERNATE
@@ -570,15 +571,15 @@ public class Cliente {
 ### Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db
 ##### (En esta Clase se crea el objeto que nos permite realizar la persistencia de los datos en la db).
 
-* --> Primeramento vamos a crear el paquete que alojará la Clase dentro de la ruta ya usada (src/main/java).
-* --> Sobre la misma Click Der, New, package
-* --> En Name colocamos com.mypackages.utils
-* --> Finish y F5 para Actualizar.
-* --> Dentro del Paquete Creamos la Clase JpaUtil.
-* --> Click Der sobre el paquete, New, Class
-* --> Asegurarse estar en la ruta estipulada y en Name colocamos JpaUtil
-* --> Finish y F5 para actualizar
-* --> Te debería haber quedado..
+* Creación del paquete que alojará la Clase dentro de la ruta ya usada (src/main/java).
+	* --> Sobre la misma Click Der, New, package
+	* --> En Name colocamos com.mypackages.utils
+	* --> Finish y F5 para Actualizar.
+	* --> Dentro del Paquete Creamos la Clase JpaUtil.
+	* --> Click Der sobre el paquete, New, Class
+	* --> Asegurarse estar en la ruta estipulada y en Name colocamos JpaUtil
+	* --> Finish y F5 para actualizar
+	* --> Te debería haber quedado..
 
 ```java
 
@@ -590,19 +591,23 @@ public class JpaUtil {
 
 ```
 
-#### 2.1) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.
+### Paso 10) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.
 ##### (Vamos a configurar la Unidad de Persistencia, el entityManager y la Persistencia de la misma con el EntityManagerFactory. Todo esto para persistir los datos desde esta Clase).
-##### * Unidad de Persistencia = Modelo relacional de objeto que correlaciona las clases Java.
-##### * Entity Manager  = El entity manager comprueba qué entidades han sido modificadas y vuelca los cambios a la base de datos.
-##### * Entity Manager  Factory = Es la clase que se encarga de abrir la conexión a la base de datos y pone a nuestra disposición los distintos EntityManager que usemos.
 
-* --> Primeramente Configuramos el Nombre de la Unidad de Persistencia dentro de la Clase Creada JpaUtil
+ * Unidad de Persistencia = Modelo relacional de objeto que correlaciona las clases Java.
+
+ * Entity Manager  = El entity manager comprueba qué entidades han sido modificadas y vuelca los cambios a la base de datos.
+
+ * Entity Manager  Factory = Es la clase que se encarga de abrir la conexión a la base de datos y pone a nuestra disposición los distintos EntityManager que usemos.
+ 
+
+* Primeramente Configuramos el Nombre de la Unidad de Persistencia dentro de la Clase Creada JpaUtil
 
 ```java
 private static final String PERSISTENCE_UNIT_NAME = "PERSISTENCE";
 
 ```
-* --> Notar que el Nombre deberá ser el mismo que el creado peviamente en el persistence.xml
+* Notar que el Nombre deberá ser el mismo que el creado peviamente en el persistence.xml
 
 ```xml
   <persistence-unit name="PERSISTENCE">
@@ -617,16 +622,16 @@ private static final String PERSISTENCE_UNIT_NAME = "PERSISTENCE";
   </persistence-unit>
 
 ```
-
-* --> Ahoramos Creamos un Objeto de tipo EntityManagerFactory que será el que abra la conexión a la db creada. Importar la Clase
+* Ahoramos Creamos un Objeto de tipo EntityManagerFactory que será el que abra la conexión a la db creada. Importar la Clase
 
 ```java
 private static EntityManagerFactory factory;
 
 ```
 
-* --> Seguidamento vamos a crear 2 métodos para la conexión a la db.
-* --> El Primer Método será un getter y tendrá la Lógica de Persistir los datos de la Unidad de Persistencia con el EntityManagerFactory en caso de que no se haya persistido aún. Importar la Clase requerida.
+* Seguidamento vamos a crear 2 métodos para la conexión a la db.
+
+* El Primer Método será un getter y tendrá la Lógica de Persistir los datos de la Unidad de Persistencia con el EntityManagerFactory en caso de que no se haya persistido aún. Importar la Clase requerida.
 
 ```java
 public static EntityManagerFactory getEntityManagerFactory(){
@@ -642,7 +647,8 @@ public static EntityManagerFactory getEntityManagerFactory(){
 
 ```
 
-* --> El Segundo Método finaliza la conexión a la db si es que el EntityManagerFactory tiene un Valor, si lo tiene, significa que ha persistido el objeto en la db.
+* El Segundo Método finaliza la conexión a la db si es que el EntityManagerFactory tiene un Valor, si lo tiene, significa que ha persistido el objeto en la db.
+
 
 ```java
 public static void shutdown(){
@@ -654,7 +660,7 @@ public static void shutdown(){
 
 ```
 
-* --> El Código Completo es..
+* El Código Completo quedaría..
 
 
 ```java
@@ -687,12 +693,16 @@ public class JpaUtil {
 }
 
 ```
-* --> ATENTI: Ahora la Pregunta es, porqué no Crear un Paquete y Clase con el Nombre EntityManagerFactory directamente para no marearnos mucho? Por qué ya es una Clase de Java, recordár las convenciones de Nombres, así que guardaremos esta fábrica de conexiones de Unidades de Persistencias dentro de Jpa Util.
+* ATENTI: Ahora la Pregunta es, porqué no Crear un Paquete y Clase con el Nombre EntityManagerFactory directamente para no marearnos mucho? Por qué ya es una Clase de Java, recordár las convenciones de Nombres, así que guardaremos esta fábrica de conexiones de Unidades de Persistencias dentro de Jpa Util.
+
+
 
 </br>
 
-#### 3.0) Creación de la Interfaz y Clase Repository para la persistencia de los datos con JPA (Aquitetura Dao). La Arquitectura Dao  suministra las interfaces  para poder usar los metodos CRUD sin necesidad de duplicar codigo.
-##### (Vamos a Crear una Interfaz que nos provea de los métodos a implementar para usarlos dentro de la Clase Repository con JPA).
+
+
+### Paso 11) Creación de la Interfaz y Clase Repository para la persistencia de los datos con JPA (Aquitetura Dao).
+#### (La Arquitectura Dao  suministra las interfaces  para poder usar los metodos CRUD sin necesidad de duplicar codigo.Vamos a Crear una Interfaz que nos provea de los métodos a implementar para usarlos dentro de la Clase Repository con JPA).
 
 </br>
 
