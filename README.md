@@ -77,7 +77,7 @@
 
 </br>
 
-### `Sección 1) Creación del Proyecto y Configuraciones`
+### Sección 1) Creación del Proyecto y Configuraciones
 
 </br>
 
@@ -153,51 +153,47 @@
 
 </br>
 
-## Configuración del Servidor de Despliegue Wildfly.
+### Paso 3) Configuración del Servidor de Despliegue Wildfly.
 #### (Las Configuraciones de los Servidores de despliegue son casi los mismos pasos para todos, Tomcat, Jboss, Wildfly, etc. En mi caso opté por Wildfly ya que no requiere tanta configuración que el resto y además es más estable, menos restrictivo para algunas cosas, etc. No hay una única configuración, ni tampoco es algo que se configura una única vez, en caso de algún error, eliminar el Servidor creado, volverlo a configurar y paciencia que levantarlo a primera es LERDO. Si tarda en ejecutar el proyecto, parar la ejecución y ejecutar de nuevo.
 
 
-#### 1) Utilizaré Wildfly, buscar por internet, descargar, descromprimir, colocar en el directorio del proyecto u otro seguro.
+* Link de Descarga del Servidor a implementar https://www.wildfly.org/downloads/
 
+* Descargar, descromprimir, colocar en el directorio del proyecto u otro seguro.
 
-#### 2.1) Seleccionar el Proyecto y Click der sobre el mismo.
-* --> Properties
-* --> Buscar Proyect Facets
-* --> Pestaña Runtimes(a la derecha de todo, al lado de Details)
-* --> Seleccionar el Server WildFly 23.0 Runtime (En mi caso), SI NO APARECE UNO CREARLO, SEGUIR LOS SIG. PASOS
-* --> En caso de que no aparezca tocamos New
-* --> Se abrirá una interfaz llamada New Server Runtime Environment
-* --> Seleccionamos la Version del Server, si descargaste Wildfly 13, selecciona el 13, si es 23, 23,etc para mantener compatibilidad
-* --> Ahora Aparece una Interfaz llamada JBoss Runtime
-* --> Dentro de la misma en Name colocar el nombre a gusto del server a usar
-* --> En Home Directory tocar Browse... y buscamos la ruta del server descargado
-* --> Finish
-* --> Ahora debería aparecer el server en la pestaña Runtimes, lo seleccionamos
-* --> Apply and Close
+* Seleccionar el Proyecto y Click der sobre el mismo.
+	* --> Properties
+	* --> Buscar Proyect Facets
+	* --> Pestaña Runtimes(a la derecha de todo, al lado de Details)
+	* --> Seleccionar el Server WildFly 23.0 Runtime (En mi caso), SI NO APARECE UNO CREARLO, SEGUIR LOS SIG. PASOS
+	* --> En caso de que no aparezca tocamos New
+	* --> Se abrirá una interfaz llamada New Server Runtime Environment
+	* --> Seleccionamos la Version del Server, si descargaste Wildfly 13, selecciona el 13, si es 23, 23,etc para mantener compatibilidad
+	* --> Ahora Aparece una Interfaz llamada JBoss Runtime
+	* --> Dentro de la misma en Name colocar el nombre a gusto del server a usar
+	* --> En Home Directory tocar Browse... y buscamos la ruta del server descargado
+	* --> Finish
+	* --> Ahora debería aparecer el server en la pestaña Runtimes, lo seleccionamos
+	* --> Apply and Close
 
+* Otra forma de realizar esto es desde la pestaña Servers, en las pestañas de abajo de eclipse(a mi me trajo algunos problemas, uso la anterior).
 
+* Fijarse que se elimina el cartel rojo sobre el proyecto, indicando que faltaba configurar el servidor de despliegue.
 
-#### 2.2) Otra forma de realizar esto es desde la pestaña Servers, en las pestañas de abajo de eclipse(a mi me trajo algunos problemas, uso la anterior).
+* Deployamos la App en el Server 
+	 * --> Click Der 
+	 * --> Run As 
+	 * --> Run on Server 
+	 * --> Seleccionas Wildfly 
+	 * --> Next 
+	 * --> ATENTI, si usaste otro proyecto en Maven, el mismo quedó configurado en la pestaña Configured junto con el nuevo, seleccionar el viejo y tocar el boton Remove, nos quedamos con el Nuevo(en mi caso nombre del proyecto).
+	 * --> Lo seleccionas y Finish.
 
+* Fijarse el Log en Console(todo el registro de despliegue del Server), tarda unos segundos. Si tarda en ejecutar el proyecto, parar la ejecución y ejecutar de nuevo.
 
-#### 3) Fijarse que se elimina el cartel rojo sobre el proyecto, indicando que faltaba configurar el servidor de despliegue.
+* Si se abre un localhost con Hello World! todo está correcto. Si aparece un mensaje de página no encontrada, borrar el index.jsp dentro de webapp y volver a crear el index.jsp, luego actualizar proyecto, actualizar Maven y correr Nuevamente en el Server.
 
-
-#### 4) Probamos la app 
- * --> Click Der 
- * --> Run As 
- * --> Run on Server 
- * --> Seleccionas Wildfly 
- * --> Next 
- * --> ATENTI, si usaste otro proyecto en Maven, el mismo quedó configurado en la pestaña Configured junto con el nuevo, seleccionar el viejo y tocar el boton Remove, nos quedamos con el Nuevo(en mi caso nombre del proyecto).
- * --> Lo seleccionas y Finish.
-
-
-#### 5) Fijarse el Log en Console(todo el registro de despliegue del Server), tarda unos segundos. Si tarda en ejecutar el proyecto, parar la ejecución y ejecutar de nuevo.
-
-#### 6) Si se abre un localhost con Hello World! todo está correcto. Si aparece un mensaje de página no encontrada, borrar el index.jsp dentro de webapp y volver a crear el index.jsp, luego actualizar proyecto, actualizar Maven y correr Nuevamente en el Server.
-
-#### 7) Si no funciona lo anterior, siempre recomiendo cerrar y volver a abrir Eclipse.
+* Si no funciona lo anterior, siempre recomiendo cerrar y volver a abrir Eclipse.
 
 
 </br>
