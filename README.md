@@ -77,7 +77,7 @@
 
 </br>
 
-## Sección 1) Creación del Proyecto y Configuraciones 
+### Sección 1) Creación del Proyecto y Configuraciones 
 
 </br>
 
@@ -149,7 +149,7 @@
 </br>
 
 
-## Sección 2) Configuración del Servidor y Dependencias del Proyecto
+### Sección 2) Configuración del Servidor y Dependencias del Proyecto
 
 </br>
 
