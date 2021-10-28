@@ -75,10 +75,11 @@
    - [Paso 7) Configuración de JPA-HIBERNATE para la Persistencia de datos.](#paso-7-configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
    
  #### Sección 4) Creación, Configuración y Manejo de Clases, Interfaces y Paquetes para el CRUD MVC
-   - [Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.](#paso-8-creacion-de-nuestra-clase-entidad-modelo-cliente-para-la-persistencia-de-datos)
-   - [Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-9-creacion-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
-   - [Paso 10) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-10-configuracion-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
-   - [Paso 11) Creación de la Interfaz y Clase Repository para la persistencia de los datos con JPA (Aquitetura Dao).](#creacion-de-la-interfaz-y-clase-repository-para-la-persistencia-de-los-datos-con-jpa-arquitectura-dao)
+   - [Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.](#paso-8-creación-de-nuestra-clase-entidad-modelo-cliente-para-la-persistencia-de-datos)
+   - [Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-9-creación-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
+   - [Paso 10) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-10-configuración-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
+   - [Paso 11) Creación y Configuración de la Interfaz I_ClienteRepository para la Definición de los Métodos de Uso (Aquitetura Dao).](#creación-y-configuración-de-la-interfaz-iclienterepository-para-la-definición-de-los-métodos-de-uso-arquitectura-dao)
+
 
  #### Sección 5) Herramientas del Proyecto
    - [Herramienta Cygwin para el uso de Git.](#uso-de-cygwin)
@@ -498,7 +499,6 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
 </br>
 
-
 ### Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos
 #### (CRUD = Create, Read, Update, Delete | MVC = Modelo-Vista-Controlador)
 
@@ -590,6 +590,11 @@ public class JpaUtil {
 }
 
 ```
+
+
+</br>
+
+
 
 ### Paso 10) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.
 ##### (Vamos a configurar la Unidad de Persistencia, el entityManager y la Persistencia de la misma con el EntityManagerFactory. Todo esto para persistir los datos desde esta Clase).
@@ -701,21 +706,21 @@ public class JpaUtil {
 
 
 
-### Paso 11) Creación de la Interfaz y Clase Repository para la persistencia de los datos con JPA (Aquitetura Dao).
-#### (La Arquitectura Dao  suministra las interfaces  para poder usar los metodos CRUD sin necesidad de duplicar codigo.Vamos a Crear una Interfaz que nos provea de los métodos a implementar para usarlos dentro de la Clase Repository con JPA).
+### Paso 11) Creación y Configuración de la Interfaz I_ClienteRepository para la Definición de los Métodos de Uso (Aquitetura Dao).
+#### (La Arquitectura Dao  suministra las interfaces  para poder usar los metodos CRUD sin necesidad de duplicar codigo. Vamos a Crear una Interfaz que nos provea de los métodos a implementar para usarlos dentro de la Clase Repository con JPA).
 
 </br>
 
-##### 3.1)Creación de la Interfaz I_ClienteRepository
-* --> Creamos un Nuevo paquete para las Interfaces.
-* --> Sobre la ruta src/main/java Click Der, New, package
-* --> En Name colocamos com.mypackages.repositories.interfaces
-* --> Finish y F5 para Actualizar.
-* --> Dentro del Paquete Creamos la Interfaz I_ClienteRepository.
-* --> Click Der sobre el paquete, New, Interface
-* --> Asegurarse estar en la ruta estipulada y en Name colocamos I_ClienteRepository
-* --> Finish y F5 para actualizar
-* --> Te debería haber quedado..
+* Creación de la Interfaz I_ClienteRepository
+	* --> Creamos un Nuevo paquete para las Interfaces.
+	* --> Sobre la ruta src/main/java Click Der, New, package
+	* --> En Name colocamos com.mypackages.repositories.interfaces
+	* --> Finish y F5 para Actualizar.
+	* --> Dentro del Paquete Creamos la Interfaz I_ClienteRepository.
+	* --> Click Der sobre el paquete, New, Interface
+	* --> Asegurarse estar en la ruta estipulada y en Name colocamos I_ClienteRepository
+	* --> Finish y F5 para actualizar
+	* --> Te debería haber quedado..
 
 ```java
 
@@ -731,10 +736,10 @@ public interface I_ClienteRepository {
 
 </br>
 
-##### 3.2)Configuración de la Interfaz I_ClienteRepository
-* --> Creamos los métodos para ser implementados y configurados en la clase ClienteRepository CON JPA
-* --> save, remove, update,getAll, getById, etc. El  Método getAll será una Lista de Tipo Cliente.
-* --> Vamos de a partes, métodos conocidos.. save remove, etc
+* Configuración de la Interfaz I_ClienteRepository
+	* --> Creamos los métodos para ser implementados y configurados en la clase ClienteRepository CON JPA
+	* --> save, remove, update,getAll, getById, etc. El  Método getAll será una Lista de Tipo Cliente.
+	* --> Vamos de a partes, métodos conocidos.. save remove, etc
 
 
 ```java
@@ -756,7 +761,7 @@ public interface I_ClienteRepository {
 
 ```
 
-* --> Método getAll de tipo Lista..
+* Método getAll de tipo Lista..
 
 ```java
 
@@ -783,7 +788,7 @@ public interface I_ClienteRepository {
 ```
 
 
-* --> Método getById
+* Método getById
 
 ```java
 
@@ -812,20 +817,25 @@ public interface I_ClienteRepository {
 ```
 
 
+</br>
 
 
+### Paso 12) Creación y Configuración de la Clase ClienteRepository para la Persistencia de Datos con JPA (Arquitectura DAO).
+#### (Vamos a Crear una Clase Implementando la Interfaz Creada y dandole el cuerpo a los métodos de la misma para  implementar JPA).
 
+</br>
 
-##### 3.3)Creación de la Clase ClienteRepository
-* --> Creamos un Nuevo paquete para los Repositories JPA.
-* --> Sobre la ruta src/main/java Click Der, New, package
-* --> En Name colocamos com.mypackages.repositories.jpa
-* --> Finish y F5 para Actualizar.
-* --> Dentro del Paquete Creamos la Clase dao ClienteRepository.
-* --> Click Der sobre el paquete, New, Class
-* --> Asegurarse estar en la ruta estipulada y en Name colocamos ClienteRepository
-* --> Finish y F5 para actualizar
-* --> Te debería haber quedado..
+#### 12.1) Creación de la Clase ClienteRepository
+ 
+* Primeramente Creamos un Nuevo paquete para los Repositories JPA.
+	* --> Sobre la ruta src/main/java Click Der, New, package
+	* --> En Name colocamos com.mypackages.repositories.jpa
+	* --> Finish y F5 para Actualizar.
+	* --> Dentro del Paquete Creamos la Clase dao ClienteRepository.
+	* --> Click Der sobre el paquete, New, Class
+	* --> Asegurarse estar en la ruta estipulada y en Name colocamos ClienteRepository
+	* --> Finish y F5 para actualizar
+	* --> Te debería haber quedado..
 
 ```java
 
@@ -839,9 +849,9 @@ public class ClienteRepository {
 
 </br>
 
-##### 3.4)Configuración de la Clase ClienteRepository
+#### 12.2) Configuración de la Clase ClienteRepository
 
-* --> Vamos a implementar la Interfaz Creada para trabajar con los métodos de la misma.
+* Vamos a implementar la Interfaz Creada para trabajar con los métodos de la misma.
 
 ```java
 
@@ -881,17 +891,25 @@ public class ClienteRepository implements I_ClienteRepository{
 
 ```
 
-* --> Creamos el Objeto EntityManager y usamos la Clase Creada JpaUtil que tiene el pull de conexiones. El objeto instanciado nos va a permitir usar los métodos de la Interfaz creada.
+* Creamos el Objeto EntityManager y usamos la Clase Creada JpaUtil que tiene el pull de conexiones. El objeto instanciado nos va a permitir usar los métodos de la Interfaz creada.
 
 ```java
 
 EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 ```
 
-* --> Ahora comenzaremos a desarrollar cada uno de los Métodos.
-* --> Con JPA-Hibernate se trabaja con Transacciones(los objetos creados tienen un tiempo de vida y hay que indicar cada proceso del mismo).
-* --> MÉTODO SAVE()
-* --> Comenzaremos una transacción
+
+</br>
+
+#### 12.3) Métodos de la Clase ClienteRepository
+#### (Con JPA-Hibernate se trabaja con Transacciones(los objetos creados tienen un tiempo de vida y hay que indicar cada proceso del mismo).
+
+
+</br>
+
+* MÉTODO SAVE( Este Método se deberá encargar de guardar el objeto Cliente en la db)
+
+* Comenzaremos una transacción
 ```java
 
 	@Override
@@ -901,7 +919,7 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 	}
 
 ```
-* --> Persistimos el Objeto Cliente en la Tabla de la Base de Datos
+* Persistimos el Objeto Cliente en la Tabla de la Base de Datos
 
 ```java
 
@@ -914,7 +932,7 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 
 ```
 
-* --> Cerramos la Transacción y Guardamos la Persistencia del Objeto Cliente en la Tabla de la Base de Datos
+* Cerramos la Transacción y Guardamos la Persistencia del Objeto Cliente en la Tabla de la Base de Datos
 
 ```java
 
@@ -927,7 +945,7 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 
 ```
 
-* --> Cerramos la Conexión a la Base de Datos implementando el metodo creado shutdown de la Clase JpaUtil
+* Cerramos la Conexión a la Base de Datos implementando el metodo creado shutdown de la Clase JpaUtil
 
 ```java
 
@@ -942,7 +960,7 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 ```
 
 
-* --> MÉTODO REMOVE()
+*  MÉTODO REMOVE()
 * --> Comenzaremos una transacción
 ```java
 
