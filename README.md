@@ -68,11 +68,11 @@
  #### Sección 2) Configuracion del Servidor, Dependencias del Proyecto y Configuración del Descriptor de Despliegue
    - [Paso 3) Configuración del Servidor de Despliegue (Wildfly).](#paso-3-configuración-del-servidor-de-despliegue-wildfly)
    - [Paso 4) Dependencias del Proyecto.](#paso-4-dependencias-del-proyecto)
-   - [Paso 5) Configuraciones del Descriptor de Despliegue (web.xml)](#paso-5-configuraciones-del-descriptor-de-despliegue-(web.xml)) 
+   - [Paso 5) Configuraciones del Descriptor de Despliegue (web.xml)](#paso-5-configuraciones-del-descriptor-de-despliegue) 
 
  #### Sección 3) Configuración del SGDB Mysql y JPA-Hibernate para la Persistencia de Datos
-   - [Paso 6) Configuración del SGDB Mysql.](#paso-5-configuraciones-del-sgdb-mysql)
-   - [Paso 7) Configuración de JPA-HIBERNATE para la Persistencia de datos.](#paso-6-configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
+   - [Paso 6) Configuración del SGDB Mysql.](#paso-6-configuraciones-del-sgdb-mysql)
+   - [Paso 7) Configuración de JPA-HIBERNATE para la Persistencia de datos.](#paso-7-configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
    - [Herramienta Cygwin para el uso de Git.](#uso-de-cygwin)
 
 
