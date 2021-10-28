@@ -68,7 +68,7 @@
  #### Sección 2) Configuracion del Servidor, Dependencias del Proyecto y Configuración del Descriptor de Despliegue
    - [Paso 3) Configuración del Servidor de Despliegue (Wildfly).](#paso-3-configuración-del-servidor-de-despliegue-wildfly)
    - [Paso 4) Dependencias del Proyecto.](#paso-4-dependencias-del-proyecto)
-   - [Paso 5) Configuraciones del Descriptor de Despliegue (web.xml)](#paso-5-configuraciones-del-descriptor-de-despliegue-web.xml) 
+   - [Paso 5) Configuraciones del Descriptor de Despliegue (web.xml)](#paso-5-configuraciones-del-descriptor-de-despliegue-webxml) 
 
  #### Sección 3) Configuración del SGDB Mysql y JPA-Hibernate para la Persistencia de Datos
    - [Paso 6) Configuración del SGDB Mysql.](#paso-6-configuraciones-del-sgdb-mysql)
@@ -217,7 +217,7 @@
 </br>
 
 
-## Paso 4) Dependencias del Proyecto
+### Paso 4) Dependencias del Proyecto
 #### (Las siguientes dependencias del Proyecto se deberán agregar al pom.xml para el correcto funcionamiento del Proyecto).
 
 * Dependencia para los servlets (JSF trabaja con Servlets).
