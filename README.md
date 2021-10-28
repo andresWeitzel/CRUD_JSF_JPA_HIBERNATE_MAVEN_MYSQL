@@ -114,21 +114,18 @@
 
 </br>
 
-### 2.1) Actualización del proyecto
-* --> Click Der sobre el proyecto y actualizar o F5
+### 2.1) Actualización de Java-1.7 a 1.8
 
-### 2.1.1) Actualización de Java-1.7 a 1.8
+#### 2.1.1) Vamos al pom.xml (el archivo al final de todo)
 
-#### 2.1.2) Vamos al pom.xml (el archivo al final de todo)
+#### 2.1.2) Dentro de el tag properties donde dice UTF-8 cambiar la version del compiler a 1.8, ctrl+s para guardar
 
-#### 2.1.3) Dentro de el tag properties donde dice UTF-8 cambiar la version del compiler a 1.8, ctrl+s para guardar
-
-#### 2.1.4) Click Der sobre el Proyecto
+#### 2.1.3) Click Der sobre el Proyecto
 * --> Maven
 * --> Update Proyect
 * --> Fijate que el Proyecto este seleccionado y Boton ok
 
-#### 2.1.5) Si cambio JavaSE-1.7 a JavaSE-1.8 se efectuo el cambio
+#### 2.1.4) Si cambio JavaSE-1.7 a JavaSE-1.8 se efectuo el cambio
 
 </br>
 
