@@ -54,15 +54,10 @@
 
 <hr>
 
-## ```java Documentación y Guía del Proyecto ```
-##  
-```xml 
-Documentación y Guía del Proyecto
-```
+## ``` Documentación y Guía del Proyecto ```
 #### (Esta Documentación que Desarrollé es para la Creación, Configuración, Posibles Errores, Manejo de Maven, JSF, Jpa, Mysql, dependencias con Maven, servidor de despliegue y otros usos de este Proyecto. Recomiendo Leerla y Realizar todo paso a paso como se indica en la misma).
 
-<hr>
-
+</br>
 
 ## Indice
 
@@ -203,14 +198,14 @@ Documentación y Guía del Proyecto
 </br>
 
 
-## Dependencias del Proyecto
+## Paso 4) Dependencias del Proyecto
 #### (Las siguientes dependencias del Proyecto se deberán agregar al pom.xml para el correcto funcionamiento del Proyecto).
 
-#### 1) Dependencia para los servlets (JSF trabaja con Servlets).
-* --> En Internet Buscar Maven Repository (https://mvnrepository.com/)
-* --> Buscamos Java Servlet Api (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api)
-* --> La última fue actualizada el 2018, 4.0.1 (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/4.0.1)
-* --> Copias la dependency desde maven o desde acá y lo llevas al pom.xml.
+* Dependencia para los servlets (JSF trabaja con Servlets).
+	* --> En Internet Buscar Maven Repository (https://mvnrepository.com/)
+	* --> Buscamos Java Servlet Api (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api)
+	* --> La última fue actualizada el 2018, 4.0.1 (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/4.0.1)
+	* --> Copias la dependency desde maven o desde acá y lo llevas al pom.xml.
  
 ```xml
 <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
@@ -222,17 +217,18 @@ Documentación y Guía del Proyecto
 </dependency>
 
 ```
-
-* --> control+s guardas y actualizamos el proyecto
-* --> Click Der sobre el proyecto, Maven
-* --> Update Proyect
-* --> Fijate que el Proyecto este seleccionado y Boton ok
+* ...
+	* --> control+s guardas y actualizamos el proyecto
+	* --> Click Der sobre el proyecto, Maven
+	* --> Update Proyect
+	* --> Fijate que el Proyecto este seleccionado y Boton ok
 
 </br>
 
-#### 2) Dependencia para el conector de Mysql.
-* --> Buscamos Mysql Connector (https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.21)
-* --> Copias la dependencia y la incluis en el pom del proyecto
+
+* Dependencia para el conector de Mysql.
+	* --> Buscamos Mysql Connector (https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.21)
+	* --> Copias la dependencia y la incluis en el pom del proyecto
 
 ```xml
 <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -243,17 +239,17 @@ Documentación y Guía del Proyecto
 </dependency>
 
 ```
-
-* --> Ctrl + s Guardas 
-* --> Click Der sobre el proyecto
-* --> Maven y update Maven o Alt + F5
-* --> Fijarse dentro de Maven Dependencies si Maven descargo la misma
-
+* ...
+	* --> Ctrl + s Guardas 
+	* --> Click Der sobre el proyecto
+	* --> Maven y update Maven o Alt + F5
+	* --> Fijarse dentro de Maven Dependencies si Maven descargo la misma
 
 </br>
 
-#### 3) Dependencias para JPA-Hibernate (persistencia de Datos).
-* --> La Primera será el core de Hibernate, hibernate-core la 5.4... Final (https://search.maven.org/artifact/org.hibernate/hibernate-core/5.4.27.Final/jar).
+
+* Dependencias para JPA-Hibernate (persistencia de Datos).
+	* --> La Primera será el core de Hibernate, hibernate-core la 5.4... Final (https://search.maven.org/artifact/org.hibernate/hibernate-core/5.4.27.Final/jar).
 
 ```xml
 <dependency>
@@ -262,8 +258,8 @@ Documentación y Guía del Proyecto
   <version>5.4.27.Final</version>
 </dependency>
 ```
-
-* --> La segunda será JPA para Hibernate, la más importante, ya que nos desacoplamos de depender de Hibernate en un futuro, y nos centramos en trabajar con JPA, la dependencia es JPA-Hibernate 2.1 (https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/1.0.2.Final).
+* ...
+	* --> La segunda será JPA para Hibernate, la más importante, ya que nos desacoplamos de depender de Hibernate en un futuro, y nos centramos en trabajar con JPA, la dependencia es JPA-Hibernate 2.1 (https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/1.0.2.Final).
 
 ```xml
 <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
@@ -274,8 +270,8 @@ Documentación y Guía del Proyecto
 </dependency>
 
 ```
-
-* --> La Tercera dependencia será para las Lecturas de las Anotaciones para JPA-Hibernate, Javax Annotation API (https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2)
+* ...
+	* --> La Tercera dependencia será para las Lecturas de las Anotaciones para JPA-Hibernate, Javax Annotation API (https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2)
 
 ```xml
 <!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
@@ -285,17 +281,18 @@ Documentación y Guía del Proyecto
     <version>1.3.2</version>
 </dependency>
 ```
+* ...
 
-* --> Una vez incluidas, Ctrl+s guardamos,  F5 actualizamos y Alt+F5 para que Maven Actualice.
-* --> Asegurate que Maven haya descargado las 3 dependencias mencionadas y colocadas en el pom.
+	* --> Una vez incluidas, Ctrl+s guardamos,  F5 actualizamos y Alt+F5 para que Maven Actualice.
+	* --> Asegurate que Maven haya descargado las 3 dependencias mencionadas y colocadas en el pom.
 
 
 </br>
 
-#### 4) Dependencias para JSF (Desarrollo de Interfaces Web).
-* --> La Primera será para la API de JSF
-* --> Buscamos la API de JSF (https://mvnrepository.com/artifact/com.sun.faces/jsf-api/2.2.13)
-* --> Copias la dependencia y la incluis en el pom del proyecto
+* Dependencias para JSF (Desarrollo de Interfaces Web).
+	* --> La Primera será para la API de JSF
+	* --> Buscamos la API de JSF (https://mvnrepository.com/artifact/com.sun.faces/jsf-api/2.2.13)
+	* --> Copias la dependencia y la incluis en el pom del proyecto
 
 ```xml
 <!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-api -->
@@ -305,12 +302,11 @@ Documentación y Guía del Proyecto
     <version>2.2.13</version>
 </dependency>
 
-
 ```
-
-* --> La Segunda será para la Implementación de JSF.
-* --> Buscamos la dependencia https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.13
-* --> Copias la dependencia y la incluis en el pom del proyecto
+* ...
+	* --> La Segunda será para la Implementación de JSF.
+	* --> Buscamos la dependencia https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.13
+	* --> Copias la dependencia y la incluis en el pom del proyecto
 
 ```xml
 <!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-impl -->
@@ -321,15 +317,14 @@ Documentación y Guía del Proyecto
 </dependency>
 
 ```
-
-
-
-* --> Ctrl + s Guardas 
-* --> Click Der sobre el proyecto
-* --> Maven y update Maven o Alt + F5
-* --> Fijarse dentro de Maven Dependencies si Maven descargo la misma
+* ...
+	* --> Ctrl + s Guardas 
+	* --> Click Der sobre el proyecto
+	* --> Maven y update Maven o Alt + F5
+	* --> Fijarse dentro de Maven Dependencies si Maven descargo la misma
 
 </br>
+
 
 ### Configuraciones del Descriptor de Despliegue (web.xml) | Paso Importante | 
 #### (Este Archivos nos proporciona información de configuración y despliegue para los componentes web de Nuestra Aplicación usando Servlets).
