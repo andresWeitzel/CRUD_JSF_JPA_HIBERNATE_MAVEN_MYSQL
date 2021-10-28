@@ -612,21 +612,8 @@ public class JpaUtil {
 private static final String PERSISTENCE_UNIT_NAME = "PERSISTENCE";
 
 ```
-* Notar que el Nombre deberá ser el mismo que el creado peviamente en el persistence.xml
+* Notar que el Nombre deberá ser el mismo que el creado peviamente en el persistence.xml ... ```xml <persistence-unit name="PERSISTENCE"> ```
 
-```xml
-  <persistence-unit name="PERSISTENCE">
-    <description>Hibernate JPA</description>
-    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
-    <properties>
-     
-      ...
-	    
-    </properties>
-  </persistence-unit>
-
-```
 * Ahoramos Creamos un Objeto de tipo EntityManagerFactory que será el que abra la conexión a la db creada. Importar la Clase
 
 ```java
