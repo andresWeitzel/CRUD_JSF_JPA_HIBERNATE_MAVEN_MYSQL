@@ -78,8 +78,9 @@
    - [Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.](#paso-8-creación-de-nuestra-clase-entidad-modelo-cliente-para-la-persistencia-de-datos)
    - [Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-9-creación-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
    - [Paso 10) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-10-configuración-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
-   - [Paso 11) Creación y Configuración de la Interfaz I_ClienteRepository para la Definición de los Métodos de Uso.](#paso-11-creación-y-configuración-de-la-interfaz-i_clienterepository-para-la-definición-de-los-métodos-de-uso)
-   - [Paso 12) Creación y Configuración de la Clase ClienteRepository para la Persistencia de Datos con JPA.](#paso-12-creación-y-configuración-de-la-clase-clienterepository-para-la-persistencia-de-datos-con-jpa)
+   - [Paso 11) Creación y Configuración de la Interfaz I_ClienteRepository para la Definición de los Métodos de Uso (Patrón DAO).](#paso-11-creación-y-configuración-de-la-interfaz-i_clienterepository-para-la-definición-de-los-métodos-de-uso)
+   - [Paso 12) Creación y Configuración de la Clase ClienteRepository para la Persistencia de Datos con JPA (Patrón DAO).](#paso-12-creación-y-configuración-de-la-clase-clienterepository-para-la-persistencia-de-datos-con-jpa)
+   - [Paso 13) Creación de la Clase Controller ClienteBean para la Interacción de la Vista(index.xhtml), el Modelo(clase entidad) y JPA(clase e interfaz repositories) (Patrón MVC).](#paso-13-creación-de-la-clase-controller-clientebean-para-la-interacción-de-la-vista-el-modelo-y-jpa)
 
 
 Creación y Configuración de la Interfaz para la Definición de los Métodos de Uso (Aquitetura Dao)
@@ -1380,8 +1381,8 @@ public class ClienteRepository implements I_ClienteRepository{
 
 </br>
 
-#### 4.0) Creación de la Clase Controller  
-##### (La Clase Controller es para que la misma realice la interacción(eventos) que hace el usuario en la Interfaz y realiza las peticiones al modelo para pasar estos a la vista (MVC). La Clase la vamos a llamar ClienteBean. Recordar que un bean es una clase con requisitos de negocio concretos).
+#### Paso 13) Creación de la Clase Controller ClienteBean para la interacción de la Vista, el Modelo y JPA 
+##### (La Clase Controller es para que la misma realice la interacción(eventos) que hace el usuario en la Vista(index.xhtml), luego la vista realice las peticiones al modelo a traves de jpa(clase e interfaz repositories) para pasarlos a la base de datos y devolverlos a la vista (Patrón MVC). La Clase la vamos a llamar ClienteBean. Recordar que un bean es una clase con requisitos de negocio concretos).
 * --> Creamos un Nuevo paquete para las Clases Controladoras.
 * --> Sobre la ruta src/main/java Click Der, New, package
 * --> En Name colocamos com.mypackages.controllers
