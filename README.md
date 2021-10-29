@@ -93,7 +93,7 @@
    
    - [Paso 12) Creación y Configuración de la Clase ClienteRepository para la Persistencia de Datos con JPA (Patrón DAO).](#paso-12-creación-y-configuración-de-la-clase-clienterepository-para-la-persistencia-de-datos-con-jpa)
    
-   - [Paso 13) Creación de la Clase Controller ClienteBean para la Interacción de la Vista(index.xhtml), el Modelo(clase entidad) y JPA(clase e interfaz repositories) (Patrón MVC).](#paso-13-creación-de-la-clase-controller-clientebean-para-la-interacción-de-la-vista-el-modelo-y-jpa)
+   - [Paso 13) Creación y Configuración de la Clase Controller ClienteBean para la Interacción de la Vista (index.xhtml), el Modelo (Clase Entidad) y JPA (Clases e Interfaz Repositories) (Patrón MVC).](#paso-13-creación-y-configuración-de-la-clase-controller-clientebean-para-la-interacción-de-la-vista-el-modelo-y-jpa)
 
 
 
@@ -1394,17 +1394,19 @@ public class ClienteRepository implements I_ClienteRepository{
 
 </br>
 
-### Paso 13) Creación de la Clase Controller ClienteBean para la interacción de la Vista, el Modelo y JPA 
+### Paso 13) Creación y Configuración de la Clase Controller ClienteBean para la interacción de la Vista, el Modelo y JPA 
 #### (La Clase Controller es para que la misma realice la interacción(eventos) que hace el usuario en la Vista(index.xhtml), luego la vista realice las peticiones al modelo a traves de jpa(clase e interfaz repositories) para pasarlos a la base de datos y devolverlos a la vista (Patrón MVC). La Clase la vamos a llamar ClienteBean. Recordar que un bean es una clase con requisitos de negocio concretos).
-* --> Creamos un Nuevo paquete para las Clases Controladoras.
-* --> Sobre la ruta src/main/java Click Der, New, package
-* --> En Name colocamos com.mypackages.controllers
-* --> Finish y F5 para Actualizar.
-* --> Dentro del Paquete Creamos la Clase Controller llmada ClienteBean.
-* --> Click Der sobre el paquete, New, Class
-* --> Asegurarse estar en la ruta estipulada y en Name colocamos ClienteBean
-* --> Finish y F5 para actualizar
-* --> Te debería haber quedado..
+
+* Creación de la Clase Controladora 
+	* --> Primero creamos un Nuevo paquete para la Clase. 
+	* --> Sobre la ruta src/main/java Click Der, New, package
+	* --> En Name colocamos com.mypackages.controllers
+	* --> Finish y F5 para Actualizar.
+	* --> Dentro del Paquete Creamos la Clase Controller llamada ClienteBean.
+	* --> Click Der sobre el paquete, New, Class
+	* --> Asegurarse estar en la ruta estipulada y en Name colocamos ClienteBean
+	* --> Finish y F5 para actualizar
+	* --> Te debería haber quedado..
 
 ```java
 
@@ -1421,7 +1423,7 @@ public class ClienteBean {
 </br>
 
 
-#### 4.1) Configuración de la Clase Controller .
+#### 13.1) Configuración de la Clase Controller .
 * --> Vamos a hacer uso de Anotaciones para trabajar con JSF.
 * --> Hacemos uso de la anotacion @ManagedBean y @RequestScoped.
 * --> La primera es para que JSF reconozca la clase como un componente Managed Bean(Componente JSF) y la Segunda para indicarle el Alcance de esta Clase. Le indicamos que siempre que se realice la peticion hacia el servidor se mantenga el Bean.
