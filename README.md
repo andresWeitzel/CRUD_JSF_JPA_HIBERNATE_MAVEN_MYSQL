@@ -95,7 +95,7 @@
    
    - [Paso 13) Creación y Configuración de la Clase Controller ClienteBean para la Interacción de la Vista (index.xhtml), el Modelo (Clase Entidad) y JPA (Clases e Interfaz Repositories) (Patrón MVC).](#paso-13-creación-y-configuración-de-la-clase-controller-clientebean-para-la-interacción-de-la-vista-el-modelo-y-jpa)
 
-   - [Paso 14) Creación y Configuración de la Vista index.XHTML con JSF](#paso-14-creación-y-configuración-de-la-vista-index.xhtml-con-jsf)
+   - [Paso 14) Creación y Configuración de la Vista XHTML con JSF](#paso-14-creación-y-configuración-de-la-vista-xhtml-con-jsf)
 
 
 
@@ -1487,25 +1487,28 @@ public class ClienteBean {
 
 
 
-### Paso 14) Creación y Configuración de la Vista index.XHTML con JSF
+### Paso 14) Creación y Configuración de la Vista XHTML con JSF
 #### (Si Trabajamos con JSF no es válido el index.html, osea html puro, ya que el mismo no nos permite trabajar con componentes JSF, vamos a usar xhtml).
 
+</br>
+
 #### 5.1) Creación de la Vista.
-* --> XHTML = Es HTML expresado como XML válido.
-* --> Por defecto Eclipse no trae instalado los paquetes para el uso de xhtml, tendremos que instalarlos desde Eclipse.
-* --> Vamos a Help, Eclipse Marketplace y en Search colocamos JBoss Tools.
-* --> Instalar JBoss Tools 4.21.0.Final, Aaegurarse que esté instalado y reiniciar el IDE.
-* --> Vamos a Crear un Archivo xhtml
-* --> Dentro de webapp (src/main/java/webapp) creamos el index.xhtml
-* --> Click Der , New, XHTML Page,. Si no aparece en Other y Filtras.
-* --> En el File name colocamos index.xhtml y Finish
+* XHTML = Es HTML expresado como XML válido.
+* Instalación de Herramientas para el Uso de xhtml
+	* --> Por defecto Eclipse no trae instalado los paquetes para el uso de xhtml, tendremos que instalarlos desde Eclipse.
+	* --> Vamos a Help, Eclipse Marketplace y en Search colocamos JBoss Tools.
+	* --> Instalar JBoss Tools 4.21.0.Final, Aaegurarse que esté instalado y reiniciar el IDE.
+* Creación del Archivo index.xhtml
+	* --> Dentro de webapp (src/main/java/webapp) creamos el index.xhtml
+	* --> Click Der , New, XHTML Page,. Si no aparece en Other y Filtras.
+	* --> En el File name colocamos index.xhtml y Finish
 
 </br>
 
 
 #### 5.2) Configuración de la Vista.
 ##### (Las Etiquetas en html son como los componentes en jsf).
-* --> Vamos a darle el cuerpo al Archivo, buscar una plantilla base a gusto, te recomiendo https://www.adictosaltrabajo.com/2010/04/20/jsf-2-facelets-templates-and-composite-components/ o copiar la siguiente
+* Vamos a darle el cuerpo al Archivo, buscar una plantilla base a gusto, te recomiendo https://www.adictosaltrabajo.com/2010/04/20/jsf-2-facelets-templates-and-composite-components/ o copiar la siguiente
 
 
 ```html
@@ -1526,8 +1529,7 @@ public class ClienteBean {
 </html>
 
 ```
-* --> Todos los componentes en JSF comienzan con el prefijo h dentro de las etiquetas
-* 
+* Todos los componentes en JSF comienzan con el prefijo h dentro de las etiquetas
 
 </br>
 
