@@ -701,12 +701,13 @@ public class JpaUtil {
 
 </br>
 
-* Creación de la Interfaz I_ClienteRepository
-	* --> Creamos un Nuevo paquete para las Interfaces.
+#### 11.1) Creación de la Interfaz I_ClienteRepository
+ 
+* Creamos un Nuevo paquete para las Interfaces.
 	* --> Sobre la ruta src/main/java Click Der, New, package
 	* --> En Name colocamos com.mypackages.repositories.interfaces
 	* --> Finish y F5 para Actualizar.
-	* --> Dentro del Paquete Creamos la Interfaz I_ClienteRepository.
+* Dentro del Paquete Creamos la Interfaz I_ClienteRepository.
 	* --> Click Der sobre el paquete, New, Interface
 	* --> Asegurarse estar en la ruta estipulada y en Name colocamos I_ClienteRepository
 	* --> Finish y F5 para actualizar
@@ -726,10 +727,11 @@ public interface I_ClienteRepository {
 
 </br>
 
-* Configuración de la Interfaz I_ClienteRepository
-	* --> Creamos los métodos para ser implementados y configurados en la clase ClienteRepository CON JPA
-	* --> save, remove, update,getAll, getById, etc. El  Método getAll será una Lista de Tipo Cliente.
-	* --> Vamos de a partes, métodos conocidos.. save remove, etc
+#### 11.2) Configuración de la Interfaz I_ClienteRepository
+ 
+* Creción de los métodos para ser implementados y configurados en la clase ClienteRepository CON JPA
+	* --> Los Métodos serán save, remove, update,getAll, getById, etc. El  Método getAll será una Lista de Tipo Cliente.
+	* --> Vamos de a partes, creamos los métodos más conocidos.. save(), remove(), etc
 
 
 ```java
@@ -751,7 +753,7 @@ public interface I_ClienteRepository {
 
 ```
 
-* Método getAll de tipo Lista..
+* Creación del Método getAll() de tipo Lista..
 
 ```java
 
@@ -778,7 +780,7 @@ public interface I_ClienteRepository {
 ```
 
 
-* Método getById
+* Método getById()
 
 ```java
 
