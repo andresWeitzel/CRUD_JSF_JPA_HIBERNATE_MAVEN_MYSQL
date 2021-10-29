@@ -83,7 +83,6 @@
    - [Paso 13) Creación de la Clase Controller ClienteBean para la Interacción de la Vista(index.xhtml), el Modelo(clase entidad) y JPA(clase e interfaz repositories) (Patrón MVC).](#paso-13-creación-de-la-clase-controller-clientebean-para-la-interacción-de-la-vista-el-modelo-y-jpa)
 
 
-Creación y Configuración de la Interfaz para la Definición de los Métodos de Uso (Aquitetura Dao)
 
  #### Sección 5) Herramientas del Proyecto
    - [Herramienta Cygwin para el uso de Git.](#uso-de-cygwin)
@@ -413,8 +412,9 @@ Creación y Configuración de la Interfaz para la Definición de los Métodos de
 
 
 ### Paso 6) Configuraciones del SGDB Mysql.
+#### (El Sistema de Gestión de Base de datos(SGDB) es un conjunto de programas que nos permiten gestionar la base de datos, es común confundirse con el Nombre, Mysql como tal no es la Base de Datos, sino un SGDB, el Motor de Mysql que he implementado es INNODB, el más común).
 
-* Hasta acá deberías tener incluido el conector para Mysql en el pom para que se descargue la dependencia (Fijasrse parte dependencias).
+* Hasta acá deberías tener incluido el conector para Mysql en el pom para que se descargue la dependencia (Fijarse la Sección de dependencias).
 
 * Abrimos la Herramienta XAMPP ( Buscate un microtutorial para usarla ), o la que se tenga, levantamos los Servicios de Mysql y Creamos una Nueva Base de Datos.
 	* --> Depende que S.O tengas podrás o no tener esta herramienta, no hace falta tenerla, también es posible levantar un servicio mysql desde la bash en Linux
@@ -573,7 +573,7 @@ public class Cliente {
 
 
 ### Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db
-##### (En esta Clase se crea el objeto que nos permite realizar la persistencia de los datos en la db).
+#### (En esta Clase se crea el objeto que nos permite realizar la persistencia de los datos en la db).
 
 * Creación del paquete que alojará la Clase dentro de la ruta ya usada (src/main/java).
 	* --> Sobre la misma Click Der, New, package
@@ -601,7 +601,7 @@ public class JpaUtil {
 
 
 ### Paso 10) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.
-##### (Vamos a configurar la Unidad de Persistencia, el entityManager y la Persistencia de la misma con el EntityManagerFactory. Todo esto para persistir los datos desde esta Clase).
+#### (Vamos a configurar la Unidad de Persistencia, el entityManager y la Persistencia de la misma con el EntityManagerFactory. Todo esto para persistir los datos desde esta Clase).
 
  * Unidad de Persistencia = Modelo relacional de objeto que correlaciona las clases Java.
 
@@ -1381,8 +1381,8 @@ public class ClienteRepository implements I_ClienteRepository{
 
 </br>
 
-#### Paso 13) Creación de la Clase Controller ClienteBean para la interacción de la Vista, el Modelo y JPA 
-##### (La Clase Controller es para que la misma realice la interacción(eventos) que hace el usuario en la Vista(index.xhtml), luego la vista realice las peticiones al modelo a traves de jpa(clase e interfaz repositories) para pasarlos a la base de datos y devolverlos a la vista (Patrón MVC). La Clase la vamos a llamar ClienteBean. Recordar que un bean es una clase con requisitos de negocio concretos).
+### Paso 13) Creación de la Clase Controller ClienteBean para la interacción de la Vista, el Modelo y JPA 
+#### (La Clase Controller es para que la misma realice la interacción(eventos) que hace el usuario en la Vista(index.xhtml), luego la vista realice las peticiones al modelo a traves de jpa(clase e interfaz repositories) para pasarlos a la base de datos y devolverlos a la vista (Patrón MVC). La Clase la vamos a llamar ClienteBean. Recordar que un bean es una clase con requisitos de negocio concretos).
 * --> Creamos un Nuevo paquete para las Clases Controladoras.
 * --> Sobre la ruta src/main/java Click Der, New, package
 * --> En Name colocamos com.mypackages.controllers
