@@ -95,7 +95,7 @@
    
    - [Paso 13) Creación y Configuración de la Clase Controller ClienteBean para la Interacción de la Vista (index.xhtml), el Modelo (Clase Entidad) y JPA (Clases e Interfaz Repositories) (Patrón MVC).](#paso-13-creación-y-configuración-de-la-clase-controller-clientebean-para-la-interacción-de-la-vista-el-modelo-y-jpa)
 
-   - [Paso 14) Creación de la Vista XHTML con JSF](#creación-de-la-vista-xhtml-con-jsf)
+   - [Paso 14) Creación y Configuración de la Vista index.XHTML con JSF](#paso-14-creación-y-configuración-de-la-vista-index.xhtml-con-jsf)
 
 
 
@@ -1487,8 +1487,10 @@ public class ClienteBean {
 
 
 
-### Paso 14) Creación de la Vista XHTML con JSF
+### Paso 14) Creación y Configuración de la Vista index.XHTML con JSF
 #### (Si Trabajamos con JSF no es válido el index.html, osea html puro, ya que el mismo no nos permite trabajar con componentes JSF, vamos a usar xhtml).
+
+#### 5.1) Creación de la Vista.
 * --> XHTML = Es HTML expresado como XML válido.
 * --> Por defecto Eclipse no trae instalado los paquetes para el uso de xhtml, tendremos que instalarlos desde Eclipse.
 * --> Vamos a Help, Eclipse Marketplace y en Search colocamos JBoss Tools.
@@ -1501,7 +1503,7 @@ public class ClienteBean {
 </br>
 
 
-#### 5.1) Configuración de la Vista XHTML con JSF.
+#### 5.2) Configuración de la Vista.
 ##### (Las Etiquetas en html son como los componentes en jsf).
 * --> Vamos a darle el cuerpo al Archivo, buscar una plantilla base a gusto, te recomiendo https://www.adictosaltrabajo.com/2010/04/20/jsf-2-facelets-templates-and-composite-components/ o copiar la siguiente
 
