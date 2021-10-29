@@ -61,30 +61,43 @@
 
 ## Indice
 
- ### Sección 1) Creación del Proyecto y Configuraciones   
+ #### Sección 1) Creación del Proyecto y Configuraciones   
    - [Paso 1) Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#paso-1-creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
+    
    - [Paso 2) Otras Configuraciones del Proyecto.](#paso-2-otras-configuraciones-del-proyecto)
 
- ### Sección 2) Configuracion del Servidor, Dependencias del Proyecto y Configuración del Descriptor de Despliegue
-   - [Paso 3) Configuración del Servidor de Despliegue (Wildfly).](#paso-3-configuración-del-servidor-de-despliegue-wildfly)
-   - [Paso 4) Dependencias del Proyecto.](#paso-4-dependencias-del-proyecto)
-   - [Paso 5) Configuraciones del Descriptor de Despliegue (web.xml)](#paso-5-configuraciones-del-descriptor-de-despliegue-webxml) 
 
- ### Sección 3) Configuración del SGDB Mysql y JPA-Hibernate para la Persistencia de Datos
+ #### Sección 2) Configuracion del Servidor, Dependencias del Proyecto y Configuración del Descriptor de Despliegue
+   - [Paso 3) Configuración del Servidor de Despliegue (Wildfly).](#paso-3-configuración-del-servidor-de-despliegue-wildfly)
+    
+   - [Paso 4) Dependencias del Proyecto.](#paso-4-dependencias-del-proyecto)
+    
+   - [Paso 5) Configuraciones del Descriptor de Despliegue (web.xml)](#paso-5-configuraciones-del-descriptor-de-despliegue-webxml) 
+    
+
+ 
+ #### Sección 3) Configuración del SGDB Mysql y JPA-Hibernate para la Persistencia de Datos
    - [Paso 6) Configuración del SGDB Mysql.](#paso-6-configuraciones-del-sgdb-mysql)
+    
    - [Paso 7) Configuración de JPA-HIBERNATE para la Persistencia de datos.](#paso-7-configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
    
- ### Sección 4) Creación, Configuración y Manejo de Clases, Interfaces y Paquetes para el CRUD MVC
+ 
+ #### Sección 4) Creación, Configuración y Manejo de Clases, Interfaces y Paquetes para el CRUD MVC
    - [Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.](#paso-8-creación-de-nuestra-clase-entidad-modelo-cliente-para-la-persistencia-de-datos)
+    
    - [Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-9-creación-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
+   
    - [Paso 10) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-10-configuración-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
+   
    - [Paso 11) Creación y Configuración de la Interfaz I_ClienteRepository para la Definición de los Métodos de Uso (Patrón DAO).](#paso-11-creación-y-configuración-de-la-interfaz-i_clienterepository-para-la-definición-de-los-métodos-de-uso)
+   
    - [Paso 12) Creación y Configuración de la Clase ClienteRepository para la Persistencia de Datos con JPA (Patrón DAO).](#paso-12-creación-y-configuración-de-la-clase-clienterepository-para-la-persistencia-de-datos-con-jpa)
+   
    - [Paso 13) Creación de la Clase Controller ClienteBean para la Interacción de la Vista(index.xhtml), el Modelo(clase entidad) y JPA(clase e interfaz repositories) (Patrón MVC).](#paso-13-creación-de-la-clase-controller-clientebean-para-la-interacción-de-la-vista-el-modelo-y-jpa)
 
 
 
- ### Sección 5) Herramientas del Proyecto
+ #### Sección 5) Herramientas del Proyecto
    - [Herramienta Cygwin para el uso de Git.](#uso-de-cygwin)
 
 
