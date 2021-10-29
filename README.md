@@ -78,7 +78,7 @@
    - [Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.](#paso-8-creación-de-nuestra-clase-entidad-modelo-cliente-para-la-persistencia-de-datos)
    - [Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-9-creación-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
    - [Paso 10) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-10-configuración-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
-   - [Paso 11) Creación y Configuración de la Interfaz I_ClienteRepository para la Definición de los Métodos de Uso (Aquitetura Dao).](#paso-11-creación-y-configuración-de-la-interfaz-iclienterepository-para-la-definición-de-los-métodos-de-uso-arquitecturadao)
+   - [Paso 11) Creación y Configuración de la Interfaz I_ClienteRepository para la Definición de los Métodos de Uso (Aquitetura Dao).](#paso-11-creación-y-configuración-de-la-interfaz-iclienterepository-para-la-definición-de-los-métodos-de-uso-arquitectura-dao)
 
 
  #### Sección 5) Herramientas del Proyecto
@@ -693,7 +693,7 @@ public class JpaUtil {
 
 
 
-### Paso 11) Creación y Configuración de la Interfaz I_ClienteRepository para la Definición de los Métodos de Uso (Aquitetura Dao).
+### Paso 11) Creación y Configuración de la Interfaz I_ClienteRepository para la Definición de los Métodos de Uso (Aquitetura Dao)
 #### (La Arquitectura Dao  suministra las interfaces  para poder usar los metodos CRUD sin necesidad de duplicar codigo. Vamos a Crear una Interfaz que nos provea de los métodos a implementar para usarlos dentro de la Clase Repository con JPA).
 
 </br>
