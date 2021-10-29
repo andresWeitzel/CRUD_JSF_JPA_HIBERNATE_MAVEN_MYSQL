@@ -78,7 +78,7 @@
    - [Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.](#paso-8-creación-de-nuestra-clase-entidad-modelo-cliente-para-la-persistencia-de-datos)
    - [Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-9-creación-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
    - [Paso 10) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-10-configuración-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
-   - [Paso 11) Creación y Configuración de la Interfaz I_ClienteRepository para la Definición de los Métodos de Uso (Aquitetura Dao).](#paso-11-creación-y-configuración-de-la-interfaz-iclienterepository-para-la-definición-de-los-métodos-de-uso-arquitectura-dao)
+   - [Paso 11) Creación y Configuración de la Interfaz I_ClienteRepository para la Definición de los Métodos de Uso (Aquitetura Dao).](#paso-11-creación-y-configuración-de-la-interfaz-i-clienterepository-para-la-definición-de-los-métodos-de-uso-arquitectura-dao)
 
 
  #### Sección 5) Herramientas del Proyecto
