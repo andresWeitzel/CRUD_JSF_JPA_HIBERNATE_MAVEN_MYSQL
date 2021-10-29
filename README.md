@@ -61,20 +61,20 @@
 
 ## Indice
 
- #### Sección 1) Creación del Proyecto y Configuraciones   
+ ### Sección 1) Creación del Proyecto y Configuraciones   
    - [Paso 1) Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#paso-1-creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
    - [Paso 2) Otras Configuraciones del Proyecto.](#paso-2-otras-configuraciones-del-proyecto)
 
- #### Sección 2) Configuracion del Servidor, Dependencias del Proyecto y Configuración del Descriptor de Despliegue
+ ### Sección 2) Configuracion del Servidor, Dependencias del Proyecto y Configuración del Descriptor de Despliegue
    - [Paso 3) Configuración del Servidor de Despliegue (Wildfly).](#paso-3-configuración-del-servidor-de-despliegue-wildfly)
    - [Paso 4) Dependencias del Proyecto.](#paso-4-dependencias-del-proyecto)
    - [Paso 5) Configuraciones del Descriptor de Despliegue (web.xml)](#paso-5-configuraciones-del-descriptor-de-despliegue-webxml) 
 
- #### Sección 3) Configuración del SGDB Mysql y JPA-Hibernate para la Persistencia de Datos
+ ### Sección 3) Configuración del SGDB Mysql y JPA-Hibernate para la Persistencia de Datos
    - [Paso 6) Configuración del SGDB Mysql.](#paso-6-configuraciones-del-sgdb-mysql)
    - [Paso 7) Configuración de JPA-HIBERNATE para la Persistencia de datos.](#paso-7-configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
    
- #### Sección 4) Creación, Configuración y Manejo de Clases, Interfaces y Paquetes para el CRUD MVC
+ ### Sección 4) Creación, Configuración y Manejo de Clases, Interfaces y Paquetes para el CRUD MVC
    - [Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.](#paso-8-creación-de-nuestra-clase-entidad-modelo-cliente-para-la-persistencia-de-datos)
    - [Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-9-creación-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
    - [Paso 10) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-10-configuración-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
@@ -84,7 +84,7 @@
 
 
 
- #### Sección 5) Herramientas del Proyecto
+ ### Sección 5) Herramientas del Proyecto
    - [Herramienta Cygwin para el uso de Git.](#uso-de-cygwin)
 
 
