@@ -729,7 +729,7 @@ public interface I_ClienteRepository {
 
 #### 11.2) Configuración de la Interfaz I_ClienteRepository
  
-* Creción de los métodos para ser implementados y configurados en la clase ClienteRepository CON JPA
+* Creación de los métodos para ser implementados y configurados en la clase ClienteRepository CON JPA
 	* --> Los Métodos serán save, remove, update,getAll, getById, etc. El  Método getAll será una Lista de Tipo Cliente.
 	* --> Vamos de a partes, creamos los métodos más conocidos.. save(), remove(), etc
 
@@ -893,14 +893,14 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 
 </br>
 
-#### 12.3) Métodos de la Clase ClienteRepository
-#### (Con JPA-Hibernate se trabaja con Transacciones(los objetos creados tienen un tiempo de vida y hay que indicar cada proceso del mismo).
+#### 12.3) Creación de los Métodos de la Clase ClienteRepository
+#### (Con JPA-Hibernate se trabaja con Transacciones (los objetos creados tienen un tiempo de vida y hay que indicar cada proceso del mismo).
 
 
 </br>
 
-* MÉTODO SAVE( Este Método se deberá encargar de guardar el objeto Cliente en la db)
-
+#### 12.3.1) Creación del Método save()
+* Este Método se deberá encargar de guardar el objeto Cliente en la db
 * Comenzaremos una transacción
 ```java
 
@@ -952,7 +952,9 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 ```
 
 
-*  MÉTODO REMOVE()
+</br>
+
+#### 12.3.2) Creación del Método remove()
 * --> Comenzaremos una transacción
 ```java
 
@@ -1003,10 +1005,9 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 ```
 
 
+</br>
 
-
-
-* --> MÉTODO UPDATE()
+#### 12.3.3) Creación del Método update()
 * --> Comenzaremos una transacción
 ```java
 
@@ -1040,9 +1041,11 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 ```
 
 
+</br>
 
-* --> MÉTODO GETALL()
+#### 12.3.4) Creación del Método getAll()
 * --> Comenzaremos una transacción
+
 ```java
 
 @Override
@@ -1162,7 +1165,10 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 	}
 ```
 
-* --> MÉTODO GETBYID()
+
+</br>
+
+#### 12.3.5) Creación del Método getById()
 * --> Comenzaremos una transacción
 ```java
 
@@ -1281,8 +1287,9 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 </br>
 </br>
 
-* --> Código Completo de la Clase ClienteRepository
+</br>
 
+#### 12.3.6) Código Completo de la Clase ClienteRepository
 
 ```java
 
