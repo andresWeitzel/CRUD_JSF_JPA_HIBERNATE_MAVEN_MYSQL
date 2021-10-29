@@ -95,6 +95,8 @@
    
    - [Paso 13) Creación y Configuración de la Clase Controller ClienteBean para la Interacción de la Vista (index.xhtml), el Modelo (Clase Entidad) y JPA (Clases e Interfaz Repositories) (Patrón MVC).](#paso-13-creación-y-configuración-de-la-clase-controller-clientebean-para-la-interacción-de-la-vista-el-modelo-y-jpa)
 
+   - [Paso 14) Creación de la Vista XHTML con JSF](#creación-de-la-vista-xhtml-con-jsf)
+
 
 
  #### Sección 5) Herramientas del Proyecto
@@ -1397,12 +1399,12 @@ public class ClienteRepository implements I_ClienteRepository{
 ### Paso 13) Creación y Configuración de la Clase Controller ClienteBean para la interacción de la Vista, el Modelo y JPA 
 #### (La Clase Controller es para que la misma realice la interacción(eventos) que hace el usuario en la Vista(index.xhtml), luego la vista realice las peticiones al modelo a traves de jpa(clase e interfaz repositories) para pasarlos a la base de datos y devolverlos a la vista (Patrón MVC). La Clase la vamos a llamar ClienteBean. Recordar que un bean es una clase con requisitos de negocio concretos).
 
-* Creación de la Clase Controladora 
-	* --> Primero creamos un Nuevo paquete para la Clase. 
+#### 13.1) Creación de la Clase Controladora 
+* Primero creamos un Nuevo paquete para la Clase. 
 	* --> Sobre la ruta src/main/java Click Der, New, package
 	* --> En Name colocamos com.mypackages.controllers
 	* --> Finish y F5 para Actualizar.
-	* --> Dentro del Paquete Creamos la Clase Controller llamada ClienteBean.
+* Dentro del Paquete Creamos la Clase Controller llamada ClienteBean.
 	* --> Click Der sobre el paquete, New, Class
 	* --> Asegurarse estar en la ruta estipulada y en Name colocamos ClienteBean
 	* --> Finish y F5 para actualizar
@@ -1423,10 +1425,10 @@ public class ClienteBean {
 </br>
 
 
-#### 13.1) Configuración de la Clase Controller .
-* --> Vamos a hacer uso de Anotaciones para trabajar con JSF.
-* --> Hacemos uso de la anotacion @ManagedBean y @RequestScoped.
-* --> La primera es para que JSF reconozca la clase como un componente Managed Bean(Componente JSF) y la Segunda para indicarle el Alcance de esta Clase. Le indicamos que siempre que se realice la peticion hacia el servidor se mantenga el Bean.
+#### 13.2) Configuración de la Clase Controller .
+* Vamos a hacer uso de Anotaciones para trabajar con JSF.
+	* --> Hacemos uso de la anotacion @ManagedBean y @RequestScoped.
+	* --> La primera es para que JSF reconozca la clase como un componente Managed Bean(Componente JSF) y la Segunda para indicarle el Alcance de esta Clase. Le indicamos que siempre que se realice la peticion hacia el servidor se mantenga el Bean.
 
 ```java
 package com.mypackage.controllers;
@@ -1442,7 +1444,7 @@ public class ClienteBean {
 
 ```
 
-* --> Seguidamente creamos un metodo que nos muestre todos los Clientes de la base de datos implementando los metodos del repositorio creado.
+* Seguidamente creamos un metodo que nos muestre todos los Clientes de la base de datos implementando los metodos del repositorio creado.
 
 ```java
 	public List<Cliente> getAll(){
@@ -1453,7 +1455,7 @@ public class ClienteBean {
 	}
 
 ```
-* --> Código Completo
+* Código Completo ...
 
 ```java
 package com.mypackage.controllers;
@@ -1485,8 +1487,8 @@ public class ClienteBean {
 
 
 
-#### 5.0) Creación de la Vista XHTML con JSF.
-##### (Si Trabajamos con JSF no es válido el index.html, osea html puro, ya que el mismo no nos permite trabajar con componentes JSF, vamos a usar xhtml).
+### Paso 14) Creación de la Vista XHTML con JSF
+#### (Si Trabajamos con JSF no es válido el index.html, osea html puro, ya que el mismo no nos permite trabajar con componentes JSF, vamos a usar xhtml).
 * --> XHTML = Es HTML expresado como XML válido.
 * --> Por defecto Eclipse no trae instalado los paquetes para el uso de xhtml, tendremos que instalarlos desde Eclipse.
 * --> Vamos a Help, Eclipse Marketplace y en Search colocamos JBoss Tools.
