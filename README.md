@@ -1525,11 +1525,167 @@ public class ClienteBean {
 </h:head>
 <h:body>
 	
+	<h2>
+	  	<h:outputText value="LISTA DE CLIENTES"></h:outputText>
+	</h2>
+	
 </h:body>
 </html>
 
 ```
 * Todos los componentes en JSF comienzan con el prefijo h dentro de las etiquetas
+* Vamos a Crear una Tabla para Desplegar la información del Manager Bean(Clase Controller), primero creamos la etiqueta de tabla, dentro la columna ID y Nombre, cada columna tiene una etiqueta de tipo facet, que es un tipo especial de encabezado.
+
+```html
+
+<h:dataTable border="1">
+		
+		<h:column>
+			
+			<f:facet name="header">ID</f:facet>
+			
+		</h:column>
+		
+			<h:column>
+			
+			<f:facet name="header">Nombre</f:facet>
+			
+		</h:column>
+		
+</h:dataTable>
+
+
+
+```
+
+* Vamos a traer los datos de la Clase Bean colocando el nombre de la clase dentro del dataTable e invocando el método getAll() de la Clase ClienteRepository
+
+``` html
+
+<h:dataTable value="#{ClienteBean.getAll()}" border="1">
+		
+		<h:column>
+			
+			<f:facet name="header">ID</f:facet>
+			
+		</h:column>
+		
+			<h:column>
+			
+			<f:facet name="header">Nombre</f:facet>
+			
+		</h:column>
+		
+</h:dataTable>
+
+
+```
+
+* Necesitamos recorrer la lista y mostrarla en la tabla, usaremos una variable para almacenar los objetos que vengan en la lista. Las variables en JSF dentro de etiquetas se declaran con el nombre var
+
+``` html
+
+	<h:dataTable  value="#{ClienteBean.getAll()}" var="objetoCliente" border="1">
+		
+		<h:column>
+			
+			<f:facet name="header">ID</f:facet>
+			
+		</h:column>
+		
+			<h:column>
+			
+			<f:facet name="header">Nombre</f:facet>
+			
+		</h:column>
+		
+	</h:dataTable>
+
+``` 
+
+* Vamos a mostrar los campos de los objetos (de la clase, no los campos de la db. De eso se encarga hibernate-jpa con las clases e interfaces creadas) que traemos del Bean (id, nombre) con los binds("#{}") y a traves de la variable declarada objetoCliente.
+
+``` html
+	<h:dataTable  value="#{ClienteBean.getAll()}" var="objetoCliente" border="1">
+		
+		<h:column>
+			
+			<f:facet name="header">ID</f:facet>
+			<h:outputText value="#{objetoCliente.id}"></h:outputText>
+			
+		</h:column>
+		
+			<h:column>
+			
+			<f:facet name="header">Nombre</f:facet>
+			<h:outputText value="#{objetoCliente.nombre}"></h:outputText>
+			
+			
+		</h:column>
+		
+	</h:dataTable>
+
+``` 
+
+* Código Completo
+
+``` html
+
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Plantilla Básica JSF</title>
+</h:head>
+<h:body>
+
+	<h2>
+		<h:outputText value="LISTA DE CLIENTES"></h:outputText>
+	</h2>
+	
+	<h:dataTable  value="#{ClienteBean.getAll()}" var="objetoCliente" border="1">
+		
+		<h:column>
+			
+			<f:facet name="header">ID</f:facet>
+			<h:outputText value="#{objetoCliente.id}"></h:outputText>
+			
+		</h:column>
+		
+			<h:column>
+			
+			<f:facet name="header">Nombre</f:facet>
+			<h:outputText value="#{objetoCliente.nombre}"></h:outputText>
+			
+			
+		</h:column>
+		
+	</h:dataTable>
+	
+</h:body>
+</html>
+
+
+``` 
+* Si lo Ejecutamos no vemos ningún Registro de la DB, hasta el momento no tenemos datos en la misma, vamos a abrir phpMyAdmin y cargar algunos Registros de Prueba. El comando sería..
+
+```sql
+use db_test_jpa_jsf;
+insert into clientes(id, nombre) values 
+(1,"Marcos"),
+(2,"Julieta"),
+(3,"Rocío"),
+(4,"Juan");
+
+```
+
+
+
+
 
 </br>
 
