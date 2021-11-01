@@ -14,7 +14,7 @@
 | WildFly |   23.0 Runtime | Servidor de Despliegue |
 | Eclipse IDE EE |  4.20 | Entorno de Desarrollo Integrado |
 | Cygwin | 3.1.6-1  | Colección de Herramientas / Terminal en Windows integrada al IDE Eclipse |
-| Git | 2.29.1.windows.1  | Control de Versiones |
+| Git | 2.29.1  | Control de Versiones |
 
 </br>
 
