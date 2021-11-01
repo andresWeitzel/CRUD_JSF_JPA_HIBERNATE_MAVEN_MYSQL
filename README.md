@@ -475,22 +475,24 @@
 	* --> Copiar el siguiente código y pegarlo dentro del persistence.xml
 
 ```xml
+
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
   version="2.1">
 
   <persistence-unit name="PERSISTENCE">
     <description>Hibernate JPA</description>
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    
 
     <properties>
-     
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test-jpa-jsf" />
+    
+     <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_test_jpa_jsf?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root" />
-      <property name="javax.persistence.jdbc.password" value="root" />
+      <property name="javax.persistence.jdbc.password" value="" />
+       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="hibernate.show_sql" value="true" />
       <property name="hibernate.hbm2ddl.auto" value="update" />        
     </properties>
@@ -500,7 +502,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
 ```
 
-* --> ATENTI: Las propiedades de este Archivo se pueden modificar en base a lo que se requiera, por ejemplo, si se desea cambiar el nombre raíz de la URL del proyecto("jdbc:mysql://localhost:3306/test-jpa-jsf"), quitar /test-jpa-jsf y reemplazar a gusto, lo mismo para el password, nombre de usuario, etc.
+* --> ATENTI: Las propiedades de este Archivo depende del Proyetco. Si se sigue al pie de la letra, es copiar y pegar, las propiedades varian dependiendo las configuraciones dadas en la db creada.      
+*  La Propiedad <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_test_jpa_jsf?serverTimezone=UTC"/> posee el nombre de la db creada (db_test_jpa_jsf) y el puerto por defecto de mysql.
+*  Lo mismo para la propiedad user y password. 
+
 
 
 
@@ -1428,7 +1433,7 @@ public class ClienteBean {
 #### 13.2) Configuración de la Clase Controller .
 * Vamos a hacer uso de Anotaciones para trabajar con JSF.
 	* --> Hacemos uso de la anotacion @ManagedBean y @RequestScoped.
-	* --> La primera es para que JSF reconozca la clase como un componente Managed Bean(Componente JSF) y la Segunda para indicarle el Alcance de esta Clase. Le indicamos que siempre que se realice la peticion hacia el servidor se mantenga el Bean.
+	* --> La primera es para que JSF reconozca la clase como un componente Managed Bean(Componente JSF) y la Segunda para indicarle el Alcance de esta Clase. Le indicamos que siempre que se realice la peticion hacia el servidor se mantenga el Bean. Dentro del ManagedBean le pasamos el nombre del mismo
 
 ```java
 package com.mypackage.controllers;
@@ -1436,7 +1441,7 @@ package com.mypackage.controllers;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-@ManagedBean
+@ManagedBean(name="ClienteBean")
 @RequestScoped
 public class ClienteBean {
 
@@ -1468,7 +1473,7 @@ import javax.faces.bean.RequestScoped;
 import com.mypackages.models.Cliente;
 import com.mypackages.repositories.jpa.ClienteRepository;
 
-@ManagedBean
+@ManagedBean(name="ClienteBean")
 @RequestScoped
 public class ClienteBean {
 	
@@ -1688,17 +1693,6 @@ insert into clientes(id, nombre) values
 
 
 </br>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
