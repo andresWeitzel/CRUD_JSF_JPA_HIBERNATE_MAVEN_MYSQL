@@ -46,15 +46,16 @@ public class ClienteRepository implements I_ClienteRepository{
 	public List<Cliente> getAll() {
 		
 
-		entityManager.getTransaction().begin();
+		//entityManager.getTransaction().begin();
 		
-		List<Cliente> listaClientes = new ArrayList<Cliente>();
+		List<Cliente> listaClientes = new ArrayList<>();
 		
-		listaClientes = (List<Cliente>)entityManager.createNamedQuery("Cliente.findAll").getResultList();
+		List<Cliente> resultList = (List<Cliente>)entityManager.createNamedQuery("Cliente.findAll").getResultList();
+		listaClientes = resultList;
 	 
-		entityManager.getTransaction().commit();
+		//entityManager.getTransaction().commit();
 		
-		JpaUtil.shutdown();
+		//JpaUtil.shutdown();
 		
 		
 		

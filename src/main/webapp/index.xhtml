@@ -9,6 +9,29 @@
 	<title>Plantilla Básica JSF</title>
 </h:head>
 <h:body>
+
+	<h2>
+		<h:outputText value="LISTA DE CLIENTES"></h:outputText>
+	</h2>
+	
+	<h:dataTable  value="#{ClienteBean.getAll()}" var="objetoCliente" border="1">
+		
+		<h:column>
+			
+			<f:facet name="header">ID</f:facet>
+			<h:outputText value="#{objetoCliente.id}"></h:outputText>
+			
+		</h:column>
+		
+			<h:column>
+			
+			<f:facet name="header">Nombre</f:facet>
+			<h:outputText value="#{objetoCliente.nombre}"></h:outputText>
+			
+			
+		</h:column>
+		
+	</h:dataTable>
 	
 </h:body>
 </html>

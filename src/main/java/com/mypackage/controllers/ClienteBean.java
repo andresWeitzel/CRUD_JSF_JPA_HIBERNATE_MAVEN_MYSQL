@@ -8,7 +8,7 @@ import javax.faces.bean.RequestScoped;
 import com.mypackages.models.Cliente;
 import com.mypackages.repositories.jpa.ClienteRepository;
 
-@ManagedBean
+@ManagedBean(name="ClienteBean")
 @RequestScoped
 public class ClienteBean {
 	
