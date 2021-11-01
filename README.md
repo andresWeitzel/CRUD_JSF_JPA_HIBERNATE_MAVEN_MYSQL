@@ -1,4 +1,4 @@
-# CRUD_JSF_JPA_HIBERNATE_MAVEN_MYSQL
+# CRUD JSF, MAVEN, JPA-HIBERNATE, MYSQL
 
 
 
@@ -54,110 +54,197 @@
 
 <hr>
 
-## `Documentación y Guía del Proyecto `
-#### (Esta Documentación que Desarrollé es para la Creación, Configuración, Posibles Errores, Manejo de Maven, JSF, Jpa, Mysql, dependencias con Maven, servidor de despliegue y otros usos de este Proyecto. Recomiendo Leerla y Realizar todo paso a paso como se indica en la misma).
+# ` Documentación y Guía del Proyecto `
+### (Esta Documentación que Desarrollé es para la Creación y Configuración del Proyecto desde Cero, Manejo de Maven, JSF, JPA, Mysql, Dependencias con Maven, Servidor de Despliegue y otros Usos de este Proyecto. Recomiendo Leerla y Realizar todo paso a paso como se indica en la misma).
 
-<hr>
-
+</br>
 
 ## Indice
 
-- [Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
-- [Configuración del Servidor de Despliegue (Wildfly).](#configuración-del-servidor-de-despliegue-wildfly)
-- [Dependencias del Proyecto.](#dependencias-del-proyecto)
-- [Configuraciones Opcionales en Maven.](#configuraciones-opcionales-en-maven)
-- [Configuración del SGDB Mysql.](#configuraciones-del-sgdb-mysql)
-- [Configuración de JPA-HIBERNATE para la Persistencia de datos.](#configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
-- [Herramienta Cygwin para el uso de Git.](#uso-de-cygwin)
+ #### Sección 1) Creación del Proyecto y Configuraciones   
+   - [Paso 1) Creación y Configuraciones de un Proyecto Web con Maven en Eclipse.](#paso-1-creación-de-un-proyecto-web-con-maven-en-eclipse-y-configuraciónes-iniciales)
+    
+   - [Paso 2) Otras Configuraciones del Proyecto.](#paso-2-otras-configuraciones-del-proyecto)
+
+
+ #### Sección 2) Configuracion del Servidor, Dependencias del Proyecto y Configuración del Descriptor de Despliegue
+   - [Paso 3) Configuración del Servidor de Despliegue (Wildfly).](#paso-3-configuración-del-servidor-de-despliegue-wildfly)
+    
+   - [Paso 4) Dependencias del Proyecto.](#paso-4-dependencias-del-proyecto)
+    
+   - [Paso 5) Configuraciones del Descriptor de Despliegue (web.xml)](#paso-5-configuraciones-del-descriptor-de-despliegue-webxml) 
+    
+
+ 
+ #### Sección 3) Configuración del SGDB Mysql y JPA-Hibernate para la Persistencia de Datos
+   - [Paso 6) Configuración del SGDB Mysql.](#paso-6-configuraciones-del-sgdb-mysql)
+    
+   - [Paso 7) Configuración de JPA-HIBERNATE para la Persistencia de datos.](#paso-7-configuración-de-jpa-hibernate-para-la-persistencia-de-datos)
+   
+ 
+ #### Sección 4) Creación, Configuración y Manejo de Clases, Interfaces y Paquetes para el CRUD MVC
+   - [Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.](#paso-8-creación-de-nuestra-clase-entidad-modelo-cliente-para-la-persistencia-de-datos)
+    
+   - [Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-9-creación-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
+   
+   - [Paso 10) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.](#paso-10-configuración-de-la-clase-jpa-util-para-la-persistencia-de-los-datos-a-la-db)
+   
+   - [Paso 11) Creación y Configuración de la Interfaz I_ClienteRepository para la Definición de los Métodos de Uso (Patrón DAO).](#paso-11-creación-y-configuración-de-la-interfaz-i_clienterepository-para-la-definición-de-los-métodos-de-uso)
+   
+   - [Paso 12) Creación y Configuración de la Clase ClienteRepository para la Persistencia de Datos con JPA (Patrón DAO).](#paso-12-creación-y-configuración-de-la-clase-clienterepository-para-la-persistencia-de-datos-con-jpa)
+   
+   - [Paso 13) Creación y Configuración de la Clase Controller ClienteBean para la Interacción de la Vista (index.xhtml), el Modelo (Clase Entidad) y JPA (Clases e Interfaz Repositories) (Patrón MVC).](#paso-13-creación-y-configuración-de-la-clase-controller-clientebean-para-la-interacción-de-la-vista-el-modelo-y-jpa)
+
+   - [Paso 14) Creación y Configuración de la Vista XHTML con JSF](#paso-14-creación-y-configuración-de-la-vista-xhtml-con-jsf)
+
+
+
+ #### Sección 5) Herramientas del Proyecto
+   - [Herramienta Cygwin para el uso de Git.](#uso-de-cygwin)
+
+
+
+
+
 
 
 </br>
 
-## Creación de un Proyecto Web con Maven en Eclipse y Configuraciónes Iniciales.
+## Sección 1) Creación del Proyecto y Configuraciones
+
+</br>
+
+### Paso 1) Creación de un Proyecto Web con Maven en Eclipse y Configuraciónes Iniciales.
 #### (Primeramente deberás configurar tu espacio de trabajo, en donde se alojará la aplicación. Cada vez que muevas el Proyecto de Directorio, recomiendo crear o setear nuevamente el Espacio de Trabajo junto con el Servidor).
 
+</br>
 
-#### 1) File 
-* --> New 
-* --> Proyect Maven(Si no aparece buscar en Other)
+* Seleccionar la Pestaña File 
+	* --> New 
+	* --> Proyect Maven(Si no aparece buscar en Other)
 
-#### 2) Por defecto dejar marcado Use default Workspace location 
-* --> Next
 
-#### 3) Esperar a que carguen los Group id y en Filter escribir org.apache.maven.archetypes
-* --> Seleccionar el ultimo(maven-archetype-webapp), este pertenece al Group id org.apache.maven.archetypes.
-* --> Next
+* Por defecto dejar marcado Use default Workspace location 
+	* --> Next
+	
 
-#### 4) Configurar el Group Id (PAQUETE DEL PROYECTO) a gusto, en mi caso com.crud_jsf_jpa_maven
+* Esperar a que carguen los Group id y en Filter escribir org.apache.maven.archetypes
+	* --> Seleccionar el ultimo(maven-archetype-webapp), este pertenece al Group id org.apache.maven.archetypes.
+	* --> Next
 
-#### 5) En Artifact Id (NOMBRE DEL PROYECTO) a gusto, en mi caso CRUD_JSF_JPA_HIBERNATE_MAVEN_MYSQL
 
-#### 6) Seguidamente Finish.
+* Configurar el Group Id (PAQUETE DEL PROYECTO) a gusto, en mi caso com.crud_jsf_jpa_maven
 
-#### 7) Si cerraste alguna ventana/utilidad de Eclipse.
-* --> Window
-* --> Perspective
-* --> Reset perspective
+* En Artifact Id (NOMBRE DEL PROYECTO) a gusto, en mi caso CRUD_JSF_JPA_HIBERNATE_MAVEN_MYSQL
+
+* Seguidamente Finish.
+
+* Si cerraste alguna ventana/utilidad de Eclipse.
+	* --> Window
+	* --> Perspective
+	* --> Reset perspective
 
 </br>
 
-## Configuración del Servidor de Despliegue Wildfly.
+
+
+### Paso 2) Otras Configuraciones del Proyecto.
+#### (Para este paso se anexan configuraciones que para el Proyecto son relevantes, capaz creando el Proyecto desde otro IDE se autoconfiguran dichas configuraciones).
+
+</br>
+
+### 2.1) Actualización de Java-1.7 a 1.8
+
+* Vamos al pom.xml (el archivo al final de todo)
+
+* Dentro de el tag properties donde dice UTF-8 cambiar la version del compiler a 1.8, ctrl+s para guardar
+
+* Click Der sobre el Proyecto
+	* --> Maven
+	* --> Update Proyect
+	* --> Fijate que el Proyecto este seleccionado y Boton ok
+
+* Si cambio JavaSE-1.7 a JavaSE-1.8 se efectuo el cambio
+
+</br>
+
+### 2.2) Paquetes Maven (Java Resources).
+
+* Por Defecto Viene deshabilitada la opción de paquetes Maven, en donde vamos a guardar nuestros paquetes y clases
+	* --> Para habilitar las mismas, click Der sobre el Proyecto.
+	* --> Properties.
+	* --> Buscamos la sección Java Build Path
+	* --> Seleccionamos la casilla Maven Dependencies.
+	* --> Apply and Close.
+	* --> F5 y deberían aparecer (src/main/java y src/test/java)
+
+
+
+
+
+
+
+</br>
+
+
+## Sección 2) Configuración del Servidor y Dependencias del Proyecto
+
+</br>
+
+### Paso 3) Configuración del Servidor de Despliegue Wildfly.
 #### (Las Configuraciones de los Servidores de despliegue son casi los mismos pasos para todos, Tomcat, Jboss, Wildfly, etc. En mi caso opté por Wildfly ya que no requiere tanta configuración que el resto y además es más estable, menos restrictivo para algunas cosas, etc. No hay una única configuración, ni tampoco es algo que se configura una única vez, en caso de algún error, eliminar el Servidor creado, volverlo a configurar y paciencia que levantarlo a primera es LERDO. Si tarda en ejecutar el proyecto, parar la ejecución y ejecutar de nuevo.
 
 
-#### 1) Utilizaré Wildfly, buscar por internet, descargar, descromprimir, colocar en el directorio del proyecto u otro seguro.
+* Link de Descarga del Servidor a implementar https://www.wildfly.org/downloads/
 
+* Descargar, descromprimir, colocar en el directorio del proyecto u otro seguro.
 
-#### 2.1) Seleccionar el Proyecto y Click der sobre el mismo.
-* --> Properties
-* --> Buscar Proyect Facets
-* --> Pestaña Runtimes(a la derecha de todo, al lado de Details)
-* --> Seleccionar el Server WildFly 23.0 Runtime (En mi caso), SI NO APARECE UNO CREARLO, SEGUIR LOS SIG. PASOS
-* --> En caso de que no aparezca tocamos New
-* --> Se abrirá una interfaz llamada New Server Runtime Environment
-* --> Seleccionamos la Version del Server, si descargaste Wildfly 13, selecciona el 13, si es 23, 23,etc para mantener compatibilidad
-* --> Ahora Aparece una Interfaz llamada JBoss Runtime
-* --> Dentro de la misma en Name colocar el nombre a gusto del server a usar
-* --> En Home Directory tocar Browse... y buscamos la ruta del server descargado
-* --> Finish
-* --> Ahora debería aparecer el server en la pestaña Runtimes, lo seleccionamos
-* --> Apply and Close
+* Seleccionar el Proyecto y Click der sobre el mismo.
+	* --> Properties
+	* --> Buscar Proyect Facets
+	* --> Pestaña Runtimes(a la derecha de todo, al lado de Details)
+	* --> Seleccionar el Server WildFly 23.0 Runtime (En mi caso), SI NO APARECE UNO CREARLO, SEGUIR LOS SIG. PASOS
+	* --> En caso de que no aparezca tocamos New
+	* --> Se abrirá una interfaz llamada New Server Runtime Environment
+	* --> Seleccionamos la Version del Server, si descargaste Wildfly 13, selecciona el 13, si es 23, 23,etc para mantener compatibilidad
+	* --> Ahora Aparece una Interfaz llamada JBoss Runtime
+	* --> Dentro de la misma en Name colocar el nombre a gusto del server a usar
+	* --> En Home Directory tocar Browse... y buscamos la ruta del server descargado
+	* --> Finish
+	* --> Ahora debería aparecer el server en la pestaña Runtimes, lo seleccionamos
+	* --> Apply and Close
 
+* Otra forma de realizar esto es desde la pestaña Servers, en las pestañas de abajo de eclipse(a mi me trajo algunos problemas, uso la anterior).
 
+* Fijarse que se elimina el cartel rojo sobre el proyecto, indicando que faltaba configurar el servidor de despliegue.
 
-#### 2.2) Otra forma de realizar esto es desde la pestaña Servers, en las pestañas de abajo de eclipse(a mi me trajo algunos problemas, uso la anterior).
+* Deployamos la App en el Server 
+	 * --> Click Der 
+	 * --> Run As 
+	 * --> Run on Server 
+	 * --> Seleccionas Wildfly 
+	 * --> Next 
+	 * --> ATENTI, si usaste otro proyecto en Maven, el mismo quedó configurado en la pestaña Configured junto con el nuevo, seleccionar el viejo y tocar el boton Remove, nos quedamos con el Nuevo(en mi caso nombre del proyecto).
+	 * --> Lo seleccionas y Finish.
 
+* Fijarse el Log en Console(todo el registro de despliegue del Server), tarda unos segundos. Si tarda en ejecutar el proyecto, parar la ejecución y ejecutar de nuevo.
 
-#### 3) Fijarse que se elimina el cartel rojo sobre el proyecto, indicando que faltaba configurar el servidor de despliegue.
+* Si se abre un localhost con Hello World! todo está correcto. Si aparece un mensaje de página no encontrada, borrar el index.jsp dentro de webapp y volver a crear el index.jsp, luego actualizar proyecto, actualizar Maven y correr Nuevamente en el Server.
 
-
-#### 4) Probamos la app 
- * --> Click Der 
- * --> Run As 
- * --> Run on Server 
- * --> Seleccionas Wildfly 
- * --> Next 
- * --> ATENTI, si usaste otro proyecto en Maven, el mismo quedó configurado en la pestaña Configured junto con el nuevo, seleccionar el viejo y tocar el boton Remove, nos quedamos con el Nuevo(en mi caso nombre del proyecto).
- * --> Lo seleccionas y Finish.
-
-
-#### 5) Fijarse el Log en Console(todo el registro de despliegue del Server), tarda unos segundos. Si tarda en ejecutar el proyecto, parar la ejecución y ejecutar de nuevo.
-
-#### 6) Si se abre un localhost con Hello World! todo está correcto. Si aparece un mensaje de página no encontrada, borrar el index.jsp dentro de webapp y volver a crear el index.jsp, luego actualizar proyecto, actualizar Maven y correr Nuevamente en el Server.
-
-#### 7) Si no funciona lo anterior, siempre recomiendo cerrar y volver a abrir Eclipse.
+* Si no funciona lo anterior, siempre recomiendo cerrar y volver a abrir Eclipse.
 
 
 </br>
 
-## Dependencias del Proyecto
+
+### Paso 4) Dependencias del Proyecto
 #### (Las siguientes dependencias del Proyecto se deberán agregar al pom.xml para el correcto funcionamiento del Proyecto).
 
-#### 1) Dependencia para los servlets (JSF trabaja con Servlets).
-* --> En Internet Buscar Maven Repository (https://mvnrepository.com/)
-* --> Buscamos Java Servlet Api (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api)
-* --> La última fue actualizada el 2018, 4.0.1 (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/4.0.1)
-* --> Copias la dependency desde maven o desde acá y lo llevas al pom.xml.
+* Dependencia para los servlets (JSF trabaja con Servlets).
+	* --> En Internet Buscar Maven Repository (https://mvnrepository.com/)
+	* --> Buscamos Java Servlet Api (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api)
+	* --> La última fue actualizada el 2018, 4.0.1 (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/4.0.1)
+	* --> Copias la dependency desde maven o desde acá y lo llevas al pom.xml.
  
 ```xml
 <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
@@ -169,17 +256,18 @@
 </dependency>
 
 ```
-
-* --> control+s guardas y actualizamos el proyecto
-* --> Click Der sobre el proyecto, Maven
-* --> Update Proyect
-* --> Fijate que el Proyecto este seleccionado y Boton ok
+* ...
+	* --> control+s guardas y actualizamos el proyecto
+	* --> Click Der sobre el proyecto, Maven
+	* --> Update Proyect
+	* --> Fijate que el Proyecto este seleccionado y Boton ok
 
 </br>
 
-#### 2) Dependencia para el conector de Mysql.
-* --> Buscamos Mysql Connector (https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.21)
-* --> Copias la dependencia y la incluis en el pom del proyecto
+
+* Dependencia para el conector de Mysql.
+	* --> Buscamos Mysql Connector (https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.21)
+	* --> Copias la dependencia y la incluis en el pom del proyecto
 
 ```xml
 <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -190,17 +278,17 @@
 </dependency>
 
 ```
-
-* --> Ctrl + s Guardas 
-* --> Click Der sobre el proyecto
-* --> Maven y update Maven o Alt + F5
-* --> Fijarse dentro de Maven Dependencies si Maven descargo la misma
-
+* ...
+	* --> Ctrl + s Guardas 
+	* --> Click Der sobre el proyecto
+	* --> Maven y update Maven o Alt + F5
+	* --> Fijarse dentro de Maven Dependencies si Maven descargo la misma
 
 </br>
 
-#### 3) Dependencias para JPA-Hibernate (persistencia de Datos).
-* --> La Primera será el core de Hibernate, hibernate-core la 5.4... Final (https://search.maven.org/artifact/org.hibernate/hibernate-core/5.4.27.Final/jar).
+
+* Dependencias para JPA-Hibernate (persistencia de Datos).
+	* --> La Primera será el core de Hibernate, hibernate-core la 5.4... Final (https://search.maven.org/artifact/org.hibernate/hibernate-core/5.4.27.Final/jar).
 
 ```xml
 <dependency>
@@ -209,8 +297,8 @@
   <version>5.4.27.Final</version>
 </dependency>
 ```
-
-* --> La segunda será JPA para Hibernate, la más importante, ya que nos desacoplamos de depender de Hibernate en un futuro, y nos centramos en trabajar con JPA, la dependencia es JPA-Hibernate 2.1 (https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/1.0.2.Final).
+* ...
+	* --> La segunda será JPA para Hibernate, la más importante, ya que nos desacoplamos de depender de Hibernate en un futuro, y nos centramos en trabajar con JPA, la dependencia es JPA-Hibernate 2.1 (https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/1.0.2.Final).
 
 ```xml
 <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
@@ -221,8 +309,8 @@
 </dependency>
 
 ```
-
-* --> La Tercera dependencia será para las Lecturas de las Anotaciones para JPA-Hibernate, Javax Annotation API (https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2)
+* ...
+	* --> La Tercera dependencia será para las Lecturas de las Anotaciones para JPA-Hibernate, Javax Annotation API (https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2)
 
 ```xml
 <!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
@@ -232,17 +320,18 @@
     <version>1.3.2</version>
 </dependency>
 ```
+* ...
 
-* --> Una vez incluidas, Ctrl+s guardamos,  F5 actualizamos y Alt+F5 para que Maven Actualice.
-* --> Asegurate que Maven haya descargado las 3 dependencias mencionadas y colocadas en el pom.
+	* --> Una vez incluidas, Ctrl+s guardamos,  F5 actualizamos y Alt+F5 para que Maven Actualice.
+	* --> Asegurate que Maven haya descargado las 3 dependencias mencionadas y colocadas en el pom.
 
 
 </br>
 
-#### 4) Dependencias para JSF (Desarrollo de Interfaces Web).
-* --> La Primera será para la API de JSF
-* --> Buscamos la API de JSF (https://mvnrepository.com/artifact/com.sun.faces/jsf-api/2.2.13)
-* --> Copias la dependencia y la incluis en el pom del proyecto
+* Dependencias para JSF (Desarrollo de Interfaces Web).
+	* --> La Primera será para la API de JSF
+	* --> Buscamos la API de JSF (https://mvnrepository.com/artifact/com.sun.faces/jsf-api/2.2.13)
+	* --> Copias la dependencia y la incluis en el pom del proyecto
 
 ```xml
 <!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-api -->
@@ -252,12 +341,11 @@
     <version>2.2.13</version>
 </dependency>
 
-
 ```
-
-* --> La Segunda será para la Implementación de JSF.
-* --> Buscamos la dependencia https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.13
-* --> Copias la dependencia y la incluis en el pom del proyecto
+* ...
+	* --> La Segunda será para la Implementación de JSF.
+	* --> Buscamos la dependencia https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.13
+	* --> Copias la dependencia y la incluis en el pom del proyecto
 
 ```xml
 <!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-impl -->
@@ -268,20 +356,22 @@
 </dependency>
 
 ```
-
-
-
-* --> Ctrl + s Guardas 
-* --> Click Der sobre el proyecto
-* --> Maven y update Maven o Alt + F5
-* --> Fijarse dentro de Maven Dependencies si Maven descargo la misma
+* ...
+	* --> Ctrl + s Guardas 
+	* --> Click Der sobre el proyecto
+	* --> Maven y update Maven o Alt + F5
+	* --> Fijarse dentro de Maven Dependencies si Maven descargo la misma
 
 </br>
 
-### Configuraciones del Descriptor de Despliegue (web.xml) | Paso Importante | 
+
+### Paso 5) Configuraciones del Descriptor de Despliegue (web.xml) 
 #### (Este Archivos nos proporciona información de configuración y despliegue para los componentes web de Nuestra Aplicación usando Servlets).
-* --> Se Puede buscar por Internet alguna Plantilla simiilar, ya que son las configuraciones estandars, asegurarse de cambiar la versión a 3.1, por defecto viene 2.3
+
+* --> Se Puede buscar por Internet alguna Plantilla similar, ya que son las configuraciones estandars, asegurarse de cambiar la versión a 3.1, por defecto viene 2.3
+
 * --> Copiar y Pegar los siguientes namespaces dentro de web.xml (src/main/java/webapp/WEB-INF/web.xml)
+
 ```xml
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -320,112 +410,89 @@
 ```
 
 * --> Actualizamos el Proyecto (F5) y Compilamos con Maven (Alt+F5)
-* --> 
+
+
+
+
+
+
 
 
 
 </br>
 
-## Configuraciones Opcionales en Maven.
+## Sección 3) Configuración del SGDB Mysql y JPA-Hibernate para la Persistencia de Datos
 
 </br>
 
-### Actualización del proyecto
 
-#### 1) Click Der sobre el proyecto y actualizar o F5
+### Paso 6) Configuraciones del SGDB Mysql.
+#### (El Sistema de Gestión de Base de datos(SGDB) es un conjunto de programas que nos permiten gestionar la base de datos, es común confundirse con el Nombre, Mysql como tal no es la Base de Datos, sino un SGDB, el Motor de Mysql que he implementado es INNODB, el más común).
 
-</br>
+* Hasta acá deberías tener incluido el conector para Mysql en el pom para que se descargue la dependencia (Fijarse la Sección de dependencias).
 
-### Actualización de Java-1.7 a 1.8
-
-#### 1) Vamos al pom.xml, el archivo al final de todo
-
-#### 2) Dentro de el tag properties donde dice UTF-8 cambiar la version del compiler a 1.8, ctrl+s para guardar
-
-#### 3) Click Der sobre el Proyecto
-* --> Maven
-* --> Update Proyect
-* --> Fijate que el Proyecto este seleccionado y Boton ok
-
-#### 4) Si cambio JavaSE-1.7 a JavaSE-1.8 se efectuo el cambio
-
-</br>
-
-### Paquetes Maven (Java Resources).
-
-#### 1) Por Defecto Viene deshabilitada la opción de paquetes Maven, en donde vamos a guardar nuestros paquetes y clases
-* --> Para habilitar las mismas, click Der sobre el Proyecto.
-* --> Properties.
-* --> Buscamos la sección Java Build Path
-* --> Seleccionamos la casilla Maven Dependencies.
-* --> Apply and Close.
-* --> F5 y deberían aparecer (src/main/java y src/test/java)
+* Abrimos la Herramienta XAMPP ( Buscate un microtutorial para usarla ), o la que se tenga, levantamos los Servicios de Mysql y Creamos una Nueva Base de Datos.
+	* --> Depende que S.O tengas podrás o no tener esta herramienta, no hace falta tenerla, también es posible levantar un servicio mysql desde la bash en Linux
+	* --> Una vez abierto, en el control panel inicializas los servicios de Mysql y Apache para ver las dbs desde el localhost en el Navegador
+	* --> Colocas localhost... en el navegador y accedes a PHPMYADMIN o clickeas Admin desde xampp en la parte de Apache.
+	* --> Vamos a crear una db de prueba, para eso en la esquina izquierda superior tocás en Nueva.
+	* --> Colocas el Nombre a la derecha (en mi caso db_test_jpa_jsf) y luego en Crear
+	* --> Vamos a Crear una sola tabla con solo 2 campos para persistir posteriormente los datos con Hibernate.
+	* --> Selecciona la db creada y a la derecha te va a aparecer crear tabla, colocamos clientes, numero de columnas 2 y continuar.
+	* --> Ahora creamos los campos(columnas), el primero sera id y el segundo nombre, dejamos todo por defecto.
+	* --> Guardar.
+	* --> A la izquierda, debajo de la db_test_jpa_jsf, se te deberia desplegar la nueva tabla y si la seleccionas los nuevos campos, id y nombre.
+	* --> Solamente creamos la db, la tabla y los 2 campos, la config de usuarios, atributos de los campos , etc, lo dejamos todo por defecto para realizar la conexion con el connector de mysql posteriormente.
+	* --> Fijate de Visualizar la db creada, la tabla y los campos, continuamos..
 
 
 </br>
 
-## Configuraciones del SGDB Mysql.
 
-#### 1) Hasta acá deberías tener incluido el conector para Mysql en el pom para que se descargue la dependencia (Fijasrse parte dependencias).
-
-#### 2) Abrimos la Herramienta XAMPP ( Buscate un microtutorial para usarla ), o la que se tenga, levantamos los Servicios de Mysql y Creamos una Nueva Base de Datos.
-* --> Depende que S.O tengas podrás o no tener esta herramienta, no hace falta tenerla, también es posible levantar un servicio mysql desde la bash en Linux
-* --> Una vez abierto, en el control panel inicializas los servicios de Mysql y Apache para ver las dbs desde el localhost en el Navegador
-* --> Colocas localhost... en el navegador y accedes a PHPMYADMIN o clickeas Admin desde xampp en la parte de Apache.
-* --> Vamos a crear una db de prueba, para eso en la esquina izquierda superior tocás en Nueva.
-* --> Colocas el Nombre a la derecha (en mi caso db_test_jpa_jsf) y luego en Crear
-* --> Vamos a Crear una sola tabla con solo 2 campos para persistir posteriormente los datos con Hibernate.
-* --> Selecciona la db creada y a la derecha te va a aparecer crear tabla, colocamos clientes, numero de columnas 2 y continuar.
-* --> Ahora creamos los campos(columnas), el primero sera id y el segundo nombre, dejamos todo por defecto.
-* --> Guardar.
-* --> A la izquierda, debajo de la db_test_jpa_jsf, se te deberia desplegar la nueva tabla y si la seleccionas los nuevos campos, id y nombre.
-* --> Solamente creamos la db, la tabla y los 2 campos, la config de usuarios, atributos de los campos , etc, lo dejamos todo por defecto para realizar la conexion con el connector de mysql posteriormente.
-* --> Fijate de Visualizar la db creada, la tabla y los campos, continuamos..
-
-</br>
-
-## Configuración de JPA-HIBERNATE para la Persistencia de datos.
+### Paso 7) Configuración de JPA-HIBERNATE para la Persistencia de datos.
 #### (JPA-HIBERNATE nos va a ahorrar tiempo de desarrollo de las clases en java para cada entidad mapeando atributos y completando el código para persistir los datos en una db con el SGDB Mysql).
 
-#### 1) Dependencias JPA-HIBERNATE
-* --> Hasta ese punto deberías haber incluido las dependencias descritas en la sección dependencias del Proyecto(Core de  Hibernate, JPA para hibernate y Javax Annotation API).
-* --> Seguidamente vamos a Crear el fichero persistence.xml
+* Dependencias JPA-HIBERNATE
+	* --> Hasta ese punto deberías haber incluido las dependencias descritas en la sección dependencias del Proyecto(Core de  Hibernate, JPA para hibernate y Javax Annotation API).
+	* --> Seguidamente vamos a Crear el fichero persistence.xml
 
-#### 2) Archivo de Configuración XML de JPA-Hibernate (persistence.xml).
-* --> Vamos a crear el Archivo de configuración persistence.xml dentro de la carpeta WEB-INF
-* --> La Ruta al mismo es src/main/webapp/WEB-INF.
-* --> Sobre la carpeta WEB-INF Click Der
-* --> New
-* --> Other
-* --> Filtramos escribiendo xml, seleccinamos xml file
-* --> Asegurarse que la ruta sea la indicada anteriormente, FormularioMaven/src/main/webapp/WEB-INF
-* --> En el file Name escribimos persistence.xml
-* --> Next, Next
-* --> Todo por defecto y Finish
-* --> En eclipse tenes varias vistas para ciertos tipos de archivos, fijate debajo de este que tenes Design y Source, toca en Source
-* --> Tendriamos solamente una linea de codigo ( <?xml version="1.0" encoding="UTF-8"?> )
+* Archivo de Configuración XML de JPA-Hibernate (persistence.xml).
+	* --> Vamos a crear el Archivo de configuración persistence.xml dentro de la carpeta WEB-INF
+	* --> La Ruta al mismo es src/main/webapp/WEB-INF.
+	* --> Sobre la carpeta WEB-INF Click Der
+	* --> New
+	* --> Other
+	* --> Filtramos escribiendo xml, seleccinamos xml file
+	* --> Asegurarse que la ruta sea la indicada anteriormente, FormularioMaven/src/main/webapp/WEB-INF
+	* --> En el file Name escribimos persistence.xml
+	* --> Next, Next
+	* --> Todo por defecto y Finish
+	* --> En eclipse tenes varias vistas para ciertos tipos de archivos, fijate debajo de este que tenes Design y Source, toca en Source
+	* --> Tendriamos solamente una linea de codigo ( <?xml version="1.0" encoding="UTF-8"?> )
 
-#### 3) Configurando el Archivo persistence.xml para JPA-Hibernate
-* --> Dentro del archivo persistence.xml vamos a configurar la conexión con mysql y Nuestro Mapeo ORM de JPA-Hibernate.
-* --> Copiar el siguiente código y pegarlo dentro del persistence.xml
+* Configurando el Archivo persistence.xml para JPA-Hibernate
+	* --> Dentro del archivo persistence.xml vamos a configurar la conexión con mysql y Nuestro Mapeo ORM de JPA-Hibernate.
+	* --> Copiar el siguiente código y pegarlo dentro del persistence.xml
 
 ```xml
+
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
   version="2.1">
 
   <persistence-unit name="PERSISTENCE">
     <description>Hibernate JPA</description>
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    
 
     <properties>
-     
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test-jpa-jsf" />
+    
+     <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_test_jpa_jsf?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root" />
-      <property name="javax.persistence.jdbc.password" value="root" />
+      <property name="javax.persistence.jdbc.password" value="" />
+       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="hibernate.show_sql" value="true" />
       <property name="hibernate.hbm2ddl.auto" value="update" />        
     </properties>
@@ -435,35 +502,46 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
 ```
 
-* --> ATENTI: Las propiedades de este Archivo se pueden modificar en base a lo que se requiera, por ejemplo, si se desea cambiar el nombre raíz de la URL del proyecto("jdbc:mysql://localhost:3306/test-jpa-jsf"), quitar /test-jpa-jsf y reemplazar a gusto, lo mismo para el password, nombre de usuario, etc.
+* --> ATENTI: Las propiedades de este Archivo depende del Proyetco. Si se sigue al pie de la letra, es copiar y pegar, las propiedades varian dependiendo las configuraciones dadas en la db creada.      
+*  La Propiedad <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_test_jpa_jsf?serverTimezone=UTC"/> posee el nombre de la db creada (db_test_jpa_jsf) y el puerto por defecto de mysql.
+*  Lo mismo para la propiedad user y password. 
+
+
+
+
+
+
+
+
 
 
 
 
 </br>
 
+##  Sección 4) Creación, Configuración y Manejo de Clases, Interfaces y Paquetes para el CRUD MVC
 
-## CRUD MVC.
-#### CRUD = Create, Read, Update, Delete
-#### MVC = Modelo-Vista-Controlador
+</br>
 
-#### 1) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos.
-* --> Dentro de src/main/java vamos a crear nuestro paquete para la Clase Modelo-Entidad Cliente.
-* --> Click Der sobre src/main/java
-* --> New Package
-* --> En Name escribimos com.mypackages.models (en mi caso)
-* --> Creamos la Clase Cliente
-* --> Click Der sobre com.mypackages.models
-* --> En Name escribimos Cliente
-* --> Los atributos de la clase deberán ser los mismos que los campos creados en la db.
-* --> Luego de crear los atributos creamos los getters y setters.
-* --> Seleccionas los atributos y en Source generate getters and setters (acomodarlos a preferencia).
-* --> También toString de la misma forma.
-* --> Implementamos el uso de anotaciones para que hibernate reconozca el modelo de persistencia
-* --> @Entity (Definimos a Hibernate la entidad)
-* --> @Table(name="clientes") (Definimos a Hibernate el nombre Tabla de la db, siempre el name igual que la tabla de la db)
-* --> Se deberan generan las anotaciones para cada atributo, recordar que el id deberá ser auto incrementable, entonces @GeneratedValue(strategy=GenerationType.IDENTITY)
-* --> Para los atributos de tipo String la anotation será @Column
+### Paso 8) Creación de Nuestra Clase Entidad-Modelo Cliente para la Persistencia de Datos
+#### (CRUD = Create, Read, Update, Delete | MVC = Modelo-Vista-Controlador)
+
+* Creación de nuestro paquete para la Clase Modelo-Entidad Cliente.
+	* --> Click Der sobre src/main/java
+	* --> New Package
+	* --> En Name escribimos com.mypackages.models (en mi caso)
+	* --> Creamos la Clase Cliente
+	* --> Click Der sobre com.mypackages.models
+	* --> En Name escribimos Cliente
+	* --> Los atributos de la clase deberán ser los mismos que los campos creados en la db.
+	* --> Luego de crear los atributos creamos los getters y setters.
+	* --> Seleccionas los atributos y en Source generate getters and setters (acomodarlos a preferencia).
+	* --> También toString de la misma forma.
+	* --> Implementamos el uso de anotaciones para que hibernate reconozca el modelo de persistencia
+	* --> @Entity (Definimos a Hibernate la entidad)
+	* --> @Table(name="clientes") (Definimos a Hibernate el nombre Tabla de la db, siempre el name igual que la tabla de la db)
+	* --> Se deberan generan las anotaciones para cada atributo, recordar que el id deberá ser auto incrementable, entonces @GeneratedValue(strategy=GenerationType.IDENTITY)
+	* --> Para los atributos de tipo String la anotation será @Column
 
 
 ```java
@@ -513,18 +591,19 @@ public class Cliente {
 
 </br>
 
-#### 2.0) Creación de la Clase JPA Util para la Persistencia de los datos a la db.
-##### (En esta Clase se crea el objeto que nos permite realizar la persistencia de los datos en la db).
 
-* --> Primeramento vamos a crear el paquete que alojará la Clase dentro de la ruta ya usada (src/main/java).
-* --> Sobre la misma Click Der, New, package
-* --> En Name colocamos com.mypackages.utils
-* --> Finish y F5 para Actualizar.
-* --> Dentro del Paquete Creamos la Clase JpaUtil.
-* --> Click Der sobre el paquete, New, Class
-* --> Asegurarse estar en la ruta estipulada y en Name colocamos JpaUtil
-* --> Finish y F5 para actualizar
-* --> Te debería haber quedado..
+### Paso 9) Creación de la Clase JPA Util para la Persistencia de los datos a la db
+#### (En esta Clase se crea el objeto que nos permite realizar la persistencia de los datos en la db).
+
+* Creación del paquete que alojará la Clase dentro de la ruta ya usada (src/main/java).
+	* --> Sobre la misma Click Der, New, package
+	* --> En Name colocamos com.mypackages.utils
+	* --> Finish y F5 para Actualizar.
+	* --> Dentro del Paquete Creamos la Clase JpaUtil.
+	* --> Click Der sobre el paquete, New, Class
+	* --> Asegurarse estar en la ruta estipulada y en Name colocamos JpaUtil
+	* --> Finish y F5 para actualizar
+	* --> Te debería haber quedado..
 
 ```java
 
@@ -536,43 +615,39 @@ public class JpaUtil {
 
 ```
 
-#### 2.1) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.
-##### (Vamos a configurar la Unidad de Persistencia, el entityManager y la Persistencia de la misma con el EntityManagerFactory. Todo esto para persistir los datos desde esta Clase).
-##### * Unidad de Persistencia = Modelo relacional de objeto que correlaciona las clases Java.
-##### * Entity Manager  = El entity manager comprueba qué entidades han sido modificadas y vuelca los cambios a la base de datos.
-##### * Entity Manager  Factory = Es la clase que se encarga de abrir la conexión a la base de datos y pone a nuestra disposición los distintos EntityManager que usemos.
 
-* --> Primeramente Configuramos el Nombre de la Unidad de Persistencia dentro de la Clase Creada JpaUtil
+</br>
+
+
+
+### Paso 10) Configuración de la Clase JPA Util para la Persistencia de los datos a la db.
+#### (Vamos a configurar la Unidad de Persistencia, el entityManager y la Persistencia de la misma con el EntityManagerFactory. Todo esto para persistir los datos desde esta Clase).
+
+ * Unidad de Persistencia = Modelo relacional de objeto que correlaciona las clases Java.
+
+ * Entity Manager  = El entity manager comprueba qué entidades han sido modificadas y vuelca los cambios a la base de datos.
+
+ * Entity Manager  Factory = Es la clase que se encarga de abrir la conexión a la base de datos y pone a nuestra disposición los distintos EntityManager que usemos.
+ 
+
+* Primeramente Configuramos el Nombre de la Unidad de Persistencia dentro de la Clase Creada JpaUtil
 
 ```java
 private static final String PERSISTENCE_UNIT_NAME = "PERSISTENCE";
 
 ```
-* --> Notar que el Nombre deberá ser el mismo que el creado peviamente en el persistence.xml
+* Notar que el Nombre deberá ser el mismo que el creado peviamente en el persistence.xml ... ```xml <persistence-unit name="PERSISTENCE"> ```
 
-```xml
-  <persistence-unit name="PERSISTENCE">
-    <description>Hibernate JPA</description>
-    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
-    <properties>
-     
-      ...
-	    
-    </properties>
-  </persistence-unit>
-
-```
-
-* --> Ahoramos Creamos un Objeto de tipo EntityManagerFactory que será el que abra la conexión a la db creada. Importar la Clase
+* Ahoramos Creamos un Objeto de tipo EntityManagerFactory que será el que abra la conexión a la db creada. Importar la Clase
 
 ```java
 private static EntityManagerFactory factory;
 
 ```
 
-* --> Seguidamento vamos a crear 2 métodos para la conexión a la db.
-* --> El Primer Método será un getter y tendrá la Lógica de Persistir los datos de la Unidad de Persistencia con el EntityManagerFactory en caso de que no se haya persistido aún. Importar la Clase requerida.
+* Seguidamento vamos a crear 2 métodos para la conexión a la db.
+
+* El Primer Método será un getter y tendrá la Lógica de Persistir los datos de la Unidad de Persistencia con el EntityManagerFactory en caso de que no se haya persistido aún. Importar la Clase requerida.
 
 ```java
 public static EntityManagerFactory getEntityManagerFactory(){
@@ -588,7 +663,8 @@ public static EntityManagerFactory getEntityManagerFactory(){
 
 ```
 
-* --> El Segundo Método finaliza la conexión a la db si es que el EntityManagerFactory tiene un Valor, si lo tiene, significa que ha persistido el objeto en la db.
+* El Segundo Método finaliza la conexión a la db si es que el EntityManagerFactory tiene un Valor, si lo tiene, significa que ha persistido el objeto en la db.
+
 
 ```java
 public static void shutdown(){
@@ -600,7 +676,7 @@ public static void shutdown(){
 
 ```
 
-* --> El Código Completo es..
+* El Código Completo quedaría..
 
 
 ```java
@@ -633,25 +709,30 @@ public class JpaUtil {
 }
 
 ```
-* --> ATENTI: Ahora la Pregunta es, porqué no Crear un Paquete y Clase con el Nombre EntityManagerFactory directamente para no marearnos mucho? Por qué ya es una Clase de Java, recordár las convenciones de Nombres, así que guardaremos esta fábrica de conexiones de Unidades de Persistencias dentro de Jpa Util.
+* ATENTI: Ahora la Pregunta es, porqué no Crear un Paquete y Clase con el Nombre EntityManagerFactory directamente para no marearnos mucho? Por qué ya es una Clase de Java, recordár las convenciones de Nombres, así que guardaremos esta fábrica de conexiones de Unidades de Persistencias dentro de Jpa Util.
+
+
 
 </br>
 
-#### 3.0) Creación de la Interfaz y Clase Repository para la persistencia de los datos con JPA (Aquitetura Dao). La Arquitectura Dao  suministra las interfaces  para poder usar los metodos CRUD sin necesidad de duplicar codigo.
-##### (Vamos a Crear una Interfaz que nos provea de los métodos a implementar para usarlos dentro de la Clase Repository con JPA).
+
+
+### Paso 11) Creación y Configuración de la Interfaz I_ClienteRepository para la Definición de los Métodos de Uso
+#### (La Arquitectura Dao suministra las interfaces  para poder usar los metodos CRUD sin necesidad de duplicar codigo. Vamos a Crear una Interfaz que nos provea de los métodos a implementar para usarlos dentro de la Clase Repository con JPA).
 
 </br>
 
-##### 3.1)Creación de la Interfaz I_ClienteRepository
-* --> Creamos un Nuevo paquete para las Interfaces.
-* --> Sobre la ruta src/main/java Click Der, New, package
-* --> En Name colocamos com.mypackages.repositories.interfaces
-* --> Finish y F5 para Actualizar.
-* --> Dentro del Paquete Creamos la Interfaz I_ClienteRepository.
-* --> Click Der sobre el paquete, New, Interface
-* --> Asegurarse estar en la ruta estipulada y en Name colocamos I_ClienteRepository
-* --> Finish y F5 para actualizar
-* --> Te debería haber quedado..
+#### 11.1) Creación de la Interfaz I_ClienteRepository
+ 
+* Creamos un Nuevo paquete para las Interfaces.
+	* --> Sobre la ruta src/main/java Click Der, New, package
+	* --> En Name colocamos com.mypackages.repositories.interfaces
+	* --> Finish y F5 para Actualizar.
+* Dentro del Paquete Creamos la Interfaz I_ClienteRepository.
+	* --> Click Der sobre el paquete, New, Interface
+	* --> Asegurarse estar en la ruta estipulada y en Name colocamos I_ClienteRepository
+	* --> Finish y F5 para actualizar
+	* --> Te debería haber quedado..
 
 ```java
 
@@ -667,10 +748,11 @@ public interface I_ClienteRepository {
 
 </br>
 
-##### 3.2)Configuración de la Interfaz I_ClienteRepository
-* --> Creamos los métodos para ser implementados y configurados en la clase ClienteRepository CON JPA
-* --> save, remove, update,getAll, getById, etc. El  Método getAll será una Lista de Tipo Cliente.
-* --> Vamos de a partes, métodos conocidos.. save remove, etc
+#### 11.2) Configuración de la Interfaz I_ClienteRepository
+ 
+* Creación de los métodos para ser implementados y configurados en la clase ClienteRepository CON JPA
+	* --> Los Métodos serán save, remove, update,getAll, getById, etc. El  Método getAll será una Lista de Tipo Cliente.
+	* --> Vamos de a partes, creamos los métodos más conocidos.. save(), remove(), etc
 
 
 ```java
@@ -692,7 +774,7 @@ public interface I_ClienteRepository {
 
 ```
 
-* --> Método getAll de tipo Lista..
+* Creación del Método getAll() de tipo Lista..
 
 ```java
 
@@ -719,7 +801,7 @@ public interface I_ClienteRepository {
 ```
 
 
-* --> Método getById
+* Método getById()
 
 ```java
 
@@ -748,20 +830,25 @@ public interface I_ClienteRepository {
 ```
 
 
+</br>
 
 
+### Paso 12) Creación y Configuración de la Clase ClienteRepository para la Persistencia de Datos con JPA.
+#### (La Arquitectura Dao suministra las interfaces para poder usar los metodos CRUD sin necesidad de duplicar codigo.Vamos a Crear una Clase Implementando la Interfaz Creada y dándole el cuerpo a los métodos de la misma para implementar JPA).
 
+</br>
 
-##### 3.3)Creación de la Clase ClienteRepository
-* --> Creamos un Nuevo paquete para los Repositories JPA.
-* --> Sobre la ruta src/main/java Click Der, New, package
-* --> En Name colocamos com.mypackages.repositories.jpa
-* --> Finish y F5 para Actualizar.
-* --> Dentro del Paquete Creamos la Clase dao ClienteRepository.
-* --> Click Der sobre el paquete, New, Class
-* --> Asegurarse estar en la ruta estipulada y en Name colocamos ClienteRepository
-* --> Finish y F5 para actualizar
-* --> Te debería haber quedado..
+#### 12.1) Creación de la Clase ClienteRepository
+ 
+* Primeramente Creamos un Nuevo paquete para los Repositories JPA.
+	* --> Sobre la ruta src/main/java Click Der, New, package
+	* --> En Name colocamos com.mypackages.repositories.jpa
+	* --> Finish y F5 para Actualizar.
+	* --> Dentro del Paquete Creamos la Clase dao ClienteRepository.
+	* --> Click Der sobre el paquete, New, Class
+	* --> Asegurarse estar en la ruta estipulada y en Name colocamos ClienteRepository
+	* --> Finish y F5 para actualizar
+	* --> Te debería haber quedado..
 
 ```java
 
@@ -775,9 +862,9 @@ public class ClienteRepository {
 
 </br>
 
-##### 3.4)Configuración de la Clase ClienteRepository
+#### 12.2) Configuración de la Clase ClienteRepository
 
-* --> Vamos a implementar la Interfaz Creada para trabajar con los métodos de la misma.
+* Vamos a implementar la Interfaz Creada para trabajar con los métodos de la misma.
 
 ```java
 
@@ -817,17 +904,25 @@ public class ClienteRepository implements I_ClienteRepository{
 
 ```
 
-* --> Creamos el Objeto EntityManager y usamos la Clase Creada JpaUtil que tiene el pull de conexiones. El objeto instanciado nos va a permitir usar los métodos de la Interfaz creada.
+* Creamos el Objeto EntityManager y usamos la Clase Creada JpaUtil que tiene el pull de conexiones. El objeto instanciado nos va a permitir usar los métodos de la Interfaz creada.
 
 ```java
 
 EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 ```
 
-* --> Ahora comenzaremos a desarrollar cada uno de los Métodos.
-* --> Con JPA-Hibernate se trabaja con Transacciones(los objetos creados tienen un tiempo de vida y hay que indicar cada proceso del mismo).
-* --> MÉTODO SAVE()
-* --> Comenzaremos una transacción
+
+</br>
+
+#### 12.3) Creación de los Métodos de la Clase ClienteRepository
+#### (Con JPA-Hibernate se trabaja con Transacciones (los objetos creados tienen un tiempo de vida y hay que indicar cada proceso del mismo).
+
+
+</br>
+
+#### 12.3.1) Creación del Método save()
+* Este Método se deberá encargar de guardar el objeto Cliente en la db
+* Comenzaremos una transacción
 ```java
 
 	@Override
@@ -837,7 +932,7 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 	}
 
 ```
-* --> Persistimos el Objeto Cliente en la Tabla de la Base de Datos
+* Persistimos el Objeto Cliente en la Tabla de la Base de Datos
 
 ```java
 
@@ -850,7 +945,7 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 
 ```
 
-* --> Cerramos la Transacción y Guardamos la Persistencia del Objeto Cliente en la Tabla de la Base de Datos
+* Cerramos la Transacción y Guardamos la Persistencia del Objeto Cliente en la Tabla de la Base de Datos
 
 ```java
 
@@ -863,7 +958,7 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 
 ```
 
-* --> Cerramos la Conexión a la Base de Datos implementando el metodo creado shutdown de la Clase JpaUtil
+* Cerramos la Conexión a la Base de Datos implementando el metodo creado shutdown de la Clase JpaUtil
 
 ```java
 
@@ -878,7 +973,9 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 ```
 
 
-* --> MÉTODO REMOVE()
+</br>
+
+#### 12.3.2) Creación del Método remove()
 * --> Comenzaremos una transacción
 ```java
 
@@ -929,10 +1026,9 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 ```
 
 
+</br>
 
-
-
-* --> MÉTODO UPDATE()
+#### 12.3.3) Creación del Método update()
 * --> Comenzaremos una transacción
 ```java
 
@@ -966,9 +1062,11 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 ```
 
 
+</br>
 
-* --> MÉTODO GETALL()
+#### 12.3.4) Creación del Método getAll()
 * --> Comenzaremos una transacción
+
 ```java
 
 @Override
@@ -1088,7 +1186,10 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 	}
 ```
 
-* --> MÉTODO GETBYID()
+
+</br>
+
+#### 12.3.5) Creación del Método getById()
 * --> Comenzaremos una transacción
 ```java
 
@@ -1207,8 +1308,9 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 </br>
 </br>
 
-* --> Código Completo de la Clase ClienteRepository
+</br>
 
+#### 12.3.6) Código Completo de la Clase ClienteRepository
 
 ```java
 
@@ -1299,17 +1401,19 @@ public class ClienteRepository implements I_ClienteRepository{
 
 </br>
 
-#### 4.0) Creación de la Clase Controller  
-##### (La Clase Controller es para que la misma realice la interacción(eventos) que hace el usuario en la Interfaz y realiza las peticiones al modelo para pasar estos a la vista (MVC). La Clase la vamos a llamar ClienteBean. Recordar que un bean es una clase con requisitos de negocio concretos).
-* --> Creamos un Nuevo paquete para las Clases Controladoras.
-* --> Sobre la ruta src/main/java Click Der, New, package
-* --> En Name colocamos com.mypackages.controllers
-* --> Finish y F5 para Actualizar.
-* --> Dentro del Paquete Creamos la Clase Controller llmada ClienteBean.
-* --> Click Der sobre el paquete, New, Class
-* --> Asegurarse estar en la ruta estipulada y en Name colocamos ClienteBean
-* --> Finish y F5 para actualizar
-* --> Te debería haber quedado..
+### Paso 13) Creación y Configuración de la Clase Controller ClienteBean para la interacción de la Vista, el Modelo y JPA 
+#### (La Clase Controller es para que la misma realice la interacción(eventos) que hace el usuario en la Vista(index.xhtml), luego la vista realice las peticiones al modelo a traves de jpa(clase e interfaz repositories) para pasarlos a la base de datos y devolverlos a la vista (Patrón MVC). La Clase la vamos a llamar ClienteBean. Recordar que un bean es una clase con requisitos de negocio concretos).
+
+#### 13.1) Creación de la Clase Controladora 
+* Primero creamos un Nuevo paquete para la Clase. 
+	* --> Sobre la ruta src/main/java Click Der, New, package
+	* --> En Name colocamos com.mypackages.controllers
+	* --> Finish y F5 para Actualizar.
+* Dentro del Paquete Creamos la Clase Controller llamada ClienteBean.
+	* --> Click Der sobre el paquete, New, Class
+	* --> Asegurarse estar en la ruta estipulada y en Name colocamos ClienteBean
+	* --> Finish y F5 para actualizar
+	* --> Te debería haber quedado..
 
 ```java
 
@@ -1326,10 +1430,10 @@ public class ClienteBean {
 </br>
 
 
-#### 4.1) Configuración de la Clase Controller .
-* --> Vamos a hacer uso de Anotaciones para trabajar con JSF.
-* --> Hacemos uso de la anotacion @ManagedBean y @RequestScoped.
-* --> La primera es para que JSF reconozca la clase como un componente Managed Bean(Componente JSF) y la Segunda para indicarle el Alcance de esta Clase. Le indicamos que siempre que se realice la peticion hacia el servidor se mantenga el Bean.
+#### 13.2) Configuración de la Clase Controller .
+* Vamos a hacer uso de Anotaciones para trabajar con JSF.
+	* --> Hacemos uso de la anotacion @ManagedBean y @RequestScoped.
+	* --> La primera es para que JSF reconozca la clase como un componente Managed Bean(Componente JSF) y la Segunda para indicarle el Alcance de esta Clase. Le indicamos que siempre que se realice la peticion hacia el servidor se mantenga el Bean. Dentro del ManagedBean le pasamos el nombre del mismo
 
 ```java
 package com.mypackage.controllers;
@@ -1337,7 +1441,7 @@ package com.mypackage.controllers;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-@ManagedBean
+@ManagedBean(name="ClienteBean")
 @RequestScoped
 public class ClienteBean {
 
@@ -1345,7 +1449,7 @@ public class ClienteBean {
 
 ```
 
-* --> Seguidamente creamos un metodo que nos muestre todos los Clientes de la base de datos implementando los metodos del repositorio creado.
+* Seguidamente creamos un metodo que nos muestre todos los Clientes de la base de datos implementando los metodos del repositorio creado.
 
 ```java
 	public List<Cliente> getAll(){
@@ -1356,7 +1460,7 @@ public class ClienteBean {
 	}
 
 ```
-* --> Código Completo
+* Código Completo ...
 
 ```java
 package com.mypackage.controllers;
@@ -1369,7 +1473,7 @@ import javax.faces.bean.RequestScoped;
 import com.mypackages.models.Cliente;
 import com.mypackages.repositories.jpa.ClienteRepository;
 
-@ManagedBean
+@ManagedBean(name="ClienteBean")
 @RequestScoped
 public class ClienteBean {
 	
@@ -1388,23 +1492,28 @@ public class ClienteBean {
 
 
 
-#### 5.0) Creación de la Vista XHTML con JSF.
-##### (Si Trabajamos con JSF no es válido el index.html, osea html puro, ya que el mismo no nos permite trabajar con componentes JSF, vamos a usar xhtml).
-* --> XHTML = Es HTML expresado como XML válido.
-* --> Por defecto Eclipse no trae instalado los paquetes para el uso de xhtml, tendremos que instalarlos desde Eclipse.
-* --> Vamos a Help, Eclipse Marketplace y en Search colocamos JBoss Tools.
-* --> Instalar JBoss Tools 4.21.0.Final, Aaegurarse que esté instalado y reiniciar el IDE.
-* --> Vamos a Crear un Archivo xhtml
-* --> Dentro de webapp (src/main/java/webapp) creamos el index.xhtml
-* --> Click Der , New, XHTML Page,. Si no aparece en Other y Filtras.
-* --> En el File name colocamos index.xhtml y Finish
+### Paso 14) Creación y Configuración de la Vista XHTML con JSF
+#### (Si Trabajamos con JSF no es válido el index.html, osea html puro, ya que el mismo no nos permite trabajar con componentes JSF, vamos a usar xhtml).
+
+</br>
+
+#### 5.1) Creación de la Vista.
+* XHTML = Es HTML expresado como XML válido.
+* Instalación de Herramientas para el Uso de xhtml
+	* --> Por defecto Eclipse no trae instalado los paquetes para el uso de xhtml, tendremos que instalarlos desde Eclipse.
+	* --> Vamos a Help, Eclipse Marketplace y en Search colocamos JBoss Tools.
+	* --> Instalar JBoss Tools 4.21.0.Final, Aaegurarse que esté instalado y reiniciar el IDE.
+* Creación del Archivo index.xhtml
+	* --> Dentro de webapp (src/main/java/webapp) creamos el index.xhtml
+	* --> Click Der , New, XHTML Page,. Si no aparece en Other y Filtras.
+	* --> En el File name colocamos index.xhtml y Finish
 
 </br>
 
 
-#### 5.1) Configuración de la Vista XHTML con JSF.
+#### 5.2) Configuración de la Vista.
 ##### (Las Etiquetas en html son como los componentes en jsf).
-* --> Vamos a darle el cuerpo al Archivo, buscar una plantilla base a gusto, te recomiendo https://www.adictosaltrabajo.com/2010/04/20/jsf-2-facelets-templates-and-composite-components/ o copiar la siguiente
+* Vamos a darle el cuerpo al Archivo, buscar una plantilla base a gusto, te recomiendo https://www.adictosaltrabajo.com/2010/04/20/jsf-2-facelets-templates-and-composite-components/ o copiar la siguiente
 
 
 ```html
@@ -1421,25 +1530,169 @@ public class ClienteBean {
 </h:head>
 <h:body>
 	
+	<h2>
+	  	<h:outputText value="LISTA DE CLIENTES"></h:outputText>
+	</h2>
+	
 </h:body>
 </html>
 
 ```
-* --> Todos los componentes en JSF comienzan con el prefijo h dentro de las etiquetas
-* 
+* Todos los componentes en JSF comienzan con el prefijo h dentro de las etiquetas
+* Vamos a Crear una Tabla para Desplegar la información del Manager Bean(Clase Controller), primero creamos la etiqueta de tabla, dentro la columna ID y Nombre, cada columna tiene una etiqueta de tipo facet, que es un tipo especial de encabezado.
+
+```html
+
+<h:dataTable border="1">
+		
+		<h:column>
+			
+			<f:facet name="header">ID</f:facet>
+			
+		</h:column>
+		
+			<h:column>
+			
+			<f:facet name="header">Nombre</f:facet>
+			
+		</h:column>
+		
+</h:dataTable>
+
+
+
+```
+
+* Vamos a traer los datos de la Clase Bean colocando el nombre de la clase dentro del dataTable e invocando el método getAll() de la Clase ClienteRepository
+
+``` html
+
+<h:dataTable value="#{ClienteBean.getAll()}" border="1">
+		
+		<h:column>
+			
+			<f:facet name="header">ID</f:facet>
+			
+		</h:column>
+		
+			<h:column>
+			
+			<f:facet name="header">Nombre</f:facet>
+			
+		</h:column>
+		
+</h:dataTable>
+
+
+```
+
+* Necesitamos recorrer la lista y mostrarla en la tabla, usaremos una variable para almacenar los objetos que vengan en la lista. Las variables en JSF dentro de etiquetas se declaran con el nombre var
+
+``` html
+
+	<h:dataTable  value="#{ClienteBean.getAll()}" var="objetoCliente" border="1">
+		
+		<h:column>
+			
+			<f:facet name="header">ID</f:facet>
+			
+		</h:column>
+		
+			<h:column>
+			
+			<f:facet name="header">Nombre</f:facet>
+			
+		</h:column>
+		
+	</h:dataTable>
+
+``` 
+
+* Vamos a mostrar los campos de los objetos (de la clase, no los campos de la db. De eso se encarga hibernate-jpa con las clases e interfaces creadas) que traemos del Bean (id, nombre) con los binds("#{}") y a traves de la variable declarada objetoCliente.
+
+``` html
+	<h:dataTable  value="#{ClienteBean.getAll()}" var="objetoCliente" border="1">
+		
+		<h:column>
+			
+			<f:facet name="header">ID</f:facet>
+			<h:outputText value="#{objetoCliente.id}"></h:outputText>
+			
+		</h:column>
+		
+			<h:column>
+			
+			<f:facet name="header">Nombre</f:facet>
+			<h:outputText value="#{objetoCliente.nombre}"></h:outputText>
+			
+			
+		</h:column>
+		
+	</h:dataTable>
+
+``` 
+
+* Código Completo
+
+``` html
+
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Plantilla Básica JSF</title>
+</h:head>
+<h:body>
+
+	<h2>
+		<h:outputText value="LISTA DE CLIENTES"></h:outputText>
+	</h2>
+	
+	<h:dataTable  value="#{ClienteBean.getAll()}" var="objetoCliente" border="1">
+		
+		<h:column>
+			
+			<f:facet name="header">ID</f:facet>
+			<h:outputText value="#{objetoCliente.id}"></h:outputText>
+			
+		</h:column>
+		
+			<h:column>
+			
+			<f:facet name="header">Nombre</f:facet>
+			<h:outputText value="#{objetoCliente.nombre}"></h:outputText>
+			
+			
+		</h:column>
+		
+	</h:dataTable>
+	
+</h:body>
+</html>
+
+
+``` 
+* Si lo Ejecutamos no vemos ningún Registro de la DB, hasta el momento no tenemos datos en la misma, vamos a abrir phpMyAdmin y cargar algunos Registros de Prueba. El comando sería..
+
+```sql
+use db_test_jpa_jsf;
+insert into clientes(id, nombre) values 
+(1,"Marcos"),
+(2,"Julieta"),
+(3,"Rocío"),
+(4,"Juan");
+
+```
+
+
+
+
 
 </br>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
