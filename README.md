@@ -219,7 +219,7 @@
 * Fijarse que se elimina el cartel rojo sobre el proyecto, indicando que faltaba configurar el servidor de despliegue.
 
 * Deployamos la App en el Server 
-	 * --> Click Der 
+	 * --> Click Der sobre index.jsp / index.html
 	 * --> Run As 
 	 * --> Run on Server 
 	 * --> Seleccionas Wildfly 
