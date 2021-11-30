@@ -25,6 +25,7 @@
 | Hibernate-Core 5.4.27| El Core de Hibernate |
 | JPA-Hibernate 2.1 |  Persistencia de datos a la db |
 | Javax Annotation API 1.3.2 | Api para la lectura de Annotation |
+| Javax XML Bind API 2.3.1 | Api para transf. de Objetos Java y Documentos XML |
 | JSF API 2.2.13 | API para el Desarrollo de Interfaces | 
 | JSF Impl 2.2.13 | Especificaciones para la Implementación de JSF | 
 
@@ -34,6 +35,7 @@
 * Repositorio dependencia Hibernate-Core: https://search.maven.org/artifact/org.hibernate/hibernate-core/5.4.27.Final/jar
 * Repositorio dependencia JPA-Hibernate: https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/1.0.2.Final
 * Repositorio dependencia Javax Annotation API: https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2
+* Repositorio dependencia Javax XML Bin API : https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api/2.3.1
 * Repositorio dependencia API JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-api/2.2.13
 * Repositorio dependencia Implementación JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.13
 
@@ -54,7 +56,7 @@
 
 <hr>
 
-# ` Documentación y Guía del Proyecto `
+## ` Documentación y Guía del Proyecto `
 ### (Esta Documentación que Desarrollé es para la Creación y Configuración del Proyecto desde Cero, Manejo de Maven, JSF, JPA, Mysql, Dependencias con Maven, Servidor de Despliegue y otros Usos de este Proyecto. Recomiendo Leerla y Realizar todo paso a paso como se indica en la misma).
 
 </br>
@@ -324,6 +326,17 @@
 
 	* --> Una vez incluidas, Ctrl+s guardamos,  F5 actualizamos y Alt+F5 para que Maven Actualice.
 	* --> Asegurate que Maven haya descargado las 3 dependencias mencionadas y colocadas en el pom.
+* ...
+	* --> La Cuarta Dependencia será para las Transformaciones de Objetos Java a Objetos de Documentos XML, Javax XML Bind (https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api/2.3.1) 
+```xml
+<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.3.1</version>
+</dependency>
+
+```
 
 
 </br>
@@ -502,7 +515,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
 
 ```
 
-* --> ATENTI: Las propiedades de este Archivo depende del Proyetco. Si se sigue al pie de la letra, es copiar y pegar, las propiedades varian dependiendo las configuraciones dadas en la db creada.      
+* --> ATENTI: Las propiedades de este Archivo depende del Proyecto. Si se sigue al pie de la letra, es copiar y pegar, las propiedades varian dependiendo las configuraciones dadas en la db creada.      
 *  La Propiedad <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_test_jpa_jsf?serverTimezone=UTC"/> posee el nombre de la db creada (db_test_jpa_jsf) y el puerto por defecto de mysql.
 *  Lo mismo para la propiedad user y password. 
 
