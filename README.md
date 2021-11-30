@@ -485,22 +485,29 @@
 
 * Configurando el Archivo persistence.xml para JPA-Hibernate
 	* --> Dentro del archivo persistence.xml vamos a configurar la conexión con mysql y Nuestro Mapeo ORM de JPA-Hibernate.
-	* --> Copiar el siguiente código y pegarlo dentro del persistence.xml
+	* --> Recomiendo la siguiente página para conocer acerca de este archivo y seguir el modelo del mismo. `(https://vladmihalcea.com/jpa-persistence-xml/)`
+	* --> Copiar el Modelo de la página(tendrás que agregar las properys a mano) o el siguiente código y pegarlo dentro del persistence.xml
 
 ```xml
 
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
-  version="2.1">
-
-  <persistence-unit name="PERSISTENCE">
-    <description>Hibernate JPA</description>
-    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-    
-
-    <properties>
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+     xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+ 
+    <persistence-unit
+        name="PERSISTENCE"
+        transaction-type="JTA">
+ 
+      
+ 
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+ 
+        <jta-data-source>java:global/jdbc/default</jta-data-source>
+ 
+        <properties>
     
      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_test_jpa_jsf?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root" />
@@ -509,8 +516,8 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
       <property name="hibernate.show_sql" value="true" />
       <property name="hibernate.hbm2ddl.auto" value="update" />        
     </properties>
-  </persistence-unit>
-
+	    
+    </persistence-unit>
 </persistence>
 
 ```
