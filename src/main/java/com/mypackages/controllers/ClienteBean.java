@@ -1,4 +1,4 @@
-package com.mypackage.controllers;
+package com.mypackages.controllers;
 
 import java.util.List;
 
@@ -18,6 +18,15 @@ public class ClienteBean {
 		ClienteRepository listaClientes = new ClienteRepository();
 		
 		return listaClientes.getAll();
+		
+		
 	}
+	//TEST MOCK BORRAR
+	public static void main(String[] args) {
+		ClienteRepository listaClientes = new ClienteRepository();
+		
+		listaClientes.getAll().forEach(System.out::println);	
+	}
+	
 
 }

@@ -8,9 +8,11 @@ import javax.persistence.EntityManager;
 import com.mypackages.models.Cliente;
 import com.mypackages.repositories.interfaces.I_ClienteRepository;
 import com.mypackages.utils.JpaUtil;
+import com.mysql.cj.Query;
 
 public class ClienteRepository implements I_ClienteRepository{
 
+	
 	EntityManager entityManager = JpaUtil.getEntityManagerFactory().createEntityManager();
 
 	
@@ -50,14 +52,18 @@ public class ClienteRepository implements I_ClienteRepository{
 		
 		List<Cliente> listaClientes = new ArrayList<>();
 		
-		List<Cliente> resultList = (List<Cliente>)entityManager.createNamedQuery("Cliente.findAll").getResultList();
-		listaClientes = resultList;
+		//Obtenemos los registros de la Tabla Cliente
+		javax.persistence.Query query = entityManager.createQuery("SELECT c from Clientes c");
+		
+		//Guardamos los registros en la Lista
+		listaClientes = query.getResultList();
+		
+		//List<Cliente> resultList = (List<Cliente>)entityManager.createNamedQuery("Cliente.findAll").getResultList();
+		//listaClientes = resultList;
 	 
 		//entityManager.getTransaction().commit();
 		
 		//JpaUtil.shutdown();
-		
-		
 		
 		return listaClientes;
 	}

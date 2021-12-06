@@ -5,8 +5,8 @@ import javax.persistence.Persistence;
 
 public class JpaUtil {
 	
-	private static final String PERSISTENCE_UNIT_NAME = "PERSISTENCE";
-	
+	private static final String PERSISTENCE_UNIT_NAME ="test";
+
 	private static EntityManagerFactory factory;
 	
 	public static EntityManagerFactory getEntityManagerFactory(){
