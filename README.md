@@ -512,7 +512,6 @@
 	* --> Código Snippet..
 
 ```xml
-
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2"
      xmlns="http://xmlns.jcp.org/xml/ns/persistence"
@@ -520,25 +519,20 @@
      xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
      http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
  
-     <persistence-unit name="TEST" transaction-type="RESOURCE_LOCAL">
- 
+    <persistence-unit name="test" transaction-type="RESOURCE_LOCAL">
  
       
- 
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
- 
-        <jta-data-source>java:global/jdbc/default</jta-data-source>
- 
-        <properties>
-    
-     <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_test_jpa_jsf?serverTimezone=UTC"/>
-      <property name="javax.persistence.jdbc.user" value="root" />
-      <property name="javax.persistence.jdbc.password" value="" />
-       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="hibernate.show_sql" value="true" />
-      <property name="hibernate.hbm2ddl.auto" value="update" />        
-    </properties>
-	    
+ 		<provider>org.hibernate.jpa.HibernatePersistence</provider>
+ 	
+	    <properties>
+	     <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_test_jpa_jsf?serverTimezone=UTC"/>
+	      <property name="javax.persistence.jdbc.user" value="root" />
+	      <property name="javax.persistence.jdbc.password" value="" />
+	       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+	      <property name="hibernate.show_sql" value="true" />
+	      <property name="hibernate.hbm2ddl.auto" value="update" />        
+	    </properties>
+	      
     </persistence-unit>
 </persistence>
 
