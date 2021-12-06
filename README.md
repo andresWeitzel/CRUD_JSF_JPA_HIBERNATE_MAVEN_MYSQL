@@ -14,7 +14,7 @@
 | WildFly |   23.0 Runtime | Servidor de Despliegue |
 | Eclipse IDE EE |  4.20 | Entorno de Desarrollo Integrado |
 | Cygwin | 3.1.6-1  | Colección de Herramientas / Terminal en Windows integrada al IDE Eclipse |
-| Git | 2.29.1.windows.1  | Control de Versiones |
+| Git | 2.29.1  | Control de Versiones |
 
 </br>
 
@@ -24,16 +24,21 @@
 | mysql-connector-8.0.21|  Conexión e Implementación de Queries a la db con Mysql |
 | Hibernate-Core 5.4.27| El Core de Hibernate |
 | JPA-Hibernate 2.1 |  Persistencia de datos a la db |
+| Hibernate EntityManager | Api para la implementación de Hibernate | 
 | Javax Annotation API 1.3.2 | Api para la lectura de Annotation |
+| Javax XML Bind API 2.3.1 | Api para transf. de Objetos Java y Documentos XML |
 | JSF API 2.2.13 | API para el Desarrollo de Interfaces | 
-| JSF Impl 2.2.13 | Especificaciones para la Implementación de JSF | 
+| JSF Impl 2.2.13 | Especificaciones para la Implementación de JSF |
+
 
 
 * Repostorio dependencia servlet: https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
 * Repositorio dependencia mysql: https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.21
 * Repositorio dependencia Hibernate-Core: https://search.maven.org/artifact/org.hibernate/hibernate-core/5.4.27.Final/jar
+* Repositorio dependencia hibernate-entitymanager: https://search.maven.org/artifact/org.hibernate/hibernate-entitymanager/5.4.4.Final/jar 
 * Repositorio dependencia JPA-Hibernate: https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/1.0.2.Final
 * Repositorio dependencia Javax Annotation API: https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2
+* Repositorio dependencia Javax XML Bin API : https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api/2.3.1
 * Repositorio dependencia API JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-api/2.2.13
 * Repositorio dependencia Implementación JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.13
 
@@ -54,8 +59,8 @@
 
 <hr>
 
-# ` Documentación y Guía del Proyecto `
-### (Esta Documentación que Desarrollé es para la Creación y Configuración del Proyecto desde Cero, Manejo de Maven, JSF, JPA, Mysql, Dependencias con Maven, Servidor de Despliegue y otros Usos de este Proyecto. Recomiendo Leerla y Realizar todo paso a paso como se indica en la misma).
+## ` Documentación y Guía del Proyecto `
+#### (Esta Documentación que Desarrollé es para la Creación y Configuración del Proyecto desde Cero, Manejo de Maven, JSF, JPA, Mysql, Dependencias con Maven, Servidor de Despliegue y otros Usos de este Proyecto. Recomiendo Leerla y Realizar todo paso a paso como se indica en la misma).
 
 </br>
 
@@ -219,7 +224,7 @@
 * Fijarse que se elimina el cartel rojo sobre el proyecto, indicando que faltaba configurar el servidor de despliegue.
 
 * Deployamos la App en el Server 
-	 * --> Click Der 
+	 * --> Click Der sobre index.jsp / index.html
 	 * --> Run As 
 	 * --> Run on Server 
 	 * --> Seleccionas Wildfly 
@@ -240,7 +245,10 @@
 ### Paso 4) Dependencias del Proyecto
 #### (Las siguientes dependencias del Proyecto se deberán agregar al pom.xml para el correcto funcionamiento del Proyecto).
 
-* Dependencia para los servlets (JSF trabaja con Servlets).
+
+</br>
+
+#### 4.1)Dependencia para los servlets (JSF trabaja con Servlets).
 	* --> En Internet Buscar Maven Repository (https://mvnrepository.com/)
 	* --> Buscamos Java Servlet Api (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api)
 	* --> La última fue actualizada el 2018, 4.0.1 (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/4.0.1)
@@ -265,8 +273,8 @@
 </br>
 
 
-* Dependencia para el conector de Mysql.
-	* --> Buscamos Mysql Connector (https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.21)
+#### 4.2)Dependencia para el conector de Mysql.
+* Buscamos Mysql Connector (https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.21)
 	* --> Copias la dependencia y la incluis en el pom del proyecto
 
 ```xml
@@ -286,9 +294,8 @@
 
 </br>
 
-
-* Dependencias para JPA-Hibernate (persistencia de Datos).
-	* --> La Primera será el core de Hibernate, hibernate-core la 5.4... Final (https://search.maven.org/artifact/org.hibernate/hibernate-core/5.4.27.Final/jar).
+#### 4.3) Dependencias para JPA-Hibernate (persistencia de Datos).
+* La Primera será el core de Hibernate, hibernate-core la 5.4... Final (https://search.maven.org/artifact/org.hibernate/hibernate-core/5.4.27.Final/jar).
 
 ```xml
 <dependency>
@@ -298,7 +305,8 @@
 </dependency>
 ```
 * ...
-	* --> La segunda será JPA para Hibernate, la más importante, ya que nos desacoplamos de depender de Hibernate en un futuro, y nos centramos en trabajar con JPA, la dependencia es JPA-Hibernate 2.1 (https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/1.0.2.Final).
+
+* La segunda será JPA para Hibernate, la más importante, ya que nos desacoplamos de depender de Hibernate en un futuro, y nos centramos en trabajar con JPA, la dependencia es JPA-Hibernate 2.1 (https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/1.0.2.Final).
 
 ```xml
 <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
@@ -310,7 +318,8 @@
 
 ```
 * ...
-	* --> La Tercera dependencia será para las Lecturas de las Anotaciones para JPA-Hibernate, Javax Annotation API (https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2)
+
+* La Tercera dependencia será para las Lecturas de las Anotaciones para JPA-Hibernate, Javax Annotation API (https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2)
 
 ```xml
 <!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
@@ -324,12 +333,36 @@
 
 	* --> Una vez incluidas, Ctrl+s guardamos,  F5 actualizamos y Alt+F5 para que Maven Actualice.
 	* --> Asegurate que Maven haya descargado las 3 dependencias mencionadas y colocadas en el pom.
+* ...
+
+* La Cuarta Dependencia será para las Transformaciones de Objetos Java a Objetos de Documentos XML, Javax XML Bind (https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api/2.3.1) 
+```xml
+<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.3.1</version>
+</dependency>
+
+```
+* ...
+
+* La Quinta Dependencia será para la ayuda del reconocimiento del entity-manager (https://search.maven.org/artifact/org.hibernate/hibernate-entitymanager/5.4.4.Final/jar)
+```xml
+<dependency>
+  <groupId>org.hibernate</groupId>
+  <artifactId>hibernate-entitymanager</artifactId>
+  <version>5.4.4.Final</version>
+</dependency>
+
+```
+
 
 
 </br>
 
-* Dependencias para JSF (Desarrollo de Interfaces Web).
-	* --> La Primera será para la API de JSF
+#### 4.4)Dependencias para JSF (Desarrollo de Interfaces Web).
+* La Primera será para la API de JSF
 	* --> Buscamos la API de JSF (https://mvnrepository.com/artifact/com.sun.faces/jsf-api/2.2.13)
 	* --> Copias la dependencia y la incluis en el pom del proyecto
 
@@ -343,7 +376,8 @@
 
 ```
 * ...
-	* --> La Segunda será para la Implementación de JSF.
+
+* La Segunda será para la Implementación de JSF.
 	* --> Buscamos la dependencia https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.13
 	* --> Copias la dependencia y la incluis en el pom del proyecto
 
@@ -472,37 +506,39 @@
 
 * Configurando el Archivo persistence.xml para JPA-Hibernate
 	* --> Dentro del archivo persistence.xml vamos a configurar la conexión con mysql y Nuestro Mapeo ORM de JPA-Hibernate.
-	* --> Copiar el siguiente código y pegarlo dentro del persistence.xml
+	* --> Recomiendo la siguiente página para conocer acerca de este archivo y seguir el modelo del mismo. `(https://vladmihalcea.com/jpa-persistence-xml/)`
+	* --> Copiar el Modelo de la página(tendrás que agregar las properys a mano) o el siguiente código y pegarlo dentro del persistence.xml
+	* --> No dejar espacios al comienzo
+	* --> Código Snippet..
 
 ```xml
-
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
-  version="2.1">
-
-  <persistence-unit name="PERSISTENCE">
-    <description>Hibernate JPA</description>
-    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-    
-
-    <properties>
-    
-     <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_test_jpa_jsf?serverTimezone=UTC"/>
-      <property name="javax.persistence.jdbc.user" value="root" />
-      <property name="javax.persistence.jdbc.password" value="" />
-       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="hibernate.show_sql" value="true" />
-      <property name="hibernate.hbm2ddl.auto" value="update" />        
-    </properties>
-  </persistence-unit>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+     xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+ 
+    <persistence-unit name="test" transaction-type="RESOURCE_LOCAL">
+ 
+      
+ 		<provider>org.hibernate.jpa.HibernatePersistence</provider>
+ 	
+	    <properties>
+	     <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_test_jpa_jsf?serverTimezone=UTC"/>
+	      <property name="javax.persistence.jdbc.user" value="root" />
+	      <property name="javax.persistence.jdbc.password" value="" />
+	       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+	      <property name="hibernate.show_sql" value="true" />
+	      <property name="hibernate.hbm2ddl.auto" value="update" />        
+	    </properties>
+	      
+    </persistence-unit>
 </persistence>
 
 ```
 
-* --> ATENTI: Las propiedades de este Archivo depende del Proyetco. Si se sigue al pie de la letra, es copiar y pegar, las propiedades varian dependiendo las configuraciones dadas en la db creada.      
+* --> ATENTI: Las propiedades de este Archivo depende del Proyecto. Si se sigue al pie de la letra, es copiar y pegar, las propiedades varian dependiendo las configuraciones dadas en la db creada.      
 *  La Propiedad <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_test_jpa_jsf?serverTimezone=UTC"/> posee el nombre de la db creada (db_test_jpa_jsf) y el puerto por defecto de mysql.
 *  Lo mismo para la propiedad user y password. 
 
