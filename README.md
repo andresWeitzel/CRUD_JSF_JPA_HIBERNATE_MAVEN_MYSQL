@@ -519,10 +519,10 @@
      xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
      http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
  
-    <persistence-unit name="test" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="jpaPersistence" transaction-type="RESOURCE_LOCAL">
  
       
- 		<provider>org.hibernate.jpa.HibernatePersistence</provider>
+ 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
  	
 	    <properties>
 	     <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_test_jpa_jsf?serverTimezone=UTC"/>
@@ -669,10 +669,10 @@ public class JpaUtil {
 * Primeramente Configuramos el Nombre de la Unidad de Persistencia dentro de la Clase Creada JpaUtil
 
 ```java
-private static final String PERSISTENCE_UNIT_NAME = "PERSISTENCE";
+private static final String PERSISTENCE_UNIT_NAME = "jpaPersistence";
 
 ```
-* Notar que el Nombre deberá ser el mismo que el creado peviamente en el persistence.xml ... ```xml <persistence-unit name="PERSISTENCE"> ```
+* Notar que el Nombre deberá ser el mismo que el creado peviamente en el persistence.xml ... ```xml <persistence-unit name="jpaPersistence"> ```
 
 * Ahoramos Creamos un Objeto de tipo EntityManagerFactory que será el que abra la conexión a la db creada. Importar la Clase
 
@@ -723,7 +723,7 @@ import javax.persistence.Persistence;
 
 public class JpaUtil {
 	
-	private static final String PERSISTENCE_UNIT_NAME = "PERSISTENCE";
+	private static final String PERSISTENCE_UNIT_NAME = "jpaPersistence";
 	private static EntityManagerFactory factory;
 	
 	public static EntityManagerFactory getEntityManagerFactory(){
