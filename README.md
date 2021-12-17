@@ -60,7 +60,7 @@
 <hr>
 
 ## ` Documentación y Guía del Proyecto `
-#### (Esta Documentación que Desarrollé es para la Creación y Configuración del Proyecto desde Cero, Manejo de Maven, JSF, JPA, Mysql, Dependencias con Maven, Servidor de Despliegue y otros Usos de este Proyecto. Recomiendo Leerla y Realizar todo paso a paso como se indica en la misma).
+#### (Esta Documentación que Desarrollé es para la Creación y Configuración del Proyecto desde Cero, Manejo y Dependencias de Maven, JSF, JPA, Mysql, Servidor de Despliegue y otros usos. Recomiendo Leerla y Realizar todo paso a paso como se indica en la misma).
 
 </br>
 
@@ -133,14 +133,14 @@
 	* --> Next
 	
 
-* Esperar a que carguen los Group id y en Filter escribir org.apache.maven.archetypes
-	* --> Seleccionar el ultimo(maven-archetype-webapp), este pertenece al Group id org.apache.maven.archetypes.
+* Esperar a que carguen los Group id y en Filter escribir `org.apache.maven.archetypes`
+	* --> Seleccionar el ultimo(maven-archetype-webapp), este pertenece al Group id `org.apache.maven.archetypes`
 	* --> Next
 
 
-* Configurar el Group Id (PAQUETE DEL PROYECTO) a gusto, en mi caso com.crud_jsf_jpa_maven
+* Configuramos el Group Id (PAQUETE DEL PROYECTO) , en mi caso `com.crud_jsf_jpa_maven`
 
-* En Artifact Id (NOMBRE DEL PROYECTO) a gusto, en mi caso CRUD_JSF_JPA_HIBERNATE_MAVEN_MYSQL
+* Configuramos el Artifact Id (NOMBRE DEL PROYECTO), en mi caso `CRUD_JSF_JPA_HIBERNATE_MAVEN_MYSQL`
 
 * Seguidamente Finish.
 
@@ -181,7 +181,7 @@
 	* --> Buscamos la sección Java Build Path
 	* --> Seleccionamos la casilla Maven Dependencies.
 	* --> Apply and Close.
-	* --> F5 y deberían aparecer (src/main/java y src/test/java)
+	* --> F5 y deberían aparecer `(src/main/java y src/test/java)`
 
 
 
@@ -197,46 +197,48 @@
 </br>
 
 ### Paso 3) Configuración del Servidor de Despliegue Wildfly.
-#### (Las Configuraciones de los Servidores de despliegue son casi los mismos pasos para todos, Tomcat, Jboss, Wildfly, etc. En mi caso opté por Wildfly ya que no requiere tanta configuración que el resto y además es más estable, menos restrictivo para algunas cosas, etc. No hay una única configuración, ni tampoco es algo que se configura una única vez, en caso de algún error, eliminar el Servidor creado, volverlo a configurar y paciencia que levantarlo a primera es LERDO. Si tarda en ejecutar el proyecto, parar la ejecución y ejecutar de nuevo.
+#### (Las Configuraciones de los Servidores de despliegue son casi los mismos pasos para todos, Tomcat, Jboss, Wildfly, etc. En mi caso opté por Wildfly ya que no requiere tanta configuración que el resto y además es más estable, menos restrictivo para algunas cosas, etc. No hay una única configuración, ni tampoco es algo que se configura una única vez, en caso de algún error, eliminar el Servidor creado, volverlo a configurar y paciencia que levantarlo la primera vez es LERDO (Dependiendo el Hardware). Si tarda en ejecutar el proyecto, parar la ejecución y ejecutar de nuevo.
 
 
 * Link de Descarga del Servidor a implementar https://www.wildfly.org/downloads/
 
-* Descargar, descromprimir, colocar en el directorio del proyecto u otro seguro.
+* Descargar, descomprimir, colocar en el directorio del proyecto u otro seguro.
 
-* Seleccionar el Proyecto y Click der sobre el mismo.
+*  Click Derecho sobre el Proyecto.
 	* --> Properties
-	* --> Buscar Proyect Facets
-	* --> Pestaña Runtimes(a la derecha de todo, al lado de Details)
+	* --> Buscar `Proyect Facets`
+	* --> Pestaña `Runtimes` (a la derecha de todo, al lado de Details)
 	* --> Seleccionar el Server WildFly 23.0 Runtime (En mi caso), SI NO APARECE UNO CREARLO, SEGUIR LOS SIG. PASOS
-	* --> En caso de que no aparezca tocamos New
-	* --> Se abrirá una interfaz llamada New Server Runtime Environment
-	* --> Seleccionamos la Version del Server, si descargaste Wildfly 13, selecciona el 13, si es 23, 23,etc para mantener compatibilidad
-	* --> Ahora Aparece una Interfaz llamada JBoss Runtime
-	* --> Dentro de la misma en Name colocar el nombre a gusto del server a usar
-	* --> En Home Directory tocar Browse... y buscamos la ruta del server descargado
+	* --> En caso de que no aparezca Click en `New`
+	* --> Se abrirá una interfaz llamada `New Server Runtime Environment`
+	* --> Seleccionamos la Version del Server, si descargaste Wildfly 13, selecciona el 13, si es 23, 23, etc para mantener compatibilidad
+	* --> Ahora Aparece una Interfaz llamada `JBoss Runtime`
+	* --> Dentro de la misma, en Name, colocar el nombre a gusto del server a Utilizar o dejar por defecto
+	* --> En `Home Directory` Click en Browse... y buscamos la ruta del server descargado
 	* --> Finish
-	* --> Ahora debería aparecer el server en la pestaña Runtimes, lo seleccionamos
+	* --> Ahora debería aparecer el server en la pestaña `Runtimes`.
+	* --> Lo Seleccionamos
 	* --> Apply and Close
 
-* Otra forma de realizar esto es desde la pestaña Servers, en las pestañas de abajo de eclipse(a mi me trajo algunos problemas, uso la anterior).
+* Otra forma de realizar esto es desde la pestaña `Servers`, en las pestañas de abajo de eclipse(a mí me surgieron algunos problemas, uso la anterior).
 
 * Fijarse que se elimina el cartel rojo sobre el proyecto, indicando que faltaba configurar el servidor de despliegue.
 
 * Deployamos la App en el Server 
-	 * --> Click Der sobre index.jsp / index.html
+	 * --> Click Der sobre `index.jsp` o `index.html` la ruta es `/src/main/webapp/index.jsp`
 	 * --> Run As 
 	 * --> Run on Server 
-	 * --> Seleccionas Wildfly 
+	 * --> Seleccionas la versión del Wildfly descargada y configurada
 	 * --> Next 
-	 * --> ATENTI, si usaste otro proyecto en Maven, el mismo quedó configurado en la pestaña Configured junto con el nuevo, seleccionar el viejo y tocar el boton Remove, nos quedamos con el Nuevo(en mi caso nombre del proyecto).
+	 * --> Finish
+	 * --> ATENTI, si usaste otro proyecto en Maven, el mismo quedó configurado en la pestaña `Configured` junto con el nuevo, seleccionar el viejo y click en el botón `Remove`, nos quedamos con el Nuevo (en mi caso nombre del proyecto).
 	 * --> Lo seleccionas y Finish.
 
-* Fijarse el Log en Console(todo el registro de despliegue del Server), tarda unos segundos. Si tarda en ejecutar el proyecto, parar la ejecución y ejecutar de nuevo.
+* Fijarse el Log en Console (todo el registro de despliegue del Server), tarda unos segundos. Si tarda en ejecutar el proyecto, parar la ejecución y ejecutar de nuevo.
 
-* Si se abre un localhost con Hello World! todo está correcto. Si aparece un mensaje de página no encontrada, borrar el index.jsp dentro de webapp y volver a crear el index.jsp, luego actualizar proyecto, actualizar Maven y correr Nuevamente en el Server.
+* Si se abre un localhost con Hello World! todo está correcto. Si aparece un mensaje de página no encontrada, borrar el `index.jsp` dentro de `webapp` y volver a crear el index.jsp, luego actualizar proyecto, actualizar Maven y correr Nuevamente en el Server.
 
-* Si no funciona lo anterior, siempre recomiendo cerrar y volver a abrir Eclipse.
+* Si no funciona lo anterior, siempre recomiendo cerrar y volver a abrir Eclipse. En caso de que persista el problema volver a configurar el server
 
 
 </br>
@@ -249,9 +251,9 @@
 </br>
 
 #### 4.1)Dependencia para los servlets (JSF trabaja con Servlets).
-	* --> En Internet Buscar Maven Repository (https://mvnrepository.com/)
-	* --> Buscamos Java Servlet Api (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api)
-	* --> La última fue actualizada el 2018, 4.0.1 (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/4.0.1)
+* En Internet Buscar Maven Repository (https://mvnrepository.com/)
+* Buscamos Java Servlet Api (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api)
+* La última fue actualizada el 2018, 4.0.1 (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/4.0.1)
 	* --> Copias la dependency desde maven o desde acá y lo llevas al pom.xml.
  
 ```xml
@@ -265,9 +267,10 @@
 
 ```
 * ...
-	* --> control+s guardas y actualizamos el proyecto
-	* --> Click Der sobre el proyecto, Maven
-	* --> Update Proyect
+	* --> Control+s guardas y actualizamos el proyecto
+	* --> Click Der sobre el proyecto
+	* --> Seleccionamos Maven
+	* -->  Update Proyect
 	* --> Fijate que el Proyecto este seleccionado y Boton ok
 
 </br>
