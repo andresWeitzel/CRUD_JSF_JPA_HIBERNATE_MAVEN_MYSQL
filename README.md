@@ -415,8 +415,7 @@
 ```
 
 * --> Actualizamos el Proyecto (F5) y Compilamos con Maven (Alt+F5)
-
-
+* --> Generalmente si hay algún problema de incompatibilidad con alguna dependencia nos indica eclipse a modo de advertencia, si hasta el momento no surge ningún error seguimos..
 
 
 
@@ -462,13 +461,14 @@
 	* --> Seguidamente vamos a Crear el fichero persistence.xml
 
 * Archivo de Configuración XML de JPA-Hibernate (persistence.xml).
-	* --> Vamos a crear el Archivo de configuración persistence.xml dentro de la carpeta WEB-INF
-	* --> La Ruta al mismo es src/main/webapp/WEB-INF.
-	* --> Sobre la carpeta WEB-INF Click Der
-	* --> New
-	* --> Other
+	* --> Vamos a crear el Archivo de configuración persistence.xml dentro de la carpeta META-INF que se deberá alojar en src/main/java. Actualmente este archivo de configuración se almacena junto al web.xml. Pero utilizando JSF y Dependencias con versiones antiguas surgen algunos errores, entonces mantendremos el formato definido
+	* --> Creamos el persistence.xml dentro de META-INF
+	* --> Click Derecho sobre src/main/java
+	* --> New Folder o buscar en Other
+	* --> Asegurarse que se está sobre la ruta nombrada y escribimos META-INF
+	* --> Dentro de esta carpeta creamos un archivo .xml
 	* --> Filtramos escribiendo xml, seleccinamos xml file
-	* --> Asegurarse que la ruta sea la indicada anteriormente, FormularioMaven/src/main/webapp/WEB-INF
+	* --> Asegurarse que la ruta sea la indicada anteriormente, FormularioMaven/src/main/java/META-INF
 	* --> En el file Name escribimos persistence.xml
 	* --> Next, Next
 	* --> Todo por defecto y Finish
@@ -477,29 +477,31 @@
 
 * Configurando el Archivo persistence.xml para JPA-Hibernate
 	* --> Dentro del archivo persistence.xml vamos a configurar la conexión con mysql y Nuestro Mapeo ORM de JPA-Hibernate.
-	* --> Recomiendo la siguiente página para conocer acerca de este archivo y seguir el modelo del mismo. `(https://vladmihalcea.com/jpa-persistence-xml/)`
-	* --> Copiar el Modelo de la página(tendrás que agregar las properys a mano) o el siguiente código y pegarlo dentro del persistence.xml
+	* --> Recomiendo la siguiente página para conocer acerca de este archivo. `(https://vladmihalcea.com/jpa-persistence-xml/)`
+	* Vamos a pasarle el nombre de la db y otras propiedades de configuración, debajo del código se explica esto
+	* --> Copiar el siguiente código y pegarlo dentro del persistence.xml
 	* --> No dejar espacios al comienzo
 	* --> Código Snippet..
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.2"
-     xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
- 
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+  version="2.1">
+  
     <persistence-unit name="jpaPersistence" transaction-type="RESOURCE_LOCAL">
  
       
  		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
- 	
+ 		
+ 		
 	    <properties>
 	     <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_test_jpa_jsf?serverTimezone=UTC"/>
 	      <property name="javax.persistence.jdbc.user" value="root" />
 	      <property name="javax.persistence.jdbc.password" value="" />
 	       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+
 	      <property name="hibernate.show_sql" value="true" />
 	      <property name="hibernate.hbm2ddl.auto" value="update" />        
 	    </properties>
@@ -1053,8 +1055,8 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 		return null;
 	}
 ```
-* --> Creamos una consulta con JPA a traves del EntityManager que nos devuelva todos los clientes y ese resultado lo guardamos en la Lista Creada, utilizamos `HQL`, que es un lenguaje de consultas que usa Hibernate para obtener los objetos desde la db. El principal punto fuerte es que se realizan las consultas sobre los objetos Java, en nuestro modelo de negocio, las entidades que se persisten en Hibernate. Importamos la Clase Query del paquete del `javax.persistence`
-* Para la consulta se deberá utilizar el select junto con el nombre que se le paso a la etiqueta @Table de la entidad, en este caso clientes
+* --> Creamos una consulta con JPA a traves del EntityManager que nos devuelva todos los clientes y ese resultado lo guardamos en la Lista Creada, utilizamos `HQL`, que es un lenguaje de consultas que usa Hibernate para obtener los objetos desde la db mapeando las entidades Desarrolladas. El principal punto fuerte es que se realizan las consultas sobre los objetos Java, en nuestro modelo de negocio, las entidades que se persisten en Hibernate. Importamos la Clase Query del paquete del `javax.persistence`
+* Importante tener en consideración que la consulta `HQL` deberá incluir el nombre de la Entidad y no de la base de datos, en nuestro caso `Cliente`, es case sensitive, el nombre deberá ser el nombre que se le paso a la etiqueta @Table de la entidad.
 * Recomiendo http://www.cursohibernate.es/doku.php?id=unidades:05_hibernate_query_language:02_hql
 
 
@@ -1069,7 +1071,7 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 		List<Cliente> listaClientes = new ArrayList<>();
 		
 		//Obtenemos los registros de la Tabla Cliente
-		Query query = entityManager.createQuery("SELECT c from clientes c");
+		Query query = entityManager.createQuery("SELECT c from Cliente c");
 		
 		//Guardamos los registros en la Lista
 		listaClientes = query.getResultList();
@@ -1092,7 +1094,7 @@ EntityManager entity = JpaUtil.getEntityManagerFactory().createEntityManager();
 		List<Cliente> listaClientes = new ArrayList<>();
 		
 		//Obtenemos los registros de la Tabla Cliente
-		Query query = entityManager.createQuery("SELECT c from clientes c");
+		Query query = entityManager.createQuery("SELECT c from Cliente c");
 		
 		//Guardamos los registros en la Lista
 		listaClientes = query.getResultList();
@@ -1290,7 +1292,7 @@ public class ClienteRepository implements I_ClienteRepository{
 		List<Cliente> listaClientes = new ArrayList<>();
 		
 		//Obtenemos los registros de la Tabla Cliente
-		Query query = entityManager.createQuery("SELECT c from clientes c");
+		Query query = entityManager.createQuery("SELECT c from Cliente c");
 		
 		//Guardamos los registros en la Lista
 		listaClientes = query.getResultList();
