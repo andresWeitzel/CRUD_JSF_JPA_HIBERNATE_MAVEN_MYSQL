@@ -54,7 +54,7 @@ public class ClienteRepository implements I_ClienteRepository{
 		List<Cliente> listaClientes = new ArrayList<>();
 		
 		//Obtenemos los registros de la Tabla Cliente
-		Query query = entityManager.createQuery("SELECT c from clientes c");
+		Query query = entityManager.createQuery("SELECT c from Cliente c");
 		
 		//Guardamos los registros en la Lista
 		listaClientes = query.getResultList();
