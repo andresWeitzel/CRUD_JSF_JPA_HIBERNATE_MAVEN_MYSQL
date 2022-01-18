@@ -45,24 +45,27 @@ public class ClienteRepository implements I_ClienteRepository{
 		
 	}
 
+	
 	@Override
 	public List<Cliente> getAll() {
 		
 
-		entityManager.getTransaction().begin();
+		//entityManager.getTransaction().begin();
 		
 		List<Cliente> listaClientes = new ArrayList<>();
 		
 		//Obtenemos los registros de la Tabla Cliente
 		Query query = entityManager.createQuery("SELECT c from Cliente c");
 		
+		//Query query = entityManager.createNativeQuery("SELECT c from Cliente c");
+		
 		//Guardamos los registros en la Lista
 		listaClientes = query.getResultList();
 		
 		
-		entityManager.getTransaction().commit();
+		//entityManager.getTransaction().commit();
 		
-		JpaUtil.shutdown();
+		//JpaUtil.shutdown();
 		
 		return listaClientes;
 	}

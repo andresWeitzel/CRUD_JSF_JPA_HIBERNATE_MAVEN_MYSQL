@@ -1,5 +1,7 @@
 package com.mypackages.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import javax.persistence.Table;
 @Table(name="clientes") //Mismo nombre de tabla de la db
 public class Cliente {
 	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY) //Autoincrement
 	private int id;
