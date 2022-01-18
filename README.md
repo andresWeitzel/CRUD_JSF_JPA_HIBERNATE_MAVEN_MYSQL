@@ -22,20 +22,20 @@
 | ------------- | ------------- |
 | javax.servlet-api-4.0.1|  Librerías para el uso de Servlets |
 | mysql-connector-8.0.21|  Conexión e Implementación de Queries a la db con Mysql |
-| Hibernate-Core 5.4.27| El Core de Hibernate |
+| Hibernate-Core 5.3.6 | El Core de Hibernate |
 | Javax Annotation API 1.3.2 | Api para la lectura de Annotation |
 | Javax XML Bind API 2.3.1 | Api para transf. de Objetos Java y Documentos XML |
-| JSF API 2.2.13 | API para el Desarrollo de Interfaces | 
-| JSF Impl 2.2.13 | Especificaciones para la Implementación de JSF |
+| JSF API 2.2.17 | API para el Desarrollo de Interfaces | 
+| JSF Impl 2.2.17 | Especificaciones para la Implementación de JSF |
 
 
 * Repostorio dependencia servlet: https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
 * Repositorio dependencia mysql: https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.21
-* Repositorio dependencia Hibernate-Core: https://search.maven.org/artifact/org.hibernate/hibernate-core/5.4.27.Final/jar
+* Repositorio dependencia Hibernate-Core: https://mvnrepository.com/artifact/org.hibernate/hibernate-core/5.3.6.Final
 * Repositorio dependencia Javax Annotation API: https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2
 * Repositorio dependencia Javax XML Bin API : https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api/2.3.1
-* Repositorio dependencia API JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-api/2.2.13
-* Repositorio dependencia Implementación JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.13
+* Repositorio dependencia API JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-api/2.2.17
+* Repositorio dependencia Implementación JSF: https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.17
 
 </br>
 
@@ -93,7 +93,7 @@
    
    - [Paso 12) Creación y Configuración de la Clase ClienteRepository para la Persistencia de Datos con JPA (Patrón DAO).](#paso-12-creación-y-configuración-de-la-clase-clienterepository-para-la-persistencia-de-datos-con-jpa)
    
-   - [Paso 13) Creación y Configuración de la Clase Controller ClienteBean para la Interacción de la Vista (index.xhtml), el Modelo (Clase Entidad) y JPA (Clases e Interfaz Repositories) (Patrón MVC).](#paso-13-creación-y-configuración-de-la-clase-controller-clientebean-para-la-interacción-de-la-vista-el-modelo-y-jpa)
+   - [Paso 13) Creación, Configuración y Test de la Clase Controller ClienteBean para la Interacción de la Vista (index.xhtml), el Modelo (Clase Entidad) y JPA (Clases e Interfaz Repositories) (Patrón MVC).](#paso-13-creación-configuración-y-test-de-la-clase-controller-clientebean-para-la-interacción-de-la-vista-el-modelo-y-jpa)
 
    - [Paso 14) Creación y Configuración de la Vista XHTML con JSF](#paso-14-creación-y-configuración-de-la-vista-xhtml-con-jsf)
 
@@ -293,13 +293,14 @@
 </br>
 
 #### 4.3) Dependencias para JPA-Hibernate (persistencia de Datos).
-* La Primera será el core de Hibernate, hibernate-core la 5.4... Final (https://search.maven.org/artifact/org.hibernate/hibernate-core/5.4.27.Final/jar).
+* La Primera será el core de Hibernate, hibernate-core la 5.4... Final (https://search.maven.org/artifact/org.hibernate/hibernate-core/5.3.6.Final/jar).
 
 ```xml
+<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 <dependency>
-  <groupId>org.hibernate</groupId>
-  <artifactId>hibernate-core</artifactId>
-  <version>5.4.27.Final</version>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.3.6.Final</version>
 </dependency>
 ```
 * ...
@@ -334,7 +335,7 @@
 
 #### 4.4)Dependencias para JSF (Desarrollo de Interfaces Web).
 * La Primera será para la API de JSF
-	* --> Buscamos la API de JSF (https://mvnrepository.com/artifact/com.sun.faces/jsf-api/2.2.13)
+	* --> Buscamos la API de JSF (https://mvnrepository.com/artifact/com.sun.faces/jsf-api/2.2.17)
 	* --> Copias la dependencia y la incluis en el pom del proyecto
 
 ```xml
@@ -342,14 +343,14 @@
 <dependency>
     <groupId>com.sun.faces</groupId>
     <artifactId>jsf-api</artifactId>
-    <version>2.2.13</version>
+    <version>2.2.17</version>
 </dependency>
 
 ```
 * ...
 
 * La Segunda será para la Implementación de JSF.
-	* --> Buscamos la dependencia https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.13
+	* --> Buscamos la dependencia https://mvnrepository.com/artifact/com.sun.faces/jsf-impl/2.2.17
 	* --> Copias la dependencia y la incluis en el pom del proyecto
 
 ```xml
@@ -357,7 +358,7 @@
 <dependency>
     <groupId>com.sun.faces</groupId>
     <artifactId>jsf-impl</artifactId>
-    <version>2.2.13</version>
+    <version>2.2.17</version>
 </dependency>
 
 ```
@@ -1330,7 +1331,7 @@ public class ClienteRepository implements I_ClienteRepository{
 
 </br>
 
-### Paso 13) Creación y Configuración de la Clase Controller `ClienteBean`
+### Paso 13) Creación, Configuración y Test de la Clase Controller `ClienteBean`
 #### (La Clase Controller es para que la misma realice la interacción(eventos) que hace el usuario en la Vista(index.xhtml), luego la vista realice las peticiones al modelo a traves de jpa(clase e interfaz repositories) para pasarlos a la base de datos y devolverlos a la vista (Patrón MVC). La Clase la vamos a llamar ClienteBean. Recordar que un bean es una clase con requisitos de negocio concretos).
 
 </br>
@@ -1372,6 +1373,7 @@ package com.mypackage.controllers;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+@SuppressWarnings("deprecation")
 @ManagedBean(name="ClienteBean")
 @RequestScoped
 public class ClienteBean {
@@ -1385,17 +1387,23 @@ public class ClienteBean {
 ```java
 	public List<Cliente> getAll(){
 		
-		ClienteRepository listaClientes = new ClienteRepository();
 		
-		return listaClientes.getAll();
+		ClienteRepository clienteRepository = new ClienteRepository();
+		
+
+		 return clienteRepository.getAll();
+		
+
+		
 	}
 
 ```
 * Código Completo ...
 
 ```java
-package com.mypackage.controllers;
+package com.mypackages.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -1404,6 +1412,7 @@ import javax.faces.bean.RequestScoped;
 import com.mypackages.models.Cliente;
 import com.mypackages.repositories.jpa.ClienteRepository;
 
+@SuppressWarnings("deprecation")
 @ManagedBean(name="ClienteBean")
 @RequestScoped
 public class ClienteBean {
@@ -1411,17 +1420,58 @@ public class ClienteBean {
 	
 	public List<Cliente> getAll(){
 		
-		ClienteRepository listaClientes = new ClienteRepository();
 		
-		return listaClientes.getAll();
+		ClienteRepository clienteRepository = new ClienteRepository();
+		
+
+		 return clienteRepository.getAll();
+		
+
+		
 	}
 
+	
+
 }
+
 
 ```
 
 
 
+</br>
+
+#### 13.3) Test de la Clase Controladora `ClienteBean`
+* Creamos un Nuevo paquete para la Clase. 
+* --> Sobre la ruta src/main/java Click Der, New, package
+* --> Nuestro paquete será `mypackages.tests`
+* --> Creamos la Clase `TestClienteBean`
+* --> Usamos el Repository para obtener los registros aplicando java8
+* --> Para que Hibernate traiga los registros debemos tener levantado el servicio de Mysql
+* --> Ejecutamos la clase y visualizamos los registros por Consola
+* Código de la Clase..
+
+```java
+package com.mypackages.tests;
+
+import com.mypackages.repositories.jpa.ClienteRepository;
+
+public class TestClienteBean {
+	
+	//TEST MOCK
+	public static void main(String[] args) {
+	
+			ClienteRepository clienteRepository = new ClienteRepository();
+			
+			clienteRepository.getAll().forEach(System.out::println);	
+		}
+	
+
+}
+
+```
+
+</br>
 
 ### Paso 14) Creación y Configuración de la Vista XHTML con JSF
 #### (Si Trabajamos con JSF no es válido el index.html, osea html puro, ya que el mismo no nos permite trabajar con componentes JSF, vamos a usar xhtml).
@@ -1461,9 +1511,9 @@ public class ClienteBean {
 </h:head>
 <h:body>
 	
-	<h2>
+	<h3>
 	  	<h:outputText value="LISTA DE CLIENTES"></h:outputText>
-	</h2>
+	</h3>
 	
 </h:body>
 </html>
